@@ -9,10 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lucide-react": "^0.561.0",
+    "ogl": "^1.0.11",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "lucide-react": "^0.561.0",
-    "ogl": "1.0.11",
     "three": "0.160.0"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Hero from './components/Hero';
+import Gallery from './components/Gallery';
 import BrandStory from './components/BrandStory';
 import Experience from './components/Experience';
 import ToursGrid from './components/ToursGrid';
@@ -12,72 +13,79 @@ import SplashCursor from './components/SplashCursor';
 function App() {
   const [isFAQOpen, setIsFAQOpen] = useState(false);
   const contactRef = useRef<HTMLDivElement>(null);
-  
+
   // Smooth scroll handler
   const scrollToSection = (id: string) => {
     // Basic implementation for scrolling if sections had IDs, or specific logic
     if (id === 'contact' && contactRef.current) {
-        contactRef.current.scrollIntoView({ behavior: 'smooth' });
+      contactRef.current.scrollIntoView({ behavior: 'smooth' });
     } else if (id === 'faq') {
-        setIsFAQOpen(true);
+      setIsFAQOpen(true);
     } else {
-        // Fallback for simple page structure
-        const element = document.getElementById(id);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      // Fallback for simple page structure
+      const element = document.getElementById(id);
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <div className="min-h-screen bg-premium-bg text-premium-text selection:bg-premium-gold/30 selection:text-black font-sans antialiased">
-      
+
       {/* Fluid Cursor Effect */}
       <SplashCursor />
 
       {/* Fixed Header */}
-      <header className="fixed top-0 w-full z-40 bg-white/80 backdrop-blur-md border-b border-neutral-100 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            
-            {/* Logo: Removed completely */}
-            <div></div>
+      <header className="fixed top-0 w-full z-40 bg-white/90 backdrop-blur-md border-b border-black/5 transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center relative">
 
-            {/* Navigation - Desktop */}
-            <nav className="hidden md:flex items-center gap-8">
-                {['Tours', 'Reviews', 'FAQ', 'Contact'].map((item) => (
-                    <button 
-                        key={item}
-                        onClick={() => scrollToSection(item.toLowerCase())}
-                        className="text-sm font-sans font-medium text-neutral-500 hover:text-premium-gold tracking-widest uppercase transition-colors"
-                    >
-                        {item}
-                    </button>
-                ))}
-            </nav>
+          {/* Logo - Left */}
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="block">
+            <img
+              src="/logo-legacy.png"
+              alt="Legacy Tours Spain"
+              className="h-16 w-auto object-contain"
+            />
+          </a>
+
+          {/* Navigation - Desktop */}
+          <nav className="hidden md:flex items-center gap-8">
+            {['Tours', 'Reviews', 'FAQ', 'Contact'].map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(item.toLowerCase())}
+                className="text-sm font-sans font-medium text-neutral-500 hover:text-premium-gold tracking-widest uppercase transition-colors"
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
         </div>
       </header>
 
       <main className="flex flex-col pt-20">
         <Hero />
+        <Gallery />
         <Experience />
         <BrandStory />
         <div id="tours">
-            <ToursGrid />
+          <ToursGrid />
         </div>
         <div id="reviews">
-            <Reviews />
+          <Reviews />
         </div>
       </main>
 
-      <Footer 
-        onOpenFAQ={() => setIsFAQOpen(true)} 
+      <Footer
+        onOpenFAQ={() => setIsFAQOpen(true)}
         contactRef={contactRef}
       />
 
       {/* New Stacked Buttons */}
       <FloatingControls />
 
-      <FAQModal 
-        isOpen={isFAQOpen} 
-        onClose={() => setIsFAQOpen(false)} 
+      <FAQModal
+        isOpen={isFAQOpen}
+        onClose={() => setIsFAQOpen(false)}
       />
     </div>
   );

@@ -1,5 +1,24 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
+import './GradientBlinds.css';
+
+const MAX_COLORS = 8;
+const hexToRGB = (hex: string) => {
+  const c = hex.replace('#', '').padEnd(6, '0');
+  const r = parseInt(c.slice(0, 2), 16) / 255;
+  const g = parseInt(c.slice(2, 4), 16) / 255;
+  const b = parseInt(c.slice(4, 6), 16) / 255;
+  return [r, g, b];
+};
+const prepStops = (stops: string[]) => {
+  const base = (stops && stops.length ? stops : ['#FF9FFC', '#5227FF']).slice(0, MAX_COLORS);
+  if (base.length === 1) base.push(base[0]);
+  while (base.length < MAX_COLORS) base.push(base[base.length - 1]);
+  const arr = [];
+  for (let i = 0; i < MAX_COLORS; i++) arr.push(hexToRGB(base[i]));
+  const count = Math.max(2, Math.min(MAX_COLORS, stops?.length ?? 2));
+  return { arr, count };
+};
 
 interface GradientBlindsProps {
   className?: string;
@@ -20,27 +39,8 @@ interface GradientBlindsProps {
   mixBlendMode?: string;
 }
 
-const MAX_COLORS = 8;
-const hexToRGB = (hex: string) => {
-  const c = hex.replace('#', '').padEnd(6, '0');
-  const r = parseInt(c.slice(0, 2), 16) / 255;
-  const g = parseInt(c.slice(2, 4), 16) / 255;
-  const b = parseInt(c.slice(4, 6), 16) / 255;
-  return [r, g, b];
-};
-
-const prepStops = (stops?: string[]) => {
-  const base = (stops && stops.length ? stops : ['#FF9FFC', '#5227FF']).slice(0, MAX_COLORS);
-  if (base.length === 1) base.push(base[0]);
-  while (base.length < MAX_COLORS) base.push(base[base.length - 1]);
-  const arr = [];
-  for (let i = 0; i < MAX_COLORS; i++) arr.push(hexToRGB(base[i]));
-  const count = Math.max(2, Math.min(MAX_COLORS, stops?.length ?? 2));
-  return { arr, count };
-};
-
-const GradientBlinds: React.FC<GradientBlindsProps> = ({
-  className = '',
+const GradientBlinds = ({
+  className,
   dpr,
   paused = false,
   gradientColors = ['#FF9FFC', '#5227FF'],
@@ -56,7 +56,7 @@ const GradientBlinds: React.FC<GradientBlindsProps> = ({
   distortAmount = 0,
   shineDirection = 'left',
   mixBlendMode = 'lighten'
-}) => {
+}: GradientBlindsProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>(null);
   const programRef = useRef<any>(null);
@@ -320,7 +320,7 @@ void main() {
       if (canvas.parentElement === container) {
         container.removeChild(canvas);
       }
-      const callIfFn = (obj: any, key: string) => {
+      const callIfFn = (obj: any, key: any) => {
         if (obj && typeof obj[key] === 'function') {
           obj[key].call(obj);
         }
@@ -352,27 +352,15 @@ void main() {
   ]);
 
   return (
-    <>
-      <style>
-        {`
-          .gradient-blinds-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-          }
-        `}
-      </style>
-      <div
-        ref={containerRef}
-        className={`gradient-blinds-container ${className}`}
-        style={{
-          ...(mixBlendMode && {
-            mixBlendMode: mixBlendMode as any
-          })
-        }}
-      />
-    </>
+    <div
+      ref={containerRef}
+      className={`gradient-blinds-container ${className || ''}`}
+      style={{
+        ...(mixBlendMode && {
+          mixBlendMode: mixBlendMode as any
+        })
+      }}
+    />
   );
 };
 
