@@ -66,8 +66,6 @@ const Hero: React.FC = () => {
 
         <a
           href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
           className="group inline-flex items-center gap-3 bg-premium-gold hover:bg-yellow-600 text-white px-10 py-5 rounded-full text-base font-display font-bold tracking-widest uppercase transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl"
         >
           Book Now

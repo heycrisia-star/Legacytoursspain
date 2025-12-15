@@ -4,6 +4,7 @@ export interface Tour {
   duration: string;
   price: string;
   route: string[];
+  bookingUrl?: string;
 }
 
 export interface FaqItem {

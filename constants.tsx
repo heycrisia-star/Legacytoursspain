@@ -1,12 +1,12 @@
 import { Tour, FaqItem } from './types';
 import { Facebook, Instagram, MapPin } from 'lucide-react';
 
-// Main Booking (Barcelona) - Updated Number
-export const BOOKING_URL = "https://wa.me/34635096002"; 
+// Main Booking (Barcelona) - FareHarbor
+export const BOOKING_URL = "https://fareharbor.com/embeds/book/legacytoursspain/?full-items=yes&flow=1528104";
 // Madrid Cross-sell URL
 export const MADRID_BOOKING_URL = "https://wa.me/34673017472";
 
-export const GOOGLE_MAPS_URL = "https://goo.gl/maps/BarcelonaPlaceholder"; 
+export const GOOGLE_MAPS_URL = "https://goo.gl/maps/BarcelonaPlaceholder";
 export const GOOGLE_REVIEWS_URL = "https://g.page/r/CS-a0zgSFb4GEBM/review";
 
 export const SOCIAL_LINKS = [
@@ -30,7 +30,8 @@ export const TOURS: Tour[] = [
       'Sagrada Familia',
       'Passeig de Gràcia (Casa Batlló)',
       'Passeig de Gràcia (Casa Milà)'
-    ]
+    ],
+    bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688410/?full-items=yes&flow=1528104"
   },
   {
     id: 'city-sea',
@@ -49,7 +50,8 @@ export const TOURS: Tour[] = [
       'Parc de la Ciutadella',
       'Port Vell',
       'Barceloneta'
-    ]
+    ],
+    bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688412/?full-items=yes&flow=1528104"
   },
   {
     id: 'complete',
@@ -73,7 +75,8 @@ export const TOURS: Tour[] = [
       'Montjuïc (miradores)',
       'Plaza España',
       'MNAC'
-    ]
+    ],
+    bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688414/?full-items=yes&flow=1528104"
   },
   {
     id: 'grand',
@@ -99,7 +102,8 @@ export const TOURS: Tour[] = [
       'MNAC',
       'Plaza España',
       'Fuente Mágica'
-    ]
+    ],
+    bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688415/?full-items=yes&flow=1528104"
   }
 ];
 
