@@ -43,7 +43,7 @@ function App() {
             <img
               src="/logo-legacy.png"
               alt="Legacy Tours Spain"
-              className="h-16 w-auto object-contain"
+              className="h-20 w-auto object-contain"
             />
           </a>
 

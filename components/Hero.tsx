@@ -1,41 +1,43 @@
 import React from 'react';
 import { Zap, Languages, Lock, ArrowRight } from 'lucide-react';
 import { BOOKING_URL } from '../constants';
-import GradientBlinds from './GradientBlinds';
+import Antigravity from './Antigravity';
 
 const Hero: React.FC = () => {
   return (
     <section className="relative flex flex-col items-center justify-center pt-32 pb-12 px-6 text-center overflow-hidden min-h-[85vh]">
 
-      {/* Gradient Blinds Background */}
+      {/* Antigravity Background */}
       <div className="absolute inset-0 -z-10 bg-[#F9F8F6]">
-        <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, zIndex: 1 }}>
-          <GradientBlinds
-            gradientColors={['#F9F8F6', '#D4AF37', '#F3E5AB']}
-            angle={45}
-            noise={0.1}
-            blindCount={8}
-            blindMinWidth={50}
-            spotlightRadius={0.6}
-            spotlightSoftness={0.8}
-            spotlightOpacity={0.8}
-            mouseDampening={0.15}
-            distortAmount={0.2}
-            shineDirection="left"
-            mixBlendMode="multiply"
-          />
-        </div>
 
         {/* Background Image - Translucent */}
         <div className="absolute inset-0 z-0">
           <img
             src="/images/gallery-2.jpg"
             alt="Background"
-            className="w-full h-full object-cover opacity-[0.15] grayscale-[20%]"
+            className="w-full h-full object-cover opacity-[0.10] grayscale-[20%]"
           />
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F9F8F6]/90 via-transparent to-[#F9F8F6] pointer-events-none z-10"></div>
+        {/* Gradient Overlay - Reduced opacity for visibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F9F8F6]/60 via-transparent to-[#F9F8F6] pointer-events-none z-10"></div>
+
+        {/* Antigravity Canvas - Elevated Z-Index */}
+        <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, zIndex: 20, pointerEvents: 'none' }}>
+          <Antigravity
+            count={300}
+            magnetRadius={20}
+            ringRadius={15}
+            waveSpeed={0.5}
+            waveAmplitude={1.5}
+            particleSize={4}
+            lerpSpeed={0.08}
+            color={'#D4AF37'} // Premium Gold
+            autoAnimate={true}
+            particleVariance={1.5}
+            particleShape="capsule"
+          />
+        </div>
       </div>
 
       <div className="max-w-5xl mx-auto space-y-8 animate-fade-in-up relative z-10 flex flex-col items-center">
