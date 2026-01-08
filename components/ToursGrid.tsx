@@ -18,8 +18,10 @@ const ToursGrid: React.FC = () => {
 
       <div className="mt-16 mb-12">
         <div className="flex flex-col items-center mb-8">
-          <h2 className="text-3xl font-serif text-premium-gold mb-2">Interactive Route Map</h2>
-          <p className="text-neutral-400 font-light">Explore the stops for the selected tour</p>
+          <h2 className="text-2xl md:text-3xl font-display font-medium text-premium-text uppercase tracking-widest mb-3">
+            Interactive Route Map
+          </h2>
+          <p className="text-neutral-600 font-sans font-light">Explore the stops for the selected tour</p>
 
           <div className="flex gap-4 mt-6 flex-wrap justify-center">
             {TOURS.map(tour => (
@@ -27,8 +29,8 @@ const ToursGrid: React.FC = () => {
                 key={tour.id}
                 onClick={() => setActiveTourId(tour.id)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${activeTourId === tour.id
-                    ? 'bg-premium-gold text-black border-premium-gold shadow-[0_0_15px_rgba(212,175,55,0.4)]'
-                    : 'bg-transparent text-neutral-400 border-neutral-700 hover:border-premium-gold/50 hover:text-premium-gold'
+                  ? 'bg-premium-gold text-black border-premium-gold shadow-[0_0_15px_rgba(212,175,55,0.4)]'
+                  : 'bg-transparent text-neutral-400 border-neutral-700 hover:border-premium-gold/50 hover:text-premium-gold'
                   }`}
               >
                 {tour.name}
