@@ -4,6 +4,7 @@ export interface Tour {
   duration: string;
   price: string;
   route: string[];
+  coordinates?: [number, number][];
   bookingUrl?: string;
 }
 
