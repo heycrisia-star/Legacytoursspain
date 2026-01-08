@@ -59,7 +59,7 @@ const MapUpdater: React.FC<{ coordinates: [number, number][] }> = ({ coordinates
     useEffect(() => {
         if (coordinates && coordinates.length > 0) {
             const bounds = L.latLngBounds(coordinates);
-            map.fitBounds(bounds, { padding: [50, 50], animate: true, duration: 1.5 });
+            map.fitBounds(bounds, { padding: [20, 20], animate: true, duration: 1.5 });
         }
     }, [coordinates, map]);
 
