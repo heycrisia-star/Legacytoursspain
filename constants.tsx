@@ -35,7 +35,8 @@ export const TOURS: Tour[] = [
       'Eixample District',
       'Sagrada Familia (Stop)',
       'Plaza de Toros Monumental',
-      'Arc de Triomf'
+      'Arc de Triomf',
+      'Plaza Catalunya (Final)'
     ],
     coordinates: [
       [41.387015, 2.170047], // Plaza Catalunya
@@ -48,7 +49,8 @@ export const TOURS: Tour[] = [
       [41.390623, 2.165380], // Eixample District
       [41.403629, 2.174356], // Sagrada Familia (Stop)
       [41.400589, 2.181298], // Plaza de Toros Monumental
-      [41.391054, 2.180635]  // Arc de Triomf
+      [41.391054, 2.180635], // Arc de Triomf
+      [41.387015, 2.170047]  // Plaza Catalunya (Final)
     ],
     bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688410/?full-items=yes&flow=1528104"
   },
@@ -71,7 +73,8 @@ export const TOURS: Tour[] = [
       'Port Vell',
       "Museu d'Història de Catalunya",
       'Barceloneta Beach',
-      'Puerto Olímpico'
+      'Puerto Olímpico',
+      'Plaza Catalunya (Final)'
     ],
     coordinates: [
       [41.387015, 2.170047], // Plaza Catalunya
@@ -87,7 +90,8 @@ export const TOURS: Tour[] = [
       [41.377011, 2.184759], // Port Vell
       [41.381189, 2.187203], // Museu d'Història de Catalunya
       [41.378401, 2.192539], // Barceloneta Beach
-      [41.386121, 2.200119]  // Puerto Olímpico
+      [41.386121, 2.200119], // Puerto Olímpico
+      [41.387015, 2.170047]  // Plaza Catalunya (Final)
     ],
     bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688412/?full-items=yes&flow=1528104"
   },
@@ -115,7 +119,8 @@ export const TOURS: Tour[] = [
       'Estadio Olímpico Lluís Companys',
       'MNAC (Museo Nacional de Arte de Cataluña)',
       'Plaza España',
-      'Fuente Mágica de Montjuïc'
+      'Fuente Mágica de Montjuïc',
+      'Plaza Catalunya (Final)'
     ],
     coordinates: [
       [41.387015, 2.170047], // Plaza Catalunya
@@ -136,7 +141,8 @@ export const TOURS: Tour[] = [
       [41.364731, 2.155609], // Estadio Olímpico Lluís Companys
       [41.368631, 2.153787], // MNAC (Museo Nacional de Arte de Cataluña)
       [41.374149, 2.148821], // Plaza España
-      [41.371221, 2.151740]  // Fuente Mágica de Montjuïc
+      [41.371221, 2.151740], // Fuente Mágica de Montjuïc
+      [41.387015, 2.170047]  // Plaza Catalunya (Final)
     ],
     bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688414/?full-items=yes&flow=1528104"
   }

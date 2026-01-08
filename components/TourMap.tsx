@@ -17,20 +17,34 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 // Custom Premium Gold Icon
-const goldIcon = new L.DivIcon({
+// Custom Premium Gold Icon with Number
+const createGoldIcon = (number: number) => new L.DivIcon({
     className: 'custom-div-icon',
     html: `
     <div style="
       background-color: #D4AF37;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      border-radius: 50% 50% 50% 0;
       border: 2px solid #FFFFFF;
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
-    "></div>
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      transform: rotate(-45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    ">
+      <div style="
+        transform: rotate(45deg);
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        font-family: sans-serif;
+      ">${number}</div>
+    </div>
   `,
-    iconSize: [12, 12],
-    iconAnchor: [6, 6],
+    iconSize: [24, 24],
+    iconAnchor: [12, 24], // Bottom point
 });
 
 interface TourMapProps {
@@ -99,10 +113,10 @@ const TourMap: React.FC<TourMapProps> = ({ tours, activeTourId }) => {
 
                 {/* Markers */}
                 {coordinates.map((coord, index) => (
-                    <Marker key={index} position={coord} icon={goldIcon}>
+                    <Marker key={index} position={coord} icon={createGoldIcon(index + 1)}>
                         <Popup>
                             <div className="text-sm font-medium">
-                                <span className="text-white">{index + 1}.</span> {activeTour.route[index] || 'Point ' + (index + 1)}
+                                <span className="text-premium-gold font-bold">Stop {index + 1}:</span> {activeTour.route[index] || 'Point ' + (index + 1)}
                             </div>
                         </Popup>
                     </Marker>
