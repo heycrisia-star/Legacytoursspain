@@ -83,6 +83,7 @@ const TourMap: React.FC<TourMapProps> = ({ tours, activeTourId }) => {
                 zoom={13}
                 scrollWheelZoom={false}
                 className="w-full h-full z-0"
+                style={{ height: '500px', width: '100%', background: '#1a1a1a' }}
             >
                 {/* Dark Matter Tiles for Premium Look */}
                 <TileLayer
