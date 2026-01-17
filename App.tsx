@@ -10,9 +10,11 @@ import Footer from './components/Footer';
 import FAQModal from './components/FAQModal';
 import FloatingControls from './components/FloatingControls';
 import SplashCursor from './components/SplashCursor';
+import LegacyChronicle from './components/LegacyChronicle';
 
 function App() {
   const [isFAQOpen, setIsFAQOpen] = useState(false);
+  const [isGuideOpen, setIsGuideOpen] = useState(false);
   const contactRef = useRef<HTMLDivElement>(null);
 
   // Smooth scroll handler
@@ -82,7 +84,11 @@ function App() {
       />
 
       {/* New Stacked Buttons */}
-      <FloatingControls />
+      <FloatingControls onOpenGuide={() => setIsGuideOpen(true)} />
+
+      {isGuideOpen && (
+        <LegacyChronicle onClose={() => setIsGuideOpen(false)} />
+      )}
 
       <FAQModal
         isOpen={isFAQOpen}
