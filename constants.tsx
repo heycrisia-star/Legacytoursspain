@@ -8,6 +8,7 @@ export const MADRID_BOOKING_URL = "https://wa.me/34673017472";
 
 export const GOOGLE_MAPS_URL = "https://goo.gl/maps/BarcelonaPlaceholder";
 export const GOOGLE_REVIEWS_URL = "https://g.page/r/CS-a0zgSFb4GEBM/review";
+export const DINING_URL = "https://barcelona-dashboard-app.vercel.app/dining";
 
 export const SOCIAL_LINKS = [
   { name: 'Instagram', url: 'https://www.instagram.com/legacytoursspain?igsh=MWVsNzBjaWpiMmpveA%3D%3D&utm_source=qr', icon: 'instagram', active: true },
