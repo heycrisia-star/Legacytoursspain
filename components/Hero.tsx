@@ -10,66 +10,68 @@ const Hero: React.FC = () => {
       {/* Antigravity Background */}
       <div className="absolute inset-0 -z-10 bg-[#F9F8F6]">
 
-        {/* Background Image - Translucent */}
-        <div className="absolute inset-0 z-0">
+        {/* Background Image - Enhanced visibility */}
+        <div className="absolute inset-0 z-0 scale-105 transition-transform duration-[20s] ease-linear overflow-hidden">
           <img
             src="/images/gallery-2.jpg"
             alt="Background"
-            className="w-full h-full object-cover opacity-[0.10] grayscale-[20%]"
+            className="w-full h-full object-cover opacity-[0.18] grayscale-[10%] animate-slow-zoom"
           />
         </div>
 
-        {/* Gradient Overlay - Reduced opacity for visibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F9F8F6]/60 via-transparent to-[#F9F8F6] pointer-events-none z-10"></div>
+        {/* Gradient Overlay - Richer depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F9F8F6]/80 via-transparent to-[#F9F8F6] pointer-events-none z-10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#F9F8F6_90%)] pointer-events-none z-10"></div>
 
         {/* Antigravity Canvas - Elevated Z-Index */}
         <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, zIndex: 20, pointerEvents: 'none' }}>
           <Antigravity
             count={300}
-            magnetRadius={20}
-            ringRadius={15}
-            waveSpeed={0.5}
-            waveAmplitude={1.5}
-            particleSize={4}
-            lerpSpeed={0.08}
+            magnetRadius={25}
+            ringRadius={18}
+            waveSpeed={0.4}
+            waveAmplitude={2}
+            particleSize={3}
+            lerpSpeed={0.06}
             color={'#D4AF37'} // Premium Gold
             autoAnimate={true}
-            particleVariance={1.5}
+            particleVariance={2}
             particleShape="capsule"
           />
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto space-y-8 animate-fade-in-up relative z-10 flex flex-col items-center">
+      <div className="max-w-5xl mx-auto space-y-10 animate-fade-in-up relative z-30 flex flex-col items-center">
 
-        <h1 className="text-6xl md:text-8xl font-display font-bold tracking-tight text-premium-text leading-[0.9] uppercase drop-shadow-sm">
-          Discover<br /><span className="text-premium-gold drop-shadow-md">Barcelona</span>
+        <h1 className="text-5xl md:text-8xl font-display font-bold tracking-tight text-premium-text leading-[0.85] uppercase drop-shadow-lg">
+          Discover<br />
+          <span className="text-premium-gold drop-shadow-2xl bg-gradient-to-r from-[#D4AF37] via-[#F1C40F] to-[#D4AF37] bg-clip-text text-transparent">
+            Barcelona
+          </span>
         </h1>
-        <p className="text-lg md:text-xl text-neutral-800 font-sans font-medium tracking-wide max-w-2xl mx-auto bg-white/60 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-sm">
+
+        <p className="text-base md:text-xl text-neutral-800 font-sans font-medium tracking-wide max-w-2xl mx-auto bg-white/40 backdrop-blur-xl p-8 rounded-[2rem] border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)]">
           Private tours with real-time AI translation in a 100% electric vintage experience.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8 py-4">
-          <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/90 backdrop-blur-md shadow-md border border-white/50">
-            <Zap className="w-5 h-5 text-premium-gold" />
-            <span className="text-sm font-display font-medium tracking-wider text-premium-text uppercase">100% Electric</span>
-          </div>
-          <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/90 backdrop-blur-md shadow-md border border-white/50">
-            <Languages className="w-5 h-5 text-premium-gold" />
-            <span className="text-sm font-display font-medium tracking-wider text-premium-text uppercase">AI Translator</span>
-          </div>
-          <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/90 backdrop-blur-md shadow-md border border-white/50">
-            <Lock className="w-5 h-5 text-premium-gold" />
-            <span className="text-sm font-display font-medium tracking-wider text-premium-text uppercase">100% Private</span>
-          </div>
+        <div className="flex flex-wrap justify-center gap-3 md:gap-8 py-2">
+          {[{ icon: Zap, text: '100% Electric' }, { icon: Languages, text: 'AI Translator' }, { icon: Lock, text: '100% Private' }].map(({ icon: Icon, text }, i) => (
+            <div key={i} className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-neutral-100/50 hover:scale-105 transition-transform duration-300">
+              <Icon className="w-5 h-5 text-premium-gold" />
+              <span className="text-[10px] md:text-xs font-display font-bold tracking-[0.2em] text-premium-text uppercase">{text}</span>
+            </div>
+          ))}
         </div>
 
         <a
           href={BOOKING_URL}
-          className="group inline-flex items-center gap-3 bg-premium-gold hover:bg-yellow-600 text-white px-10 py-5 rounded-full text-base font-display font-bold tracking-widest uppercase transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl"
+          className="group relative inline-flex items-center gap-4 bg-premium-gold hover:bg-yellow-600 text-white px-12 py-6 rounded-full text-base font-display font-bold tracking-widest uppercase transition-all duration-500 transform hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(212,175,55,0.3)] overflow-hidden shadow-2xl"
         >
-          Book Now
-          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <span className="relative z-10 flex items-center gap-3">
+            Book Now
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
         </a>
       </div>
     </section>
