@@ -6,17 +6,13 @@ export const BOOKING_URL = "https://fareharbor.com/embeds/book/legacytoursspain/
 // Madrid Cross-sell URL
 export const MADRID_BOOKING_URL = "https://wa.me/34673017472";
 
-export const GOOGLE_MAPS_URL = "https://goo.gl/maps/BarcelonaPlaceholder";
+export const GOOGLE_MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Carrer+de+València+270+08007+Barcelona";
 export const GOOGLE_REVIEWS_URL = "https://g.page/r/CS-a0zgSFb4GEBM/review";
 export const DINING_URL = "https://barcelona-dashboard-app.vercel.app/dining";
 
 export const SOCIAL_LINKS = [
   { name: 'Instagram', url: 'https://www.instagram.com/legacytoursspain?igsh=MWVsNzBjaWpiMmpveA%3D%3D&utm_source=qr', icon: 'instagram', active: true },
   { name: 'TikTok', url: 'https://www.tiktok.com/@legacytoursspain', icon: 'tiktok', active: true },
-  { name: 'Facebook', url: '#', icon: 'facebook', active: true },
-  { name: 'Digital Guide', url: '#', icon: 'notebook', active: true },
-  { name: 'TripAdvisor', url: '#', icon: 'tripadvisor', active: true },
-  { name: 'GetYourGuide', url: '#', icon: 'getyourguide', active: true },
 ];
 
 export const TOURS: Tour[] = [
@@ -24,7 +20,6 @@ export const TOURS: Tour[] = [
     id: 'essential',
     name: 'Essential Barcelona',
     duration: '1h',
-    price: '50€',
     route: [
       'Plaza Catalunya',
       'Las Ramblas (Parte alta)',
@@ -59,7 +54,6 @@ export const TOURS: Tour[] = [
     id: 'city-sea',
     name: 'Park City & Beach Barcelona',
     duration: '2h',
-    price: '100€',
     route: [
       'Plaza Catalunya',
       'Las Ramblas',
@@ -100,7 +94,6 @@ export const TOURS: Tour[] = [
     id: 'complete',
     name: 'Complete Barcelona',
     duration: '3h',
-    price: '135€',
     route: [
       'Plaza Catalunya',
       'Las Ramblas',

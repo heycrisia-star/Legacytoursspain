@@ -9,7 +9,6 @@ import Reviews from './components/Reviews';
 import Footer from './components/Footer';
 import FAQModal from './components/FAQModal';
 import FloatingControls from './components/FloatingControls';
-import SplashCursor from './components/SplashCursor';
 import LegacyChronicle from './components/LegacyChronicle';
 
 function App() {
@@ -34,8 +33,6 @@ function App() {
   return (
     <div className="min-h-screen bg-premium-bg text-premium-text selection:bg-premium-gold/30 selection:text-black font-sans antialiased">
 
-      {/* Fluid Cursor Effect */}
-      <SplashCursor />
 
       {/* Fixed Header */}
       <header className="fixed top-0 w-full z-40 bg-white/90 backdrop-blur-md border-b border-black/5 transition-all duration-300">

@@ -16,21 +16,16 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
       `}
     >
       {/* Header Section */}
-      <div className="mb-6 relative z-10">
-        <div className="flex justify-between items-start mb-4">
-          <div className="flex items-center gap-2 text-premium-gold font-display font-bold tracking-wider text-sm uppercase">
-            <Clock className="w-4 h-4" />
-            <span>{tour.duration}</span>
-          </div>
-          <div className="px-3 py-1 bg-premium-bg rounded text-premium-text font-display font-bold text-sm tracking-wide border border-neutral-200">
-            {tour.price}
-          </div>
+      <div className="flex items-center justify-between mb-4 relative z-10">
+        <div className="flex items-center gap-2 text-premium-gold font-display font-bold tracking-wider text-sm uppercase">
+          <Clock className="w-4 h-4" />
+          <span>{tour.duration}</span>
         </div>
-
-        <h3 className="text-2xl font-display font-bold text-premium-text uppercase leading-none mb-2">
-          {tour.name}
-        </h3>
       </div>
+
+      <h3 className="text-2xl font-display font-bold text-premium-text uppercase leading-none mb-6 relative z-10">
+        {tour.name}
+      </h3>
 
       {/* Route List */}
       <div className="relative z-10">

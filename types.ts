@@ -2,7 +2,7 @@ export interface Tour {
   id: string;
   name: string;
   duration: string;
-  price: string;
+  price?: string;
   route: string[];
   coordinates?: [number, number][];
   bookingUrl?: string;
