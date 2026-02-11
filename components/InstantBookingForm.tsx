@@ -49,6 +49,13 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                 throw new Error('Failed to save booking');
             }
 
+            // Trigger Google Ads Conversion
+            if (typeof (window as any).gtag === 'function') {
+                (window as any).gtag('event', 'conversion', {
+                    'send_to': 'AW-17770698067/g9ejCK7Z1ckbEN0q3ZlC'
+                });
+            }
+
             setIsSuccess(true);
         } catch (error) {
             console.error('Error saving booking:', error);
