@@ -87,10 +87,10 @@ const CruiseLanding: React.FC = () => {
             </section>
 
             {/* 3. The Uniqueness (Visuals focusing on the experience) */}
-            <section className="py-24 bg-premium-bg text-white overflow-hidden relative">
+            <section className="py-24 bg-white overflow-hidden relative">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                     <div className="space-y-8">
-                        <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tight">
+                        <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tight text-premium-text">
                             Why it's <span className="text-premium-gold italic font-serif">Different</span>
                         </h2>
                         <ul className="space-y-6">
@@ -104,8 +104,8 @@ const CruiseLanding: React.FC = () => {
                                         <CheckCircle2 className="w-4 h-4 text-white" />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-lg">{item.title}</h4>
-                                        <p className="text-neutral-400">{item.desc}</p>
+                                        <h4 className="font-bold text-lg text-premium-text">{item.title}</h4>
+                                        <p className="text-neutral-600">{item.desc}</p>
                                     </div>
                                 </li>
                             ))}
@@ -146,32 +146,7 @@ const CruiseLanding: React.FC = () => {
                 </div>
             </section>
 
-            {/* 5. Simple, Transparent Pricing */}
-            <section className="py-24 bg-white px-6">
-                <div className="max-w-4xl mx-auto text-center space-y-12">
-                    <h2 className="text-3xl md:text-5xl font-display font-bold uppercase">{t('cruise.pricingTitle')}</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="p-8 border-2 border-neutral-100 rounded-[2.5rem] hover:border-premium-gold transition-colors space-y-2">
-                            <span className="text-neutral-500 uppercase tracking-widest text-xs font-bold">{t('cruise.pricing1h')}</span>
-                            <p className="text-4xl font-display font-bold">€100</p>
-                        </div>
-                        <div className="p-8 border-2 border-premium-gold bg-[#FFFDF5] rounded-[2.5rem] shadow-xl space-y-2 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 bg-premium-gold text-white text-[10px] px-3 py-1 font-bold uppercase">Popular</div>
-                            <span className="text-neutral-500 uppercase tracking-widest text-xs font-bold">{t('cruise.pricing2h')}</span>
-                            <p className="text-4xl font-display font-bold">€189</p>
-                        </div>
-                        <div className="p-8 border-2 border-neutral-100 rounded-[2.5rem] hover:border-premium-gold transition-colors space-y-2">
-                            <span className="text-neutral-500 uppercase tracking-widest text-xs font-bold">{t('cruise.pricing3h')}</span>
-                            <p className="text-4xl font-display font-bold">€289</p>
-                        </div>
-                    </div>
-                    <p className="text-neutral-500 font-medium">
-                        {t('cruise.pricingGuests')}
-                    </p>
-                </div>
-            </section>
-
-            {/* 6. "Peace of Mind" Section (Trust signals) */}
+            {/* 5. "Peace of Mind" Section (Trust signals) */}
             <section className="py-24 border-y border-neutral-100 px-6">
                 <div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-12 items-center">
                     <div className="flex items-center gap-4">
@@ -204,7 +179,7 @@ const CruiseLanding: React.FC = () => {
                 </div>
             </section>
 
-            {/* 7. Final CTA Section (Urgency) */}
+            {/* 6. Final CTA Section (Urgency) */}
             <section className="py-32 px-6 bg-gradient-to-br from-premium-text to-black text-white text-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20 pointer-events-none">
                     <img src="https://res.cloudinary.com/dk7xpxrvh/image/upload/v1770855815/2_fnjgot.png" alt="BG" className="w-full h-full object-cover" />
