@@ -189,23 +189,37 @@
     }
 }
 
+.language-switcher-container {
+    max-width: calc(100vw - 120px);
+    overflow: hidden;
+    pointer-events: auto;
+}
+
 .language-switcher {
     display: flex;
     gap: 0.5rem;
-    pointer-events: auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 5px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.language-switcher::-webkit-scrollbar {
+    display: none;
 }
 
 .lang-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: white;
-    width: 36px;
+    min-width: 36px;
     height: 36px;
     border-radius: 50%;
     font-size: 0.65rem;
     font-weight: 800;
     cursor: pointer;
     transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
 .lang-btn:hover,
@@ -334,33 +348,61 @@
 
 /* Mobile Optimizations */
 @media (max-width: 900px) {
-    .section-overlay {
-        background: linear-gradient(to bottom,
-                rgba(8, 8, 8, 0.4) 0%,
-                rgba(8, 8, 8, 0.95) 70%);
+    .chronicle-header {
+        padding: 1rem;
+        background: linear-gradient(to bottom, rgba(8,8,8,0.9) 0%, transparent 100%);
+        pointer-events: auto;
     }
 
-    .section-content {
-        padding: 2rem;
-        margin-left: 0;
-        align-self: flex-end;
-        margin-bottom: 4rem;
-    }
-
-    .stop-title {
-        font-size: 2.8rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .chapter-text {
+    .chronicle-header h3 {
         font-size: 1rem;
     }
 
+    .language-switcher-container {
+        max-width: 100%;
+    }
+
+    .section-overlay {
+        background: linear-gradient(to bottom,
+                rgba(8, 8, 8, 0.6) 0%,
+                rgba(8, 8, 8, 0.95) 60%,
+                rgba(8, 8, 8, 1) 100%);
+    }
+
+    .section-content {
+        padding: 1.5rem;
+        margin-left: 0;
+        align-self: flex-end;
+        padding-bottom: 6rem;
+        width: 100%;
+    }
+
+    .stop-title {
+        font-size: 2.2rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.1;
+    }
+
+    .chapters-grid {
+        gap: 1.5rem;
+    }
+
+    .chapter-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
     .chapter-text.italic {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        padding-left: 1rem;
     }
 
     .progress-vertical {
         display: none;
+    }
+
+    .chronicle-close {
+        width: 40px;
+        height: 40px;
     }
 }

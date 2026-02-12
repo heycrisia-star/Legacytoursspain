@@ -145,7 +145,7 @@ export const TOURS: Tour[] = [
 export const FAQS: FaqItem[] = [
   {
     question: "How many passengers can fit in one vehicle?",
-    answer: "Each vehicle has space for 4 passengers plus the driver."
+    answer: "We have 2 vehicles available. Each vehicle has space for 4 passengers plus the driver, allowing for groups of up to 8 people."
   },
   {
     question: "Do you provide child safety seats?",

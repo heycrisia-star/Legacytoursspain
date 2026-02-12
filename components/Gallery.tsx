@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Gallery = () => {
+    const { t } = useLanguage();
+
     // Assuming gallery-2 is "Two Cars", gallery-5 is "Infographic"
     // gallery-3, gallery-4 are "Single Car"
     const images = [
@@ -14,8 +17,12 @@ const Gallery = () => {
         <section className="py-20 bg-neutral-50">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
-                    <span className="text-premium-gold font-display font-bold tracking-widest uppercase text-sm mb-2 block">Our World</span>
-                    <h2 className="text-4xl md:text-5xl font-display font-bold text-[#0F172A] uppercase">Moments of Legacy</h2>
+                    <span className="text-premium-gold font-display font-bold tracking-widest uppercase text-sm mb-2 block">
+                        {t('gallery.title')}
+                    </span>
+                    <h2 className="text-4xl md:text-5xl font-display font-bold text-[#0F172A] uppercase">
+                        {t('gallery.subtitle')}
+                    </h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

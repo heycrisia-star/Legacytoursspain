@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
 import { Clock, ChevronDown, ChevronUp, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
 import { Tour } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 
 interface TourCardProps {
   tour: Tour;
 }
 
 const TourCard: React.FC<TourCardProps> = ({ tour }) => {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+
+  // Map tour ID to translation key
+  const tourKey = tour.id === 'essential' ? 'tour1' : tour.id === 'city-sea' ? 'tour2' : 'tour3';
+  const translatedName = t(`tours.${tourKey}.name`);
+  const translatedRoute = t(`tours.${tourKey}.route`) || [];
 
   return (
     <div
-      className={`group relative flex flex-col h-full p-8 rounded-xl transition-all duration-300 bg-white border border-neutral-100
+      className={`group relative flex flex-col h-full p-8 rounded-xl transition-all duration-300 bg-white border border-neutral-100/50
       ${isOpen ? 'shadow-xl ring-1 ring-premium-gold' : 'shadow-md hover:shadow-xl hover:-translate-y-1'}
       `}
     >
@@ -24,22 +31,22 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
       </div>
 
       <h3 className="text-2xl font-display font-bold text-premium-text uppercase leading-none mb-6 relative z-10">
-        {tour.name}
+        {translatedName}
       </h3>
 
       {/* Route List */}
       <div className="relative z-10">
         <div className={`space-y-3 transition-all duration-500 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-80'}`}>
           <ul className="space-y-3">
-            {tour.route.slice(0, isOpen ? undefined : 3).map((stop, index) => (
+            {translatedRoute.slice(0, isOpen ? undefined : 3).map((stop: string, index: number) => (
               <li key={index} className="flex items-start gap-3 text-neutral-600 text-sm font-sans">
                 <MapPin className="w-4 h-4 text-premium-gold mt-0.5 shrink-0" />
                 <span>{stop}</span>
               </li>
             ))}
-            {!isOpen && tour.route.length > 3 && (
+            {!isOpen && translatedRoute.length > 3 && (
               <li className="text-neutral-400 text-xs italic pl-7">
-                + {tour.route.length - 3} more stops...
+                + {translatedRoute.length - 3} {t('tours.moreStops')}
               </li>
             )}
           </ul>
@@ -53,7 +60,7 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
             href={tour.bookingUrl}
             className="w-full py-3 rounded bg-premium-gold text-white font-display font-bold uppercase tracking-widest text-sm hover:bg-yellow-600 transition-all flex items-center justify-center shadow-md"
           >
-            Book Now
+            {t('tours.bookNow')}
           </a>
         )}
 
@@ -61,7 +68,7 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
           onClick={() => setIsOpen(!isOpen)}
           className="w-full py-3 rounded bg-premium-bg border border-neutral-200 text-premium-text font-display font-bold uppercase tracking-widest text-xs hover:bg-neutral-100 transition-all flex items-center justify-center gap-2"
         >
-          {isOpen ? 'Close Route' : 'View Full Route'}
+          {isOpen ? t('tours.closeRoute') : t('tours.viewRoute')}
           {isOpen ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
         </button>
       </div>

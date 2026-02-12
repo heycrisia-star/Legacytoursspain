@@ -1,3 +1,5 @@
+export type Language = 'es' | 'en' | 'fr' | 'de' | 'it' | 'pt' | 'ru' | 'zh' | 'ja' | 'ca';
+
 export interface Tour {
   id: string;
   name: string;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { STOPS, Stop, Language } from '../stops';
 import { X, Volume2, VolumeX, Globe } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import './LegacyChronicle.css';
 
 interface LegacyChronicleProps {
@@ -8,11 +9,14 @@ interface LegacyChronicleProps {
 }
 
 const LegacyChronicle: React.FC<LegacyChronicleProps> = ({ onClose }) => {
-    const [lang, setLang] = useState<Language>('es');
+    const { language: globalLang } = useLanguage();
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const synthRef = useRef<SpeechSynthesis | null>(null);
+
+    // Use global language directly
+    const lang = globalLang;
 
     useEffect(() => {
         synthRef.current = window.speechSynthesis;
@@ -27,10 +31,19 @@ const LegacyChronicle: React.FC<LegacyChronicleProps> = ({ onClose }) => {
             setIsPlaying(false);
         } else {
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = lang === 'es' ? 'es-ES' :
-                lang === 'en' ? 'en-US' :
-                    lang === 'fr' ? 'fr-FR' :
-                        lang === 'de' ? 'de-DE' : 'it-IT';
+            const languageMap: Record<Language, string> = {
+                es: 'es-ES',
+                en: 'en-US',
+                fr: 'fr-FR',
+                de: 'de-DE',
+                it: 'it-IT',
+                pt: 'pt-PT',
+                ru: 'ru-RU',
+                zh: 'zh-CN',
+                ja: 'ja-JP',
+                ca: 'ca-ES'
+            };
+            utterance.lang = languageMap[lang] || 'es-ES';
 
             utterance.onend = () => setIsPlaying(false);
             utterance.onerror = () => setIsPlaying(false);
@@ -64,21 +77,6 @@ const LegacyChronicle: React.FC<LegacyChronicleProps> = ({ onClose }) => {
             <header className="chronicle-header">
                 <div className="flex flex-col gap-2">
                     <h3>The Legacy Chronicle</h3>
-                    <div className="language-switcher">
-                        {(['es', 'en', 'fr', 'de', 'it'] as Language[]).map((l) => (
-                            <button
-                                key={l}
-                                className={`lang-btn ${lang === l ? 'active' : ''}`}
-                                onClick={() => {
-                                    setLang(l);
-                                    synthRef.current?.cancel();
-                                    setIsPlaying(false);
-                                }}
-                            >
-                                {l.toUpperCase()}
-                            </button>
-                        ))}
-                    </div>
                 </div>
                 <button onClick={onClose} className="chronicle-close">
                     <X size={24} />
@@ -114,7 +112,11 @@ const LegacyChronicle: React.FC<LegacyChronicleProps> = ({ onClose }) => {
                                     onClick={() => toggleAudio(`${content.legacy}. ${content.secret}`)}
                                 >
                                     {isPlaying ? <VolumeX size={18} /> : <Volume2 size={18} />}
-                                    <span>{isPlaying ? "Stop Audio" : "Listen Guide"}</span>
+                                    <span>
+                                        {isPlaying
+                                            ? (lang === 'es' ? "Detener Audio" : "Stop Audio")
+                                            : (lang === 'es' ? "Escuchar Guía" : "Listen Guide")}
+                                    </span>
                                 </button>
                             </div>
 
@@ -122,7 +124,14 @@ const LegacyChronicle: React.FC<LegacyChronicleProps> = ({ onClose }) => {
                                 <article className="chapter">
                                     <div className="chapter-header">
                                         <div className="chapter-icon" />
-                                        <h4>{lang === 'es' ? 'EL LEGADO' : 'THE LEGACY'}</h4>
+                                        <h4>{
+                                            lang === 'es' ? 'EL LEGADO' :
+                                                lang === 'ca' ? 'EL LLEGAT' :
+                                                    lang === 'pt' ? 'O LEGADO' :
+                                                        lang === 'fr' ? 'LE HÉRITAGE' :
+                                                            lang === 'it' ? 'IL LEGATO' :
+                                                                'THE LEGACY'
+                                        }</h4>
                                     </div>
                                     <p className="chapter-text">{content.legacy}</p>
                                 </article>
@@ -130,7 +139,14 @@ const LegacyChronicle: React.FC<LegacyChronicleProps> = ({ onClose }) => {
                                 <article className="chapter">
                                     <div className="chapter-header">
                                         <div className="chapter-icon" />
-                                        <h4>{lang === 'es' ? 'EL SECRETO' : 'THE SECRET'}</h4>
+                                        <h4>{
+                                            lang === 'es' ? 'EL SECRETO' :
+                                                lang === 'ca' ? 'EL SECRET' :
+                                                    lang === 'pt' ? 'O SEGREDO' :
+                                                        lang === 'fr' ? 'LE SECRET' :
+                                                            lang === 'it' ? 'IL SEGRETO' :
+                                                                'THE SECRET'
+                                        }</h4>
                                     </div>
                                     <p className="chapter-text">{content.secret}</p>
                                 </article>
@@ -138,7 +154,14 @@ const LegacyChronicle: React.FC<LegacyChronicleProps> = ({ onClose }) => {
                                 <article className="chapter">
                                     <div className="chapter-header">
                                         <div className="chapter-icon" />
-                                        <h4>{lang === 'es' ? 'OBSERVACIÓN' : 'OBSERVATION'}</h4>
+                                        <h4>{
+                                            lang === 'es' ? 'OBSERVACIÓN' :
+                                                lang === 'ca' ? 'OBSERVACIÓ' :
+                                                    lang === 'pt' ? 'OBSERVAÇÃO' :
+                                                        lang === 'fr' ? 'OBSERVATION' :
+                                                            lang === 'it' ? 'OSSERVAZIONE' :
+                                                                'OBSERVATION'
+                                        }</h4>
                                     </div>
                                     <p className="chapter-text italic">{content.voice}</p>
                                 </article>
