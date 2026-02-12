@@ -181,9 +181,6 @@ const CruiseLanding: React.FC = () => {
 
             {/* 6. Final CTA Section (Urgency) */}
             <section className="py-32 px-6 bg-gradient-to-br from-premium-text to-black text-white text-center relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20 pointer-events-none">
-                    <img src="https://res.cloudinary.com/dk7xpxrvh/image/upload/v1770855815/2_fnjgot.png" alt="BG" className="w-full h-full object-cover" />
-                </div>
                 <div className="relative z-10 max-w-4xl mx-auto space-y-10">
                     <h2 className="text-4xl md:text-7xl font-display font-bold uppercase tracking-tight">
                         {t('cruise.ctaTitle')}
