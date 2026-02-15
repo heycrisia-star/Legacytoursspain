@@ -71,104 +71,194 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in shadow-2xl">
             <div className="bg-white rounded-[2.5rem] w-full max-w-lg overflow-hidden shadow-2xl border border-white/20 relative animate-fade-in-up">
 
-                {/* Header */}
-                <div className="bg-premium-gold p-8 text-white relative">
-                    <button
-                        onClick={onClose}
-                        className="absolute top-6 right-6 p-2 hover:bg-white/20 rounded-full transition-colors"
-                    >
-                        <X className="w-6 h-6" />
-                    </button>
-                    <h2 className="text-3xl font-display font-bold uppercase tracking-widest">{t('booking.title')}</h2>
-                    <p className="text-white/80 font-sans text-sm mt-1">{t('booking.internalOnly')}</p>
-                </div>
+                {/* Close Button - Top Right */}
+                <button
+                    onClick={onClose}
+                    className="absolute top-4 right-4 z-50 p-2 bg-white/90 hover:bg-white rounded-full transition-colors shadow-lg"
+                >
+                    <X className="w-5 h-5 text-gray-700" />
+                </button>
 
                 {/* Content */}
-                <div className="p-8 max-h-[75vh] overflow-y-auto custom-scrollbar">
+                <div className="max-h-[85vh] overflow-y-auto">
                     {isSuccess ? (
-                        <div className="animate-fade-in space-y-8">
-                            {/* Visual Ticket - Screenshot friendly */}
-                            <div id="booking-ticket" className="bg-[#F9F8F6] border-2 border-premium-gold/30 rounded-[2rem] p-8 shadow-inner relative overflow-hidden">
-                                {/* Decorative elements */}
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-premium-gold/5 rounded-full -mr-16 -mt-16 pointer-events-none"></div>
-                                <div className="absolute bottom-0 left-0 w-24 h-24 bg-premium-gold/5 rounded-full -ml-12 -mb-12 pointer-events-none"></div>
-
-                                {/* Logo & Header */}
-                                <div className="flex flex-col items-center text-center space-y-4 mb-8">
-                                    <img
-                                        src="/logo-legacy.png"
-                                        alt="Legacy Tours Spain"
-                                        className="h-16 w-auto object-contain"
-                                    />
-                                    <div className="h-[1px] w-24 bg-premium-gold/40"></div>
-                                    <h3 className="text-2xl font-display font-bold uppercase tracking-[0.2em] text-premium-text">
-                                        {t('booking.confirmed')}
-                                    </h3>
+                        <div className="animate-fade-in">
+                            {/* Mobile Email View - GetYourGuide Style */}
+                            <div id="booking-email" className="bg-white">
+                                {/* Email Header */}
+                                <div className="bg-white px-4 py-3 border-b border-gray-100">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M3 3h18v18H3V3zm16 16V5H5v14h14z" />
+                                            </svg>
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                            <div className="font-semibold text-sm text-gray-900">GetYourGuide</div>
+                                            <div className="text-xs text-gray-500 truncate">Para: {formData.firstName} {formData.lastName} &gt;</div>
+                                        </div>
+                                        <div className="text-xs text-gray-400 flex-shrink-0">hace 1 semana</div>
+                                    </div>
+                                    <div className="text-xs text-gray-500">1 mensaje</div>
                                 </div>
 
-                                {/* Details Grid */}
-                                <div className="space-y-6">
-                                    <div className="border-b border-premium-gold/10 pb-6">
-                                        <div className="space-y-1">
-                                            <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-display font-bold">{t('booking.guestInfo')}</span>
-                                            <p className="font-sans font-bold text-neutral-800 text-xl uppercase leading-tight">
-                                                {formData.firstName} {formData.lastName}
-                                            </p>
-                                            <p className="font-sans text-neutral-500 text-sm italic break-all">
-                                                {formData.email}
-                                            </p>
-                                        </div>
-                                    </div>
+                                {/* Email Subject */}
+                                <div className="px-4 py-4 bg-white">
+                                    <h1 className="text-lg font-bold text-gray-900 leading-tight">
+                                        Booking - S696413 - GYG6H8HQQB9X
+                                    </h1>
+                                </div>
 
-                                    <div className="grid grid-cols-2 gap-8 border-b border-premium-gold/10 pb-6">
-                                        <div className="space-y-1">
-                                            <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-display font-bold">{t('booking.duration')}</span>
-                                            <p className="font-sans font-semibold text-neutral-800 text-lg uppercase">
-                                                {formData.duration.replace('h', ` ${t('common.hours')}`)}
-                                            </p>
-                                        </div>
-                                        <div className="space-y-1">
-                                            <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-display font-bold">{t('booking.people')}</span>
-                                            <p className="font-sans font-semibold text-neutral-800 text-lg uppercase">
-                                                {formData.people}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-2 gap-8 pb-4">
-                                        <div className="space-y-1">
-                                            <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-display font-bold">{t('booking.date')}</span>
-                                            <p className="font-sans font-semibold text-neutral-800 text-lg">
-                                                {new Date(formData.date).toLocaleDateString()}
-                                            </p>
-                                        </div>
-                                        <div className="space-y-1">
-                                            <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-display font-bold">{t('booking.time')}</span>
-                                            <p className="font-sans font-semibold text-neutral-800 text-lg">
-                                                {formData.time}
-                                            </p>
-                                        </div>
+                                {/* GetYourGuide Orange Banner - Horizontal */}
+                                <div className="bg-[#FF5533] px-6 py-6">
+                                    <div className="text-white font-bold text-xl tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                                        GET YOUR GUIDE
                                     </div>
                                 </div>
 
-                                {/* Footer Note */}
-                                <div className="mt-8 pt-6 border-t border-dashed border-premium-gold/30 text-center">
-                                    <p className="text-[11px] font-display font-bold uppercase tracking-widest text-premium-gold/60">
-                                        {t('booking.receiptNote')}
+                                {/* Confirmation Message */}
+                                <div className="bg-white px-6 py-5">
+                                    <h2 className="text-lg font-bold text-gray-900 mb-1">¡Hola! Buenas noticias.</h2>
+                                    <p className="text-base font-semibold text-gray-900">Se ha reservado tu producto</p>
+                                </div>
+
+                                {/* Tour Image and Details */}
+                                <div className="bg-gray-50 px-6 py-6">
+                                    <div className="flex gap-3 mb-5">
+                                        <img
+                                            src="https://res.cloudinary.com/dk7xpxrvh/image/upload/v1770855815/2_fnjgot.png"
+                                            alt="Tour"
+                                            className="w-20 h-20 rounded-lg object-cover flex-shrink-0"
+                                        />
+                                        <div className="flex-1">
+                                            <h3 className="font-bold text-sm text-gray-900 leading-tight mb-1">
+                                                Barcelona: Private Tuk Tuk Tour of Gaudí, Sagrada Familia, and Highlights
+                                            </h3>
+                                            <p className="text-xs text-gray-600">
+                                                Tour guiado: Complete Barcelona en coche vintage (Tuk Tuk)
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* Booking Details */}
+                                    <div className="space-y-3">
+                                        <div className="flex items-start gap-3 py-2">
+                                            <svg className="w-5 h-5 text-gray-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                                            </svg>
+                                            <div className="flex-1">
+                                                <div className="text-xs text-gray-500 mb-0.5">Número de referencia</div>
+                                                <div className="font-semibold text-sm text-blue-600">GYG6H8HQQB9X</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-3 py-2">
+                                            <svg className="w-5 h-5 text-gray-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                            </svg>
+                                            <div className="flex-1">
+                                                <div className="text-xs text-gray-500 mb-0.5">Fecha</div>
+                                                <div className="font-semibold text-sm text-gray-900">
+                                                    {new Date(formData.date + 'T' + formData.time).toLocaleDateString('es-ES', {
+                                                        month: 'long',
+                                                        day: 'numeric',
+                                                        year: 'numeric'
+                                                    })} {formData.time}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-3 py-2">
+                                            <svg className="w-5 h-5 text-gray-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                            </svg>
+                                            <div className="flex-1">
+                                                <div className="text-xs text-gray-500 mb-0.5">Número de participantes</div>
+                                                <div className="font-semibold text-sm text-gray-900">{formData.people} x Adults (Edad 0 - 99)</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-3 py-2">
+                                            <svg className="w-5 h-5 text-gray-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                            </svg>
+                                            <div className="flex-1">
+                                                <div className="text-xs text-gray-500 mb-0.5">Cliente principal</div>
+                                                <div className="font-semibold text-sm text-gray-900">{formData.firstName} {formData.lastName}</div>
+                                                <div className="text-xs text-blue-600 mt-0.5">customer-5kncfim2dlsmiak7@reply.getyourguide.com</div>
+                                                <div className="text-xs text-gray-600 mt-0.5">Teléfono: +17272048113</div>
+                                                <div className="text-xs text-gray-600">Idioma: English</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-3 py-2">
+                                            <svg className="w-5 h-5 text-gray-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <div className="flex-1">
+                                                <div className="text-xs text-gray-500 mb-0.5">Idioma del tour</div>
+                                                <div className="font-semibold text-sm text-gray-900">Inglés (Live tour guide)</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-3 py-2">
+                                            <svg className="w-5 h-5 text-gray-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <div className="flex-1">
+                                                <div className="text-xs text-gray-500 mb-0.5">Precio</div>
+                                                <div className="font-semibold text-sm text-gray-900">234,38 €</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Open Booking Button */}
+                                    <button className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-4 rounded-full text-sm transition-colors">
+                                        Abrir reserva
+                                    </button>
+                                </div>
+
+                                {/* Support Section */}
+                                <div className="bg-white px-6 py-6 border-t border-gray-200">
+                                    <h3 className="font-bold text-base text-gray-900 mb-3">Estamos a tu disposición</h3>
+                                    <p className="text-sm text-gray-700 leading-relaxed">
+                                        Si tiene alguna pregunta, puede <a href="#" className="text-blue-600 underline">ponerse en contacto con nuestro equipo</a> o <a href="#" className="text-blue-600 underline">ver más información</a> en nuestro Centro de ayuda.
                                     </p>
                                 </div>
-                            </div>
 
-                            <div className="flex flex-col gap-3">
-                                <p className="text-center text-xs text-neutral-500 font-medium italic">
-                                    {t('booking.screenshotNote')}
-                                </p>
-                                <button
-                                    onClick={onClose}
-                                    className="w-full py-4 text-xs font-display font-bold uppercase tracking-[0.2em] text-neutral-400 hover:text-premium-gold transition-colors"
-                                >
-                                    {t('booking.finishClose')}
-                                </button>
+                                {/* Bottom Action Bar */}
+                                <div className="bg-white border-t border-gray-200 px-6 py-4 flex items-center justify-around">
+                                    <button className="flex flex-col items-center gap-1 text-gray-600">
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                    <button className="flex flex-col items-center gap-1 text-gray-600">
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+                                        </svg>
+                                    </button>
+                                    <button className="flex flex-col items-center gap-1 text-gray-600">
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                                        </svg>
+                                    </button>
+                                    <button className="flex flex-col items-center gap-1 text-gray-600">
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                {/* Close Button */}
+                                <div className="bg-white px-6 py-4 border-t border-gray-100">
+                                    <button
+                                        onClick={onClose}
+                                        className="w-full py-3 text-sm font-semibold text-gray-500 hover:text-gray-700 transition-colors"
+                                    >
+                                        Cerrar vista previa
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     ) : (
