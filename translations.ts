@@ -46,15 +46,15 @@ export const translations: Record<string, any> = {
             moreStops: "paradas más...",
             tour1: {
                 name: "Barcelona Esencial",
-                route: ["Plaza Catalunya", "Las Ramblas", "Barrio Gótico", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Sant Pau Recinte", "Arc de Triomf", "Parc de la Ciutadella", "Playa Barceloneta"]
+                route: ["Plaza de Cataluña", "Las Ramblas", "Barrio Gótico", "Paseo de Gracia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arco de Triunfo", "Parque de la Ciudadela", "Playa de la Barceloneta"]
             },
             tour2: {
                 name: "Tour Ciudad y Mar",
-                route: ["Plaza Catalunya", "Las Ramblas", "Barrio Gótico", "Sagrada Familia", "Port Vell", "Playa Barceloneta", "Parc de la Ciutadella", "Arc de Triomf"]
+                route: ["Plaza de Cataluña", "Las Ramblas", "Barrio Gótico", "Paseo de Gracia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arco de Triunfo", "Parque de la Ciudadela", "Puerto Viejo", "Playa de la Barceloneta", "Puerto Olímpico", "Jardines de Miramar", "Montjuïc"]
             },
             tour3: {
                 name: "Barcelona Completa",
-                route: ["Plaza Catalunya", "Las Ramblas", "Barrio Gótico", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Recinto Modernista de Sant Pau", "Arc de Triomf", "Parc de la Ciutadella", "Port Vell", "Playa Barceloneta", "Puerto Olímpico", "Jardines de Miramar", "Anillo Olímpico", "Estadio Olímpico", "MNAC", "Plaza España", "Fuente Mágica"]
+                route: ["Plaza de Cataluña", "Las Ramblas", "Barrio Gótico", "Paseo de Gracia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Recinto Modernista de Sant Pau", "Arco de Triunfo", "Parque de la Ciudadela", "Puerto Viejo", "Playa de la Barceloneta", "Puerto Olímpico", "Jardines de Miramar", "Anillo Olímpico", "Estadio Olímpico Lluís Companys", "Museo Nacional de Arte de Cataluña", "Plaza de España", "Fuente Mágica de Montjuïc"]
             }
         },
         gallery: {
@@ -250,15 +250,15 @@ export const translations: Record<string, any> = {
             moreStops: "more stops...",
             tour1: {
                 name: "Essential Barcelona",
-                route: ["Catalonia Square", "Las Ramblas", "Gothic Quarter", "Gracia Avenue", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Sant Pau Complex", "Arc de Triomf", "Ciutadella Park", "Barceloneta Beach"]
+                route: ["Catalonia Square", "Las Ramblas", "Gothic Quarter", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arc de Triomf", "Ciutadella Park", "Barceloneta Beach"]
             },
             tour2: {
                 name: "City & Sea Tour",
-                route: ["Catalonia Square", "Las Ramblas", "Gothic Quarter", "Sagrada Familia", "Old Port", "Barceloneta Beach", "Ciutadella Park", "Arc de Triomf"]
+                route: ["Catalonia Square", "Las Ramblas", "Gothic Quarter", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arc de Triomf", "Ciutadella Park", "Port Vell", "Barceloneta Beach", "Olympic Port", "Miramar Gardens", "Montjuïc"]
             },
             tour3: {
                 name: "Complete Barcelona",
-                route: ["Catalonia Square", "Las Ramblas", "Gothic Quarter", "Gracia Avenue", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Sant Pau Complex", "Arc de Triomf", "Ciutadella Park", "Old Port", "Barceloneta Beach", "Olympic Port", "Miramar Gardens", "Olympic Ring", "Olympic Stadium", "MNAC", "Spain Square", "Magic Fountain"]
+                route: ["Catalonia Square", "Las Ramblas", "Gothic Quarter", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Sant Pau Modernist Site", "Arc de Triomf", "Ciutadella Park", "Port Vell", "Barceloneta Beach", "Olympic Port", "Miramar Gardens", "Olympic Ring", "Lluís Companys Olympic Stadium", "National Art Museum of Catalonia", "Spain Square", "Magic Fountain of Montjuïc"]
             }
         },
         gallery: {
@@ -454,15 +454,15 @@ export const translations: Record<string, any> = {
             moreStops: "plus d'arrêts...",
             tour1: {
                 name: "Barcelone Essentielle",
-                route: ["Place de Catalogne", "Les Ramblas", "Quartier Gothique", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Recinte de Sant Pau", "Arc de Triomf", "Parc de la Ciutadella", "Plage de la Barceloneta"]
+                route: ["Place de Catalogne", "Les Ramblas (Partie haute)", "Quartier Gothique (Panoramique)", "Passeig de Gràcia", "Casa Batlló", "Casa Amatller", "Casa Milà (La Pedrera)", "Quartier de l'Eixample", "Sagrada Familia (Arrêt)", "Arènes Monumentales", "Arc de Triomf", "Place de Catalogne (Fin)"]
             },
             tour2: {
                 name: "Tour Ville et Mer",
-                route: ["Place de Catalogne", "Les Ramblas", "Quartier Gothique", "Sagrada Familia", "Vieux Port", "Plage de la Barceloneta", "Parc de la Ciutadella", "Arc de Triomf"]
+                route: ["Place de Catalogne", "Les Ramblas", "Quartier Gothique", "Passeig de Gràcia", "Casa Batlló", "Casa Milà (La Pedrera)", "Sagrada Familia (Arrêt)", "Arc de Triomf", "Parc de la Ciutadella", "Château des Trois Dragons", "Vieux Port", "Musée d'Histoire de Catalogne", "Plage de la Barceloneta", "Port Olympique", "Place de Catalogne (Fin)"]
             },
             tour3: {
                 name: "Barcelone Complète",
-                route: ["Place de Catalogne", "Les Ramblas", "Quartier Gothique", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Recinte de Sant Pau", "Arc de Triomf", "Parc de la Ciutadella", "Vieux Port", "Plage de la Barceloneta", "Port Olympique", "Jardins de Miramar", "Anneau Olympique", "Stade Olympique", "MNAC", "Place d'Espagne", "Fontaine Magique"]
+                route: ["Place de Catalogne", "Les Ramblas", "Quartier Gothique", "Passeig de Gràcia", "Casa Batlló", "Casa Milà (La Pedrera)", "Sagrada Familia (Arrêt)", "Enceinte Moderniste de Sant Pau (Extérieur)", "Arc de Triomf", "Parc de la Ciutadella", "Vieux Port", "Plage de la Barceloneta", "Port Olympique", "Jardins de Miramar (Vues)", "Anneau Olympique", "Stade Olympique Lluís Companys", "MNAC (Musée National d'Art de Catalogne)", "Place d'Espagne", "Fontaine Magique de Montjuïc", "Place de Catalogne (Fin)"]
             }
         },
         gallery: {
@@ -658,15 +658,15 @@ export const translations: Record<string, any> = {
             moreStops: "weitere Stationen...",
             tour1: {
                 name: "Essenzielles Barcelona",
-                route: ["Plaça de Catalunya", "Die Ramblas", "Gotisches Viertel", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Sant Pau Komplex", "Arc de Triomf", "Ciutadella Park", "Strand von Barceloneta"]
+                route: ["Plaça de Catalunya", "Die Ramblas (Oberer Teil)", "Gotisches Viertel (Panorama)", "Passeig de Gràcia", "Casa Batlló", "Casa Amatller", "Casa Milà (La Pedrera)", "Eixample-Viertel", "Sagrada Familia (Halt)", "Monumentale Stierkampfarena", "Arc de Triomf", "Plaça de Catalunya (Ende)"]
             },
             tour2: {
                 name: "Stadt & Meer Tour",
-                route: ["Plaça de Catalunya", "Die Ramblas", "Gotisches Viertel", "Sagrada Familia", "Alter Hafen", "Strand von Barceloneta", "Ciutadella Park", "Arc de Triomf"]
+                route: ["Plaça de Catalunya", "Die Ramblas", "Gotisches Viertel", "Passeig de Gràcia", "Casa Batlló", "Casa Milà (La Pedrera)", "Sagrada Familia (Halt)", "Arc de Triomf", "Ciutadella Park", "Drei-Drachen-Schloss", "Alter Hafen", "Museum für Katalanische Geschichte", "Strand von Barceloneta", "Olympischer Hafen", "Plaça de Catalunya (Ende)"]
             },
             tour3: {
                 name: "Vollständiges Barcelona",
-                route: ["Plaça de Catalunya", "Die Ramblas", "Gotisches Viertel", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Sant Pau Komplex", "Arc de Triomf", "Ciutadella Park", "Alter Hafen", "Strand von Barceloneta", "Olympischer Hafen", "Miramar-Gärten", "Olympiapark", "Olympiastadion", "MNAC", "Plaza España", "Magischer Brunnen"]
+                route: ["Plaça de Catalunya", "Die Ramblas", "Gotisches Viertel", "Passeig de Gràcia", "Casa Batlló", "Casa Milà (La Pedrera)", "Sagrada Familia (Halt)", "Modernistisches Gelände Sant Pau (Außen)", "Arc de Triomf", "Ciutadella Park", "Alter Hafen", "Strand von Barceloneta", "Olympischer Hafen", "Miramar-Gärten (Aussicht)", "Olympiapark", "Lluís Companys Olympiastadion", "MNAC (Nationales Kunstmuseum von Katalonien)", "Plaza España", "Magischer Brunnen von Montjuïc", "Plaça de Catalunya (Ende)"]
             }
         },
         gallery: {
@@ -862,15 +862,15 @@ export const translations: Record<string, any> = {
             moreStops: "altre tappe...",
             tour1: {
                 name: "Barcellona Essenziale",
-                route: ["Piazza Catalogna", "Le Ramblas", "Quartiere Gotico", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Complesso di Sant Pau", "Arc de Triomf", "Parc de la Ciutadella", "Spiaggia Barceloneta"]
+                route: ["Piazza Catalogna", "Le Ramblas (Parte alta)", "Quartiere Gotico (Panoramica)", "Passeig de Gràcia", "Casa Batlló", "Casa Amatller", "Casa Milà (La Pedrera)", "Quartiere dell'Eixample", "Sagrada Familia (Sosta)", "Plaza de Toros Monumentale", "Arc de Triomf", "Piazza Catalogna (Fine)"]
             },
             tour2: {
                 name: "Tour Città e Mare",
-                route: ["Piazza Catalogna", "Le Ramblas", "Quartiere Gotico", "Sagrada Familia", "Porto Vecchio", "Spiaggia Barceloneta", "Parc de la Ciutadella", "Arc de Triomf"]
+                route: ["Piazza Catalogna", "Le Ramblas", "Quartiere Gotico", "Passeig de Gràcia", "Casa Batlló", "Casa Milà (La Pedrera)", "Sagrada Familia (Sosta)", "Arc de Triomf", "Parc de la Ciutadella", "Castello dei Tre Draghi", "Porto Vecchio", "Museo di Storia della Catalogna", "Spiaggia Barceloneta", "Porto Olimpico", "Piazza Catalogna (Fine)"]
             },
             tour3: {
                 name: "Barcellona Completa",
-                route: ["Piazza Catalogna", "Le Ramblas", "Quartiere Gotico", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Complesso di Sant Pau", "Arc de Triomf", "Parc de la Ciutadella", "Porto Vecchio", "Spiaggia Barceloneta", "Porto Olimpico", "Giardini di Miramar", "Anello Olimpico", "Stadio Olimpico", "MNAC", "Piazza Spagna", "Fontana Magica"]
+                route: ["Piazza Catalogna", "Le Ramblas", "Quartiere Gotico", "Passeig de Gràcia", "Casa Batlló", "Casa Milà (La Pedrera)", "Sagrada Familia (Sosta)", "Recinto Modernista di Sant Pau (Esterno)", "Arc de Triomf", "Parc de la Ciutadella", "Porto Vecchio", "Spiaggia Barceloneta", "Porto Olimpico", "Giardini di Miramar (Viste)", "Anello Olimpico", "Stadio Olimpico Lluís Companys", "MNAC (Museo Nazionale d'Arte della Catalogna)", "Piazza Spagna", "Fontana Magica di Montjuïc", "Piazza Catalogna (Fine)"]
             }
         },
         gallery: {
@@ -1066,15 +1066,15 @@ export const translations: Record<string, any> = {
             moreStops: "mais paradas...",
             tour1: {
                 name: "Barcelona Essencial",
-                route: ["Plaza Catalunha", "Las Ramblas", "Bairro Gótico", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Família", "Recinto de Sant Pau", "Arco do Triunfo", "Parque da Ciutadella", "Praia de Barceloneta"]
+                route: ["Praça da Catalunha", "Las Ramblas (Parte alta)", "Bairro Gótico (Panorâmica)", "Passeig de Gràcia", "Casa Batlló", "Casa Amatller", "Casa Milà (La Pedrera)", "Distrito do Eixample", "Sagrada Família (Parada)", "Praça de Touros Monumental", "Arco do Triunfo", "Praça da Catalunha (Final)"]
             },
             tour2: {
                 name: "Tour Cidade e Mar",
-                route: ["Plaza Catalunha", "Las Ramblas", "Bairro Gótico", "Sagrada Família", "Port Vell", "Praia de Barceloneta", "Parque da Ciutadella", "Arco do Triunfo"]
+                route: ["Praça da Catalunha", "Las Ramblas", "Bairro Gótico", "Passeig de Gràcia", "Casa Batlló", "Casa Milà (La Pedrera)", "Sagrada Família (Parada)", "Arco do Triunfo", "Parque da Ciutadella", "Castelo dos Três Dragões", "Porto Velho", "Museu de História da Catalunha", "Praia de Barceloneta", "Porto Olímpico", "Praça da Catalunha (Final)"]
             },
             tour3: {
                 name: "Barcelona Completa",
-                route: ["Plaza Catalunha", "Las Ramblas", "Bairro Gótico", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Família", "Recinto de Sant Pau", "Arco do Triunfo", "Parque da Ciutadella", "Port Vell", "Praia de Barceloneta", "Porto Olímpico", "Jardins de Miramar", "Anel Olímpico", "Estádio Olímpico", "MNAC", "Praça da Espanha", "Fonte Mágica"]
+                route: ["Praça da Catalunha", "Las Ramblas", "Bairro Gótico", "Passeig de Gràcia", "Casa Batlló", "Casa Milà (La Pedrera)", "Sagrada Família (Parada)", "Recinto Modernista de Sant Pau (Exterior)", "Arco do Triunfo", "Parque da Ciutadella", "Porto Velho", "Praia de Barceloneta", "Porto Olímpico", "Jardins de Miramar (Vistas)", "Anel Olímpico", "Estádio Olímpico Lluís Companys", "MNAC (Museu Nacional de Arte da Catalunha)", "Praça da Espanha", "Fonte Mágica de Montjuïc", "Praça da Catalunha (Final)"]
             }
         },
         gallery: {
@@ -1270,15 +1270,15 @@ export const translations: Record<string, any> = {
             moreStops: "еще остановок...",
             tour1: {
                 name: "Главная Барселона",
-                route: ["Площадь Каталонии", "Ла Рамбла", "Готический квартал", "Пассео де Грасия", "Дом Бальо", "Каза Мила", "Саграда Фамилия", "Госпиталь Сан-Пау", "Триумфальная арка", "Парк Цитадели", "Пляж Барселонета"]
+                route: ["Площадь Каталонии", "Ла Рамбла (Верхняя часть)", "Готический квартал (Панорама)", "Пассео де Грасия", "Дом Бальо", "Дом Аматлер", "Каза Мила (Ла Педрера)", "Район Эшампле", "Саграда Фамилия (Остановка)", "Монументальная арена для боя быков", "Триумфальная арка", "Площадь Каталонии (Конец)"]
             },
             tour2: {
                 name: "Тур Город и Море",
-                route: ["Площадь Каталонии", "Ла Рамбла", "Готический квартал", "Саграда Фамилия", "Порт Велль", "Пляж Барселонета", "Парк Цитадели", "Триумфальная арка"]
+                route: ["Площадь Каталонии", "Ла Рамбла", "Готический квартал", "Пассео де Грасия", "Дом Бальо", "Каза Мила (Ла Педрера)", "Саграда Фамилия (Остановка)", "Триумфальная арка", "Парк Цитадели", "Замок Трех Драконов", "Порт Велль", "Музей истории Каталонии", "Пляж Барселонета", "Олимпийский порт", "Площадь Каталонии (Конец)"]
             },
             tour3: {
                 name: "Полная Барселона",
-                route: ["Площадь Каталонии", "Ла Рамбла", "Готический квартал", "Пассео де Грасия", "Дом Бальо", "Каза Мила", "Саграда Фамилия", "Госпиталь Сан-Пау", "Триумфальная арка", "Парк Цитадели", "Порт Велль", "Пляж Барселонета", "Олимпийский порт", "Сады Мирамар", "Олимпийское кольцо", "Олимпийский стадион", "MNAC", "Площадь Испании", "Магический фонтан"]
+                route: ["Площадь Каталонии", "Ла Рамбла", "Готический квартал", "Пассео де Грасия", "Дом Бальо", "Каза Мила (Ла Педрера)", "Саграда Фамилия (Остановка)", "Модернистский комплекс Сан-Пау (Снаружи)", "Триумфальная арка", "Парк Цитадели", "Порт Велль", "Пляж Барселонета", "Олимпийский порт", "Сады Мирамар (Виды)", "Олимпийское кольцо", "Олимпийский стадион Луиса Компаниса", "MNAC (Национальный музей искусства Каталонии)", "Площадь Испании", "Магический фонтан Монжуика", "Площадь Каталонии (Конец)"]
             }
         },
         gallery: {
@@ -1474,15 +1474,15 @@ export const translations: Record<string, any> = {
             moreStops: "更多停留点...",
             tour1: {
                 name: "精华巴塞罗那",
-                route: ["加泰罗尼亚广场", "兰布拉大道", "哥特区", "格拉西亚大道", "巴特罗之家", "米拉之家", "圣家族大教堂", "圣十字圣保罗医院", "凯旋门", "城堡公园", "巴塞罗内塔海滩"]
+                route: ["加泰罗尼亚广场", "兰布拉大道（上段）", "哥特区（全景）", "格拉西亚大道", "巴特罗之家", "阿马特耶之家", "米拉之家（拉佩德雷拉）", "扩建区", "圣家族大教堂（停靠）", "纪念碑斗牛场", "凯旋门", "加泰罗尼亚广场（结束）"]
             },
             tour2: {
                 name: "城市与海洋之旅",
-                route: ["加泰罗尼亚广场", "兰布拉大道", "哥特区", "圣家族大教堂", "旧港", "巴塞罗内塔海滩", "城堡公园", "凯旋门"]
+                route: ["加泰罗尼亚广场", "兰布拉大道", "哥特区", "格拉西亚大道", "巴特罗之家", "米拉之家（拉佩德雷拉）", "圣家族大教堂（停靠）", "凯旋门", "城堡公园", "三龙城堡", "旧港", "加泰罗尼亚历史博物馆", "巴塞罗内塔海滩", "奥运港", "加泰罗尼亚广场（结束）"]
             },
             tour3: {
                 name: "完整巴塞罗那",
-                route: ["加泰罗尼亚广场", "兰布拉大道", "哥特区", "格拉西亚大道", "巴特罗之家", "米拉之家", "圣家族大教堂", "圣十字圣保罗医院", "凯旋门", "城堡公园", "旧港", "巴塞罗内塔海滩", "奥运港", "米拉玛花园", "奥运环", "奥林匹克体育场", "MNAC", "西班牙广场", "魔幻喷泉"]
+                route: ["加泰罗尼亚广场", "兰布拉大道", "哥特区", "格拉西亚大道", "巴特罗之家", "米拉之家（拉佩德雷拉）", "圣家族大教堂（停靠）", "圣十字圣保罗现代主义建筑群（外观）", "凯旋门", "城堡公园", "旧港", "巴塞罗内塔海滩", "奥运港", "米拉玛花园（观景）", "奥运环", "路易斯·孔帕尼斯奥林匹克体育场", "MNAC（加泰罗尼亚国家艺术博物馆）", "西班牙广场", "蒙锥克魔幻喷泉", "加泰罗尼亚广场（结束）"]
             }
         },
         gallery: {

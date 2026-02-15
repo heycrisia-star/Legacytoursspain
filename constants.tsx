@@ -21,32 +21,28 @@ export const TOURS: Tour[] = [
     name: 'Essential Barcelona',
     duration: '1h',
     route: [
-      'Plaza Catalunya',
-      'Las Ramblas (Parte alta)',
-      'Barrio Gótico (Panorámica)',
+      'Plaça de Catalunya',
+      'Les Rambles',
+      'Barri Gòtic',
       'Passeig de Gràcia',
       'Casa Batlló',
-      'Casa Amatller',
-      'Casa Milà (La Pedrera)',
-      'Eixample District',
-      'Sagrada Familia (Stop)',
-      'Plaza de Toros Monumental',
+      'Casa Milà',
+      'Sagrada Familia',
       'Arc de Triomf',
-      'Plaza Catalunya (Final)'
+      'Parc de la Ciutadella',
+      'Platja de la Barceloneta'
     ],
     coordinates: [
-      [41.387015, 2.170047], // Plaza Catalunya
-      [41.385032, 2.170566], // Las Ramblas (Parte alta)
-      [41.383333, 2.176389], // Barrio Gótico (Panorámica)
+      [41.387015, 2.170047], // Plaça de Catalunya
+      [41.380313, 2.173822], // Les Rambles
+      [41.383333, 2.176389], // Barri Gòtic
       [41.392182, 2.164941], // Passeig de Gràcia
       [41.391638, 2.164778], // Casa Batlló
-      [41.391583, 2.165039], // Casa Amatller
-      [41.395383, 2.161947], // Casa Milà (La Pedrera)
-      [41.390623, 2.165380], // Eixample District
-      [41.403629, 2.174356], // Sagrada Familia (Stop)
-      [41.400589, 2.181298], // Plaza de Toros Monumental
+      [41.395383, 2.161947], // Casa Milà
+      [41.403629, 2.174356], // Sagrada Familia
       [41.391054, 2.180635], // Arc de Triomf
-      [41.387015, 2.170047]  // Plaza Catalunya (Final)
+      [41.388371, 2.187219], // Parc de la Ciutadella
+      [41.378401, 2.192539]  // Platja de la Barceloneta
     ],
     bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688410/?full-items=yes&flow=1528104"
   },
@@ -55,38 +51,36 @@ export const TOURS: Tour[] = [
     name: 'Park City & Beach Barcelona',
     duration: '2h',
     route: [
-      'Plaza Catalunya',
-      'Las Ramblas',
-      'Barrio Gótico',
+      'Plaça de Catalunya',
+      'Les Rambles',
+      'Barri Gòtic',
       'Passeig de Gràcia',
       'Casa Batlló',
-      'Casa Milà (La Pedrera)',
-      'Sagrada Familia (Stop)',
+      'Casa Milà',
+      'Sagrada Familia',
       'Arc de Triomf',
       'Parc de la Ciutadella',
-      'Castell dels Tres Dragons',
       'Port Vell',
-      "Museu d'Història de Catalunya",
-      'Barceloneta Beach',
-      'Puerto Olímpico',
-      'Plaza Catalunya (Final)'
+      'Platja de la Barceloneta',
+      'Port Olímpic',
+      'Jardins de Miramar',
+      'Montjuïc'
     ],
     coordinates: [
-      [41.387015, 2.170047], // Plaza Catalunya
-      [41.380313, 2.173822], // Las Ramblas
-      [41.383333, 2.176389], // Barrio Gótico
+      [41.387015, 2.170047], // Plaça de Catalunya
+      [41.380313, 2.173822], // Les Rambles
+      [41.383333, 2.176389], // Barri Gòtic
       [41.392182, 2.164941], // Passeig de Gràcia
       [41.391638, 2.164778], // Casa Batlló
-      [41.395383, 2.161947], // Casa Milà (La Pedrera)
-      [41.403629, 2.174356], // Sagrada Familia (Stop)
+      [41.395383, 2.161947], // Casa Milà
+      [41.403629, 2.174356], // Sagrada Familia
       [41.391054, 2.180635], // Arc de Triomf
       [41.388371, 2.187219], // Parc de la Ciutadella
-      [41.388278, 2.184310], // Castell dels Tres Dragons
       [41.377011, 2.184759], // Port Vell
-      [41.381189, 2.187203], // Museu d'Història de Catalunya
-      [41.378401, 2.192539], // Barceloneta Beach
-      [41.386121, 2.200119], // Puerto Olímpico
-      [41.387015, 2.170047]  // Plaza Catalunya (Final)
+      [41.378401, 2.192539], // Platja de la Barceloneta
+      [41.386121, 2.200119], // Port Olímpic
+      [41.371089, 2.172081], // Jardins de Miramar
+      [41.363542, 2.150163]  // Montjuïc
     ],
     bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688412/?full-items=yes&flow=1528104"
   },
@@ -95,48 +89,46 @@ export const TOURS: Tour[] = [
     name: 'Complete Barcelona',
     duration: '3h',
     route: [
-      'Plaza Catalunya',
-      'Las Ramblas',
-      'Barrio Gótico',
+      'Plaça de Catalunya',
+      'Les Rambles',
+      'Barri Gòtic',
       'Passeig de Gràcia',
       'Casa Batlló',
-      'Casa Milà (La Pedrera)',
-      'Sagrada Familia (Stop)',
-      'Recinto Modernista de Sant Pau (Exterior)',
+      'Casa Milà',
+      'Sagrada Familia',
+      'Recinte Modernista de Sant Pau',
       'Arc de Triomf',
       'Parc de la Ciutadella',
       'Port Vell',
-      'Barceloneta Beach',
-      'Puerto Olímpico',
-      'Jardines de Miramar (Vistas)',
-      'Anillo Olímpico',
-      'Estadio Olímpico Lluís Companys',
-      'MNAC (Museo Nacional de Arte de Cataluña)',
-      'Plaza España',
-      'Fuente Mágica de Montjuïc',
-      'Plaza Catalunya (Final)'
+      'Platja de la Barceloneta',
+      'Port Olímpic',
+      'Jardins de Miramar',
+      'Anella Olímpica',
+      'Estadi Olímpic Lluís Companys',
+      "Museu Nacional d'Art de Catalunya",
+      "Plaça d'Espanya",
+      'Font Màgica de Montjuïc'
     ],
     coordinates: [
-      [41.387015, 2.170047], // Plaza Catalunya
-      [41.380313, 2.173822], // Las Ramblas
-      [41.383333, 2.176389], // Barrio Gótico
+      [41.387015, 2.170047], // Plaça de Catalunya
+      [41.380313, 2.173822], // Les Rambles
+      [41.383333, 2.176389], // Barri Gòtic
       [41.392182, 2.164941], // Passeig de Gràcia
       [41.391638, 2.164778], // Casa Batlló
-      [41.395383, 2.161947], // Casa Milà (La Pedrera)
-      [41.403629, 2.174356], // Sagrada Familia (Stop)
-      [41.411649, 2.174781], // Recinto Modernista de Sant Pau (Exterior)
+      [41.395383, 2.161947], // Casa Milà
+      [41.403629, 2.174356], // Sagrada Familia
+      [41.411649, 2.174781], // Recinte Modernista de Sant Pau
       [41.391054, 2.180635], // Arc de Triomf
       [41.388371, 2.187219], // Parc de la Ciutadella
       [41.377011, 2.184759], // Port Vell
-      [41.378401, 2.192539], // Barceloneta Beach
-      [41.386121, 2.200119], // Puerto Olímpico
-      [41.371089, 2.172081], // Jardines de Miramar (Vistas)
-      [41.365042, 2.152028], // Anillo Olímpico
-      [41.364731, 2.155609], // Estadio Olímpico Lluís Companys
-      [41.368631, 2.153787], // MNAC (Museo Nacional de Arte de Cataluña)
-      [41.374149, 2.148821], // Plaza España
-      [41.371221, 2.151740], // Fuente Mágica de Montjuïc
-      [41.387015, 2.170047]  // Plaza Catalunya (Final)
+      [41.378401, 2.192539], // Platja de la Barceloneta
+      [41.386121, 2.200119], // Port Olímpic
+      [41.371089, 2.172081], // Jardins de Miramar
+      [41.365042, 2.152028], // Anella Olímpica
+      [41.364731, 2.155609], // Estadi Olímpic Lluís Companys
+      [41.368631, 2.153787], // Museu Nacional d'Art de Catalunya
+      [41.374149, 2.148821], // Plaça d'Espanya
+      [41.371221, 2.151740]  // Font Màgica de Montjuïc
     ],
     bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688414/?full-items=yes&flow=1528104"
   }
