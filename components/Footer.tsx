@@ -46,9 +46,9 @@ const Footer: React.FC<FooterProps> = ({ onOpenFAQ, contactRef }) => {
         {/* Logo */}
         <div className="mb-4 pt-12 border-t border-neutral-100 w-full flex flex-col items-center">
           <img
-            src="https://res.cloudinary.com/dk7xpxrvh/image/upload/v1770493355/Gemini_Generated_Image_ambwwrambwwrambw_tct4wy.png"
+            src="https://res.cloudinary.com/dk7xpxrvh/image/upload/v1771317526/ultimo_intento_yrsutn.png"
             alt="Legacy Tours Spain"
-            className="h-32 w-auto object-contain"
+            className="h-40 w-auto object-contain"
           />
         </div>
 

@@ -15,6 +15,7 @@ export const translations: Record<string, any> = {
         hero: {
             title: "DESCUBRE BARCELONA",
             subtitle: "Tours privados con traducción por IA en tiempo real en una experiencia vintage 100% eléctrica.",
+            tagline: "Estilo Vintage. Comunicación Global.",
             book: "RESERVAR AHORA",
             dining: "COMIDA Y TIPS",
             electric: "100% ELÉCTRICO",
@@ -55,6 +56,33 @@ export const translations: Record<string, any> = {
             tour3: {
                 name: "Barcelona Completa",
                 route: ["Plaza de Cataluña", "Las Ramblas", "Barrio Gótico", "Paseo de Gracia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Recinto Modernista de Sant Pau", "Arco de Triunfo", "Parque de la Ciudadela", "Puerto Viejo", "Playa de la Barceloneta", "Puerto Olímpico", "Jardines de Miramar", "Anillo Olímpico", "Estadio Olímpico Lluís Companys", "Museo Nacional de Arte de Cataluña", "Plaza de España", "Fuente Mágica de Montjuïc"]
+            }
+        },
+        languages: {
+            badge: "Comunicación Global",
+            title: "Hablamos Tu Idioma — En Tiempo Real",
+            subtitle: "Gracias a dispositivos de traducción con IA, podemos comunicarnos fluidamente en más de 50 idiomas durante tu tour.",
+            description: "En Legacy Tours Spain, el idioma nunca es una barrera. Utilizamos dispositivos profesionales de traducción con IA que permiten conversación en tiempo real en más de 50 idiomas. Puedes hacer preguntas en tu idioma nativo — y recibir respuestas de forma natural y clara.",
+            makes: "Esto hace que tu experiencia sea:",
+            benefits: {
+                comfortable: "Más cómoda",
+                personal: "Más personal",
+                interactive: "Más interactiva",
+                premium: "Más premium"
+            },
+            features: {
+                realtime: "Traducción IA en tiempo real",
+                over50: "Más de 50 idiomas soportados",
+                ask: "Pregunta en tu idioma",
+                natural: "Recibe respuestas naturalmente",
+                nobarriers: "Sin barreras de idioma",
+                families: "Perfecto para familias y viajeros internacionales"
+            },
+            supported: "Idiomas Soportados",
+            closing: {
+                line1: "Barcelona es una ciudad global.",
+                line2: "Con nuestros exclusivos vehículos vintage eléctricos y comunicación multilingüe con IA, experimentas Barcelona con estilo — y en tu propio idioma.",
+                line3: "Esa es la diferencia Legacy."
             }
         },
         gallery: {
@@ -219,6 +247,7 @@ export const translations: Record<string, any> = {
         hero: {
             title: "DISCOVER BARCELONA",
             subtitle: "Private tours with real-time AI translation in a 100% electric vintage experience.",
+            tagline: "Vintage Style. Global Communication.",
             book: "BOOK NOW",
             dining: "DINING & TIPS",
             electric: "100% ELECTRIC",
@@ -259,6 +288,33 @@ export const translations: Record<string, any> = {
             tour3: {
                 name: "Complete Barcelona",
                 route: ["Catalonia Square", "Las Ramblas", "Gothic Quarter", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Sant Pau Modernist Site", "Arc de Triomf", "Ciutadella Park", "Port Vell", "Barceloneta Beach", "Olympic Port", "Miramar Gardens", "Olympic Ring", "Lluís Companys Olympic Stadium", "National Art Museum of Catalonia", "Spain Square", "Magic Fountain of Montjuïc"]
+            }
+        },
+        languages: {
+            badge: "Global Communication",
+            title: "We Speak Your Language — In Real Time",
+            subtitle: "Thanks to AI-powered translation devices, we can communicate fluently in more than 50 languages during your tour.",
+            description: "At Legacy Tours Spain, language is never a barrier. We use professional AI translation devices that allow real-time conversation in over 50 languages. You can ask questions in your native language — and receive answers naturally and clearly.",
+            makes: "This makes your experience:",
+            benefits: {
+                comfortable: "More comfortable",
+                personal: "More personal",
+                interactive: "More interactive",
+                premium: "More premium"
+            },
+            features: {
+                realtime: "Real-time AI translation",
+                over50: "Over 50 supported languages",
+                ask: "Ask questions in your language",
+                natural: "Receive answers naturally",
+                nobarriers: "No language barriers",
+                families: "Perfect for families and international travelers"
+            },
+            supported: "Supported Languages",
+            closing: {
+                line1: "Barcelona is a global city.",
+                line2: "With our exclusive vintage electric vehicles and AI-powered multilingual communication, you experience Barcelona in style — and in your own language.",
+                line3: "That's the Legacy difference."
             }
         },
         gallery: {

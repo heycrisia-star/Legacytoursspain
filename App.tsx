@@ -14,6 +14,7 @@ import InstantBookingForm from './components/InstantBookingForm';
 import { useLanguage } from './context/LanguageContext';
 import LanguageSelector from './components/LanguageSelector';
 import CruiseLanding from './components/CruiseLanding';
+import LanguageSection from './components/LanguageSection';
 
 function App() {
   const { t } = useLanguage();
@@ -91,9 +92,9 @@ function App() {
           >
             <a href="/" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/'); window.dispatchEvent(new PopStateEvent('popstate')); }} className="block">
               <img
-                src="/logo-legacy.png"
+                src="https://res.cloudinary.com/dk7xpxrvh/image/upload/v1771317526/ultimo_intento_yrsutn.png"
                 alt="Legacy Tours Spain"
-                className="h-20 w-auto object-contain"
+                className="h-24 w-auto object-contain"
               />
             </a>
           </div>
@@ -122,6 +123,7 @@ function App() {
         ) : (
           <>
             <Hero />
+            <LanguageSection />
             <Gallery />
             <Experience />
             <BrandStory />

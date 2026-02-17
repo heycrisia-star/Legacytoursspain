@@ -45,6 +45,13 @@ const Hero: React.FC = () => {
 
       <div className="max-w-5xl mx-auto space-y-10 animate-fade-in-up relative z-30 flex flex-col items-center">
 
+        {/* Tagline */}
+        <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/60 backdrop-blur-xl rounded-full border border-premium-gold/20 shadow-lg">
+          <span className="text-xs md:text-sm font-display font-bold uppercase tracking-[0.3em] text-premium-text">
+            {t('hero.tagline')}
+          </span>
+        </div>
+
         <h1 className="text-5xl md:text-8xl font-display font-bold tracking-tight text-premium-text leading-[0.85] uppercase drop-shadow-lg">
           {t('hero.title').split(' ')[0]}<br />
           <span className="text-premium-gold drop-shadow-2xl bg-gradient-to-r from-[#D4AF37] via-[#F1C40F] to-[#D4AF37] bg-clip-text text-transparent">

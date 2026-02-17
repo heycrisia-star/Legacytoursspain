@@ -13,7 +13,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 import { translations } from '../translations';
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    // Try to get language from localStorage or URL
+    // Default to English - no auto-detection
     const [language, setLanguageState] = useState<Language>(() => {
         const saved = localStorage.getItem('language');
         if (saved && ['es', 'en', 'fr', 'de', 'it', 'pt', 'ru', 'zh', 'ja', 'ca'].includes(saved)) {
@@ -24,7 +24,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
         if (langParam && ['es', 'en', 'fr', 'de', 'it', 'pt', 'ru', 'zh', 'ja', 'ca'].includes(langParam)) {
             return langParam as Language;
         }
-        return 'es';
+        return 'en'; // Always default to English
     });
 
     const setLanguage = (lang: Language) => {
