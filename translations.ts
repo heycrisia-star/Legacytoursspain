@@ -171,7 +171,7 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "¿Proporcionan sillas de seguridad para niños?",
-                answer: "Proporcionamos un elevador certificado para niños de más de 1,2 m, de acuerdo con la normativa vigente."
+                answer: "Proporcionamos un elevador certificado para niños de más de 1.10m, de acuerdo con la normativa vigente."
             },
             {
                 question: "¿Qué pasa si llueve?",
@@ -183,19 +183,15 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "¿Dónde empieza y termina el tour?",
-                answer: "La recogida y el regreso se realizan en un lloc cèntric de Barcelona (a prop del Barri Gòtic). Sense cost addicional, també us podem recollir al vostre hotel si està al centre de la ciutat."
+                answer: "Es una ruta circular, inicia y acaba en el mismo punto (Parking Boulevar Rosa, de la Calle Valencia 270)"
             },
             {
                 question: "¿Cómo puedo pagar?",
-                answer: "Puedes pagar en efectivo directamente al conductor, con tarjeta de crédito o débito, o mediante reserva online vía WhatsApp."
+                answer: "Única y exclusivamente a traves de los proveedores logisticos, FareHarbor mediante la web, Get Your Guide o Viator, no se aceptan pagos en efectivo, todo debe ser mediante reservas."
             },
             {
                 question: "¿Cuál es la política de cancelación?",
                 answer: "Las cancelaciones son gratuitas hasta 24 horas antes del tour. Si se cancela con menos de 24 horas de antelación, se aplica una penalización del 30%."
-            },
-            {
-                question: "¿Puedo personalizar la ruta?",
-                answer: "Sí. Con el Tour Flexible, puedes personalizar totalmente tu itinerario con nuestro equipo."
             },
             {
                 question: "¿Cómo nos comunicamos si no hablo español?",
@@ -403,7 +399,7 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Do you provide child safety seats?",
-                answer: "We provide a certified booster seat for children taller than 1.2 m, in accordance with current regulations."
+                answer: "We provide a certified booster seat for children taller than 1.10m, in accordance with current regulations."
             },
             {
                 question: "What happens if it rains?",
@@ -415,19 +411,15 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Where does the tour start and end?",
-                answer: "Pick-up and drop-off are at a central location in Barcelona (near Gothic Quarter). At no extra cost, we can also pick you up at your hotel if it is in the city center."
+                answer: "It is a circular route, starting and ending at the same point (Parking Boulevar Rosa, Calle Valencia 270)."
             },
             {
                 question: "How can I pay?",
-                answer: "You can pay in cash directly to the driver, by credit or debit card, or through online booking via WhatsApp."
+                answer: "Solely and exclusively through logistics providers: FareHarbor via the web, Get Your Guide, or Viator. Cash payments are not accepted; everything must be through prior reservations."
             },
             {
                 question: "What is the cancellation policy?",
                 answer: "Cancellations are free up to 24 hours before the tour. If canceled less than 24 hours in advance, a 30% penalty applies."
-            },
-            {
-                question: "Can I customize the route?",
-                answer: "Yes. With the Flexible Tour, you can fully personalize your itinerary with our team."
             },
             {
                 question: "How do we communicate if I don't speak Spanish?",
@@ -607,7 +599,7 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Fournissez-vous des sièges de sécurité pour enfants ?",
-                answer: "Nous fournissons un rehausseur certifié pour les enfants de plus de 1,2 m, conformément à la réglementation en vigueur."
+                answer: "Nous fournissons un rehausseur certifié pour les enfants de plus de 1.10m, conformément à la réglementation en vigueur."
             },
             {
                 question: "Que se passe-t-il s'il pleuve ?",
@@ -619,19 +611,15 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Où commence et se termine la visite ?",
-                answer: "La prise en charge et le retour se font dans un lieu central à Barcelone (près du quartier gothique). Sans frais supplémentaires, nous pouvons également vous chercher à votre hôtel s'il se trouve au centre-ville."
+                answer: "Il s'agit d'un itinéraire circulaire, commençant et se terminant au même point (Parking Boulevar Rosa, Calle Valencia 270)."
             },
             {
                 question: "Comment puis-je payer ?",
-                answer: "Vous pouvez payer en espèces directement au chauffeur, par carte de crédit ou de débit, ou via une réservation en ligne via WhatsApp."
+                answer: "Uniquement et exclusivement par l'intermédiaire de prestataires logistiques : FareHarbor via le web, Get Your Guide ou Viator. Les paiements en espèces ne sont pas acceptés ; tout doit se faire sur réservation."
             },
             {
                 question: "Quelle est la politique d'annulation ?",
                 answer: "Les annulations sont gratuites jusqu'à 24 heures avant la visite. En cas d'annulation moins de 24 heures à l'avance, une pénalité de 30% s'applique."
-            },
-            {
-                question: "Puis-je personnaliser l'itinéraire ?",
-                answer: "Oui. Avec le Tour Flexible, vous pouvez personnaliser entièrement votre itinéraire avec notre équipe."
             },
             {
                 question: "Comment communiquons-nous si je ne parle pas espagnol ?",
@@ -811,7 +799,7 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Stellen Sie Kindersitze zur Verfügung?",
-                answer: "Wir stellen eine zertifizierte Sitzerhöhung für Kinder über 1,2 m zur Verfügung, gemäß den geltenden Vorschriften."
+                answer: "Wir stellen eine zertifizierte Sitzerhöhung für Kinder über 1.10m zur Verfügung, gemäß den geltenden Vorschriften."
             },
             {
                 question: "Was passiert, wenn es regnet?",
@@ -823,19 +811,15 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Wo beginnt und endet die Tour?",
-                answer: "Abholung und Rückgabe erfolgen an einem zentralen Ort in Barcelona (in der Nähe des Gotischen Viertels). Ohne Aufpreis können wir Sie auch von Ihrem Hotel abholen, wenn es sich im Stadtzentrum befindet."
+                answer: "Es handelt sich um eine Rundstrecke, die am selben Punkt beginnt und endet (Parkplatz Boulevar Rosa, Calle Valencia 270)."
             },
             {
                 question: "Wie kann ich bezahlen?",
-                answer: "Sie können direkt beim Fahrer in bar, mit Kredit- oder Debitkarte oder über die Online-Buchung via WhatsApp bezahlen."
+                answer: "Ausschließlich über Logistikanbieter: FareHarbor über das Web, Get Your Guide oder Viator. Barzahlungen werden nicht akzeptiert; alles muss über Reservierungen erfolgen."
             },
             {
                 question: "Wie lauten die Stornierungsbedingungen?",
                 answer: "Stornierungen sind bis zu 24 Stunden vor der Tour kostenlos. Bei einer Stornierung weniger als 24 Stunden im Voraus wird eine Gebühr von 30% fällig."
-            },
-            {
-                question: "Kann ich die Route anpassen?",
-                answer: "Ja. Mit der Flexiblen Tour können Sie Ihre Reiseroute mit unserem Team vollständig personalisieren."
             },
             {
                 question: "Wie kommunizieren wir, wenn ich kein Spanisch spreche?",
@@ -1015,7 +999,7 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Fornite seggiolini per bambini?",
-                answer: "Forniamo un rialzo certificato per bambini di altezza superiore a 1,2 m, in conformità con le normative vigenti."
+                answer: "Forniamo un rialzo certificato per bambini di altezza superiore a 1.10m, in conformità con le normative vigenti."
             },
             {
                 question: "Cosa succede se piove?",
@@ -1027,19 +1011,15 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Da dove inizia e dove finisce il tour?",
-                answer: "Il prelievo e la riconsegna avvengono in una posizione centrale a Barcellona (vicino al Quartiere Gotico). Senza costi aggiuntivi, possiamo anche venirti a prendere al tuo hotel se si trova nel centro della città."
+                answer: "Si tratta di un percorso circolare, che inizia e finisce nello stesso punto (Parcheggio Boulevar Rosa, Calle Valencia 270)."
             },
             {
                 question: "Come posso pagare?",
-                answer: "Puoi pagare in contanti direttamente al conducente, con carta di credito o di debito, o tramite prenotazione online via WhatsApp."
+                answer: "Esclusivamente tramite fornitori di logistica: FareHarbor via web, Get Your Guide o Viator. Non si accettano pagamenti in contanti; tutto deve avvenire tramite prenotazione."
             },
             {
                 question: "Qual è la politica di cancellazione?",
                 answer: "Le cancellazioni sono gratuite fino a 24 ore prima del tour. Se cancellate con meno di 24 ore di anticipo, si applica una penale del 30%."
-            },
-            {
-                question: "Posso personalizzare il percorso?",
-                answer: "Sì. Con il Tour Flessibile, puoi personalizzare completamente il tuo itinerario con il nostro team."
             },
             {
                 question: "Come comunichiamo se non parlo spagnolo?",
@@ -1219,7 +1199,7 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Vocês fornecem cadeiras de segurança para crianças?",
-                answer: "Fornecemos um assento elevatório certificado para crianças com mais de 1,2 m, de acordo com as normas vigentes."
+                answer: "Fornecemos um assento elevatório certificado para crianças com mais de 1.10m, de acordo com as normas vigentes."
             },
             {
                 question: "O que acontece se chover?",
@@ -1231,19 +1211,15 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Onde começa e onde termina o passeio?",
-                answer: "A retirada e a entrega são feitas em um local central em Barcelona (próximo ao Bairro Gótico). Sem custo adicional, também podemos buscá-lo em seu hotel, caso ele esteja no centro da cidade."
+                answer: "É uma rota circular, começando e terminando no mesmo ponto (Estacionamento Boulevar Rosa, Calle Valencia 270)."
             },
             {
                 question: "Como posso pagar?",
-                answer: "Você pode pagar em dinheiro diretamente ao motorista, com cartão de crédito ou débito, ou através de reserva online via WhatsApp."
+                answer: "Exclusivamente através de provedores de logística: FareHarbor via web, Get Your Guide ou Viator. Pagamentos em dinheiro não são aceitos; tudo deve ser mediante reserva."
             },
             {
                 question: "Qual é a política de cancelamento?",
                 answer: "Os cancelamentos são gratuitos até 24 horas antes do passeio. Se cancelado com menos de 24 horas de antecedência, aplica-se uma penalidade de 30%."
-            },
-            {
-                question: "Posso personalizar a rota?",
-                answer: "Sim. Com o Passeio Flexível, você pode personalizar totalmente seu itinerário com nossa equipe."
             },
             {
                 question: "Como nos comunicamos se eu não falar espanhol?",
@@ -1435,19 +1411,15 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Где начинается и заканчивается тур?",
-                answer: "Посадка и высадка осуществляются в центральном районе Барселоны (недалеко от Готического квартала). Мы также можем бесплатно забрать вас из отеля, если он находится в центре города."
+                answer: "Это круговой маршрут, который начинается и заканчивается в одной и той же точке (Парковка Boulevar Rosa, Calle Valencia 270)."
             },
             {
                 question: "Как я могу оплатить?",
-                answer: "Вы можете оплатить наличными непосредственно водителю, кредитной или дебетовой картой или через онлайн-бронирование через WhatsApp."
+                answer: "Исключительно через логистических провайдеров: FareHarbor через веб-сайт, Get Your Guide или Viator. Оплата наличными не принимается; все должно быть по предварительному бронированию."
             },
             {
                 question: "Какова политика отмены?",
                 answer: "Отмена тура бесплатна за 24 часа. При отмене менее чем за 24 часа взимается штраф в размере 30%."
-            },
-            {
-                question: "Могу ли я настроить маршрут?",
-                answer: "Да. С помощью Гибкого тура вы можете полностью персонализировать свой маршрут вместе с нашей командой."
             },
             {
                 question: "Как мы будем общаться, если я не говорю по-испански?",
@@ -1639,19 +1611,15 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "行程从哪里开始和结束？",
-                answer: "接送地点位于巴塞罗那中心位置（哥特区附近）。如果您的酒店位于市中心，我们也可以免费到酒店接您。"
+                answer: "这是一条环形路线，起点和终点都在同一点（Parking Boulevar Rosa, Calle Valencia 270）。"
             },
             {
                 question: "我该如何支付？",
-                answer: "您可以直接向驾驶员支付现金，使用信用卡或借记卡，或者通过 WhatsApp 进行在线预订。"
+                answer: "仅通过物流供应商支付：通过网站的 FareHarbor、Get Your Guide 或 Viator。不接受现金支付；所有一切必须通过预订。"
             },
             {
                 question: "取消政策是什么？",
                 answer: "行程开始前 24 小时可免费取消。如果提前不到 24 小时取消，将收取 30% 的罚金。"
-            },
-            {
-                question: "我可以定制路线吗？",
-                answer: "是的。通过灵活之旅，您可以与我们的团队一起完全个性化您的行程。"
             },
             {
                 question: "如果我不会说西班牙语，我们该如何沟通？",
@@ -1843,19 +1811,15 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "ツアーはどこで始まり、どこで終わりますか？",
-                answer: "送迎はバルセロナの中心部（ゴシック地区近く）で行われます。市中心部のホテルであれば、追加料金なしでお迎えに上がることも可能です。"
+                answer: "同じ場所（Parking Boulevar Rosa, Calle Valencia 270）から出発し、同じ場所に到着する循環ルートです。"
             },
             {
                 question: "支払方法を教えてください。",
-                answer: "運転手に直接現金で支払うか、クレジットカードやデビットカード、またはWhatsApp経由のオンライン予約で支払うことができます。"
+                answer: "お支払いは、Web経由のFareHarbor、Get Your Guide、またはViatorなどの物流プロバイダーを通じてのみ受け付けております。現金でのお支払いは受け付けておりません。すべて事前予約による決済となります。"
             },
             {
                 question: "キャンセルポリシーを教えてください。",
                 answer: "ツアーの24時間前までのキャンセルは無料です。24時間未満のキャンセルの場合は、30%の違約金が適用されます。"
-            },
-            {
-                question: "ルートをカスタマイズできますか？",
-                answer: "はい。「フレキシブルツアー」では、当社のチームとともに旅程を完全にカスタマイズできます。"
             },
             {
                 question: "スペイン語が話せない場合、どのようにコミュニケーションをとりますか？",
@@ -2012,7 +1976,7 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "Proporcioneu cadires de seguretat per a nens?",
-                answer: "Proporcionem un seient elevador certificat per a nens amb més d'1,2 m, d'acord amb les normes vigents."
+                answer: "Proporcionem un seient elevador certificat per a nens amb més d'1.10m, d'acord amb les normes vigents."
             },
             {
                 question: "Què passa si plou?",
@@ -2024,19 +1988,15 @@ export const translations: Record<string, any> = {
             },
             {
                 question: "On comença i on acaba el tour?",
-                answer: "La recollida i la tornada es fan en un lloc central a Barcelona (prop del Barri Gòtic). Sense cost addicional, també podem recollir-te al teu hotel, si és al centre de la ciutat."
+                answer: "És una ruta circular, inicia i acaba al mateix punt (Parking Boulevar Rosa, del Carrer València 270)."
             },
             {
                 question: "Com puc pagar?",
-                answer: "Pots pagar en efectiu directament al conductor, amb targeta de crèdit o dèbit, o mitjançant reserva en línia via WhatsApp."
+                answer: "Única i exclusivament a través dels proveïdors logístics, FareHarbor mitjançant la web, Get Your Guide o Viator, no s'accepten pagaments en efectiu, tot ha de ser mitjançant reserves."
             },
             {
                 question: "Quina és la política de cancel·lació?",
                 answer: "Les cancel·lacions són gratuïtes fins a 24 hores abans del tour. Si es cancel·la amb menys de 24 hores d'antelació, s'aplica una penalització del 30%."
-            },
-            {
-                question: "Puc personalitzar la ruta?",
-                answer: "Sí. Amb el Tour Flexible, pots personalitzar totalment el teu itinerari amb el nostre equip."
             },
             {
                 question: "Com ens comuniquem si no parlo espanyol?",

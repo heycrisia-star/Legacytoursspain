@@ -1,9 +1,11 @@
-import React from 'react';
-import { Globe, MessageCircle, Users, Sparkles, Languages as LanguagesIcon, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { Globe, MessageCircle, Users, Sparkles, Languages as LanguagesIcon, CheckCircle2, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import CircularText from './CircularText';
 
 const LanguageSection: React.FC = () => {
     const { t } = useLanguage();
+    const [showLanguages, setShowLanguages] = useState(false);
 
     const features = [
         { icon: MessageCircle, text: t('languages.features.realtime') },
@@ -123,20 +125,49 @@ const LanguageSection: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Languages Grid */}
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border border-neutral-100 mb-12">
-                    <h3 className="text-2xl font-display font-bold text-premium-text mb-6 text-center">
-                        {t('languages.supported')}
-                    </h3>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                        {languages.map((lang, i) => (
-                            <div key={i} className="flex items-center gap-2 p-3 bg-neutral-50 rounded-xl border border-neutral-100 hover:border-premium-gold/30 transition-colors">
-                                <CheckCircle2 className="w-4 h-4 text-premium-gold flex-shrink-0" />
-                                <span className="text-xs text-neutral-700">{lang}</span>
+                {/* Languages Button */}
+                <div className="text-center mb-12 flex justify-center py-8">
+                    <div onClick={() => setShowLanguages(true)} className="relative flex items-center justify-center cursor-pointer group">
+                        <CircularText
+                            text={` • ${t('languages.supported').toUpperCase()} • ${t('languages.supported').toUpperCase()}`}
+                            onHover="slowDown"
+                            spinDuration={30}
+                            className="text-premium-gold"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-20 h-20 rounded-full bg-premium-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                                <Globe className="w-8 h-8 text-premium-gold" />
                             </div>
-                        ))}
+                        </div>
                     </div>
                 </div>
+
+                {/* Modal for Languages */}
+                {showLanguages && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity" onClick={() => setShowLanguages(false)}>
+                        <div className="bg-white rounded-3xl p-6 md:p-8 max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl relative" onClick={e => e.stopPropagation()}>
+                            <button
+                                onClick={() => setShowLanguages(false)}
+                                className="absolute top-4 right-4 p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 transition-colors z-10"
+                                aria-label="Close modal"
+                            >
+                                <X className="w-5 h-5 text-neutral-600" />
+                            </button>
+
+                            <h3 className="text-2xl font-display font-bold text-premium-text mb-8 text-center mt-2">
+                                {t('languages.supported')}
+                            </h3>
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                                {languages.map((lang, i) => (
+                                    <div key={i} className="flex items-center gap-2 p-3 bg-neutral-50 rounded-xl border border-neutral-100 hover:border-premium-gold/30 transition-colors">
+                                        <CheckCircle2 className="w-4 h-4 text-premium-gold flex-shrink-0" />
+                                        <span className="text-xs text-neutral-700">{lang}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 {/* Closing Statement */}
                 <div className="text-center space-y-4 max-w-3xl mx-auto">

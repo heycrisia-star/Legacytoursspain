@@ -11,8 +11,10 @@
   "dependencies": {
     "@react-three/fiber": "^9.4.2",
     "@types/three": "^0.182.0",
+    "framer-motion": "^12.34.3",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.561.0",
+    "motion": "^12.34.3",
     "ogl": "^1.0.11",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
