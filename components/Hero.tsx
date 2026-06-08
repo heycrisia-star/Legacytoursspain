@@ -1,8 +1,9 @@
 import React from 'react';
 import { Zap, Languages, Lock, ArrowRight } from 'lucide-react';
 import { BOOKING_URL } from '../constants';
-import Antigravity from './Antigravity';
+import Lightfall from './Lightfall';
 import { useLanguage } from '../context/LanguageContext';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -10,10 +11,13 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
   const { t } = useLanguage();
+  const { scrollY } = useScroll();
+  const buttonY = useTransform(scrollY, [0, 500], [0, 60]);
+
   return (
     <section className="relative flex flex-col items-center justify-center pt-32 pb-12 px-6 text-center overflow-hidden min-h-[85vh]">
 
-      {/* Antigravity Background */}
+      {/* Lightfall Background */}
       <div className="absolute inset-0 -z-10 bg-[#F9F8F6]">
 
         {/* Background Image - Enhanced visibility */}
@@ -29,20 +33,27 @@ const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#F9F8F6]/80 via-transparent to-[#F9F8F6] pointer-events-none z-10"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#F9F8F6_90%)] pointer-events-none z-10"></div>
 
-        {/* Antigravity Canvas - Elevated Z-Index */}
+        {/* Lightfall Canvas - Elevated Z-Index */}
         <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, zIndex: 20, pointerEvents: 'none' }}>
-          <Antigravity
-            count={300}
-            magnetRadius={25}
-            ringRadius={18}
-            waveSpeed={0.4}
-            waveAmplitude={2}
-            particleSize={3}
-            lerpSpeed={0.06}
-            color={'#D4AF37'} // Premium Gold
-            autoAnimate={true}
-            particleVariance={2}
-            particleShape="capsule"
+          <Lightfall
+            colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
+            backgroundColor="#0A29FF"
+            speed={0.5}
+            streakCount={2}
+            streakWidth={1}
+            streakLength={1}
+            glow={1}
+            density={0.6}
+            twinkle={1}
+            zoom={3}
+            backgroundGlow={0.5}
+            opacity={1}
+            mouseInteraction
+            mouseStrength={0.5}
+            mouseRadius={1}
+            color1="#EAB308"
+            color2="#EAB308"
+            color3="#000000"
           />
         </div>
       </div>
@@ -80,16 +91,17 @@ const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           ))}
         </div>
 
-        <button
+        <motion.button
           onClick={onOpenBooking}
-          className="group relative inline-flex items-center gap-4 bg-premium-gold hover:bg-yellow-600 text-white px-12 py-6 rounded-full text-base font-display font-bold tracking-widest uppercase transition-all duration-500 transform hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(212,175,55,0.3)] overflow-hidden shadow-2xl"
+          style={{ y: buttonY }}
+          className="group relative inline-flex items-center gap-4 bg-premium-gold hover:bg-yellow-600 text-white px-12 py-6 rounded-full text-base font-display font-bold tracking-widest uppercase transition-all duration-500 hover:shadow-[0_20px_40px_rgba(212,175,55,0.3)] overflow-hidden shadow-2xl"
         >
           <span className="relative z-10 flex items-center gap-3">
             {t('hero.book')}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </span>
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-        </button>
+        </motion.button>
       </div>
     </section>
   );
