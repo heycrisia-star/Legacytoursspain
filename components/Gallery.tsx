@@ -4,13 +4,13 @@ import { useLanguage } from '../context/LanguageContext';
 const Gallery = () => {
     const { t } = useLanguage();
 
-    // Assuming gallery-2 is "Two Cars", gallery-5 is "Infographic"
-    // gallery-3, gallery-4 are "Single Car"
+    // Converted real customer/tour photos
     const images = [
-        { src: '/images/gallery-3.jpg', span: 'col-span-1 md:col-span-1 h-64 md:h-96' }, // Single Car
-        { src: '/images/gallery-2.jpg', span: 'col-span-1 md:col-span-2 h-64 md:h-96' }, // Two Cars (Center, wider)
-        { src: '/images/gallery-4.jpg', span: 'col-span-1 md:col-span-1 h-64 md:h-96' }, // Single Car
-        { src: '/images/gallery-5.jpg', span: 'col-span-1 md:col-span-4 h-auto aspect-[16/9]' }, // Infographic (Full width)
+        { src: '/images/img_4494.jpg', span: 'col-span-1 md:col-span-1 h-64 md:h-96' },
+        { src: '/images/img_4495.jpg', span: 'col-span-1 md:col-span-2 h-64 md:h-96' },
+        { src: '/images/img_5779.jpg', span: 'col-span-1 md:col-span-1 h-64 md:h-96' },
+        { src: '/images/img_5878.jpg', span: 'col-span-1 md:col-span-2 h-64 md:h-96' },
+        { src: '/images/img_8176.jpg', span: 'col-span-1 md:col-span-2 h-64 md:h-96' },
     ];
 
     return (

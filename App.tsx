@@ -14,12 +14,14 @@ import { useLanguage } from './context/LanguageContext';
 import LanguageSelector from './components/LanguageSelector';
 import CruiseLanding from './components/CruiseLanding';
 import LanguageSection from './components/LanguageSection';
+import BookingModal from './components/BookingModal';
 
 function App() {
   const { t } = useLanguage();
   const [isFAQOpen, setIsFAQOpen] = useState(false);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [showPinPrompt, setShowPinPrompt] = useState(false);
   const [pin, setPin] = useState('');
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -121,13 +123,13 @@ function App() {
           <CruiseLanding />
         ) : (
           <>
-            <Hero />
+            <Hero onOpenBooking={() => setIsBookingModalOpen(true)} />
             <LanguageSection />
             <Gallery />
             <Experience />
             <BrandStory />
             <div id="tours">
-              <ToursGrid />
+              <ToursGrid onOpenBooking={() => setIsBookingModalOpen(true)} />
             </div>
             <div id="reviews">
               <Reviews />
@@ -154,6 +156,11 @@ function App() {
       <FAQModal
         isOpen={isFAQOpen}
         onClose={() => setIsFAQOpen(false)}
+      />
+
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
       />
 
       {/* PIN Prompt Modal */}

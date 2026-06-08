@@ -4,7 +4,11 @@ import { BOOKING_URL } from '../constants';
 import Antigravity from './Antigravity';
 import { useLanguage } from '../context/LanguageContext';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onOpenBooking: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
   const { t } = useLanguage();
   return (
     <section className="relative flex flex-col items-center justify-center pt-32 pb-12 px-6 text-center overflow-hidden min-h-[85vh]">
@@ -70,14 +74,14 @@ const Hero: React.FC = () => {
             { icon: Lock, text: t('hero.private') }
           ].map(({ icon: Icon, text }, i) => (
             <div key={i} className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-neutral-100/50 hover:scale-105 transition-transform duration-300">
-              <Icon className="w-5 h-5 text-premium-gold" />
+               <Icon className="w-5 h-5 text-premium-gold" />
               <span className="text-[10px] md:text-xs font-display font-bold tracking-[0.2em] text-premium-text uppercase">{text}</span>
             </div>
           ))}
         </div>
 
-        <a
-          href={BOOKING_URL}
+        <button
+          onClick={onOpenBooking}
           className="group relative inline-flex items-center gap-4 bg-premium-gold hover:bg-yellow-600 text-white px-12 py-6 rounded-full text-base font-display font-bold tracking-widest uppercase transition-all duration-500 transform hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(212,175,55,0.3)] overflow-hidden shadow-2xl"
         >
           <span className="relative z-10 flex items-center gap-3">
@@ -85,7 +89,7 @@ const Hero: React.FC = () => {
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </span>
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-        </a>
+        </button>
       </div>
     </section>
   );

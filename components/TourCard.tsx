@@ -5,9 +5,10 @@ import { useLanguage } from '../context/LanguageContext';
 
 interface TourCardProps {
   tour: Tour;
+  onOpenBooking: () => void;
 }
 
-const TourCard: React.FC<TourCardProps> = ({ tour }) => {
+const TourCard: React.FC<TourCardProps> = ({ tour, onOpenBooking }) => {
   const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -56,12 +57,12 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
       {/* Actions */}
       <div className="mt-auto pt-8 relative z-10 flex flex-col gap-3">
         {tour.bookingUrl && (
-          <a
-            href={tour.bookingUrl}
-            className="w-full py-3 rounded bg-premium-gold text-white font-display font-bold uppercase tracking-widest text-sm hover:bg-yellow-600 transition-all flex items-center justify-center shadow-md"
+          <button
+            onClick={onOpenBooking}
+            className="w-full py-3 rounded bg-premium-gold text-white font-display font-bold uppercase tracking-widest text-sm hover:bg-yellow-600 transition-all flex items-center justify-center shadow-md text-center"
           >
             {t('tours.bookNow')}
-          </a>
+          </button>
         )}
 
         <button
