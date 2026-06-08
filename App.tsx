@@ -124,8 +124,8 @@ function App() {
         ) : (
           <>
             <Hero onOpenBooking={() => setIsBookingModalOpen(true)} />
-            <LanguageSection />
             <Gallery />
+            <LanguageSection />
             <Experience />
             <BrandStory />
             <div id="tours">
