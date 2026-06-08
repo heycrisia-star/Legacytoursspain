@@ -64,62 +64,65 @@ const LanguageSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-24 px-6 bg-gradient-to-b from-white to-neutral-50">
+        <section className="py-12 px-6 bg-gradient-to-b from-white to-neutral-50">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
-                <div className="text-center mb-16 space-y-4">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-premium-gold/10 rounded-full mb-4">
-                        <Globe className="w-5 h-5 text-premium-gold" />
-                        <span className="text-sm font-display font-bold uppercase tracking-widest text-premium-gold">
+                <div className="text-center mb-10 space-y-2">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-premium-gold/10 rounded-full mb-2">
+                        <Globe className="w-4 h-4 text-premium-gold" />
+                        <span className="text-xs font-display font-bold uppercase tracking-widest text-premium-gold">
                             {t('languages.badge')}
                         </span>
                     </div>
 
-                    <h2 className="text-4xl md:text-6xl font-display font-bold text-premium-text">
+                    <h2 className="text-3xl md:text-5xl font-display font-bold text-premium-text">
                         {t('languages.title')}
                     </h2>
 
-                    <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto">
+                    <p className="text-sm md:text-base text-neutral-600 max-w-2xl mx-auto">
                         {t('languages.subtitle')}
                     </p>
                 </div>
 
-                {/* Description */}
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border border-neutral-100 mb-12">
-                    <p className="text-base md:text-lg text-neutral-700 leading-relaxed mb-8">
-                        {t('languages.description')}
-                    </p>
+                {/* Side-by-side description and features */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-3xl p-6 md:p-8 shadow-md border border-neutral-100 mb-8 items-center">
+                    {/* Left side: description and bullet points */}
+                    <div className="space-y-5">
+                        <p className="text-sm md:text-base text-neutral-700 leading-relaxed">
+                            {t('languages.description')}
+                        </p>
 
-                    <div className="space-y-3 mb-8">
-                        <p className="text-neutral-700 font-medium">{t('languages.makes')}</p>
-                        <ul className="space-y-2 text-neutral-600">
-                            <li className="flex items-start gap-2">
-                                <span className="text-premium-gold mt-1">•</span>
-                                <span>{t('languages.benefits.comfortable')}</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-premium-gold mt-1">•</span>
-                                <span>{t('languages.benefits.personal')}</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-premium-gold mt-1">•</span>
-                                <span>{t('languages.benefits.interactive')}</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-premium-gold mt-1">•</span>
-                                <span>{t('languages.benefits.premium')}</span>
-                            </li>
-                        </ul>
+                        <div className="space-y-2">
+                            <p className="text-neutral-800 font-semibold text-sm">{t('languages.makes')}</p>
+                            <ul className="grid grid-cols-2 gap-2 text-xs text-neutral-600">
+                                <li className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-premium-gold" />
+                                    <span>{t('languages.benefits.comfortable')}</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-premium-gold" />
+                                    <span>{t('languages.benefits.personal')}</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-premium-gold" />
+                                    <span>{t('languages.benefits.interactive')}</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-premium-gold" />
+                                    <span>{t('languages.benefits.premium')}</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
-                    {/* Features Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {/* Right side: Features Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {features.map(({ icon: Icon, text }, i) => (
-                            <div key={i} className="flex items-center gap-3 p-4 bg-neutral-50 rounded-2xl border border-neutral-100">
-                                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-premium-gold/10 flex items-center justify-center">
-                                    <Icon className="w-5 h-5 text-premium-gold" />
+                            <div key={i} className="flex items-center gap-3 p-3 bg-neutral-50 rounded-2xl border border-neutral-100">
+                                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-premium-gold/10 flex items-center justify-center">
+                                    <Icon className="w-4 h-4 text-premium-gold" />
                                 </div>
-                                <span className="text-sm font-medium text-neutral-700">{text}</span>
+                                <span className="text-xs font-semibold text-neutral-700 leading-tight">{text}</span>
                             </div>
                         ))}
                     </div>
