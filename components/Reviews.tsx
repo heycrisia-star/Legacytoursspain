@@ -1,10 +1,11 @@
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { REVIEWS } from '../constants';
 
 const Reviews: React.FC = () => {
   const { t } = useLanguage();
-  const reviewItems = t('reviews.items') || [];
+  const reviewItems = REVIEWS;
 
   return (
     <section className="pt-8 pb-32 px-6 bg-[#F9F8F6]">
@@ -20,7 +21,7 @@ const Reviews: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reviewItems.map((review: any) => (
             <div key={review.id} className="relative p-8 rounded-xl bg-white shadow-sm border border-neutral-100 hover:shadow-md transition-all duration-300 flex flex-col">
               <Quote className="absolute top-6 right-6 w-8 h-8 text-premium-gold/20" />

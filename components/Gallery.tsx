@@ -4,13 +4,17 @@ import { useLanguage } from '../context/LanguageContext';
 const Gallery = () => {
     const { t } = useLanguage();
 
-    // Converted real customer/tour photos
+    // Converted real customer/tour photos (ordering photos with people first)
     const images = [
         { src: '/images/img_4494.jpg', span: 'col-span-1 md:col-span-1 h-64 md:h-96' },
         { src: '/images/img_4495.jpg', span: 'col-span-1 md:col-span-2 h-64 md:h-96' },
         { src: '/images/img_5779.jpg', span: 'col-span-1 md:col-span-1 h-64 md:h-96' },
         { src: '/images/img_5878.jpg', span: 'col-span-1 md:col-span-2 h-64 md:h-96' },
         { src: '/images/img_8176.jpg', span: 'col-span-1 md:col-span-2 h-64 md:h-96' },
+        { src: '/images/img_6160.jpg', span: 'col-span-1 md:col-span-1 h-64 md:h-96' },
+        { src: '/images/img_7983.jpg', span: 'col-span-1 md:col-span-1 h-64 md:h-96' },
+        { src: '/images/img_8211.jpg', span: 'col-span-1 md:col-span-2 h-64 md:h-96' },
+        { src: '/images/img_8507.jpg', span: 'col-span-1 md:col-span-4 h-64 md:h-96' },
     ];
 
     return (

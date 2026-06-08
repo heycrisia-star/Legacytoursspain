@@ -180,23 +180,86 @@ export const FAQS: FaqItem[] = [
 export const REVIEWS = [
   {
     id: 1,
-    author: "Sarah J.",
-    location: "United Kingdom",
-    text: "The most elegant way to see Barcelona. The car is silent and beautiful, and the driver was exceptional.",
-    source: "TripAdvisor"
+    author: "Ashley S.",
+    location: "United States",
+    text: "Amazing tour! Cristian was very nice, extremely knowledgeable and patient. The vintage electric cars are very comfortable and clean. Highly recommend doing this on your first day!",
+    source: "GetYourGuide"
   },
   {
     id: 2,
-    author: "Marc & Lisa",
-    location: "Germany",
-    text: "We loved the privacy. No crowds, just us and the city. The translation system worked perfectly.",
+    author: "David L.",
+    location: "United Kingdom",
+    text: "Roger was an excellent guide. Great sense of humor, very informative, and gave us tips for the rest of our stay. The vintage electric car is a head-turner!",
     source: "GetYourGuide"
   },
   {
     id: 3,
-    author: "James T.",
-    location: "USA",
-    text: "Worth every penny. The 'Grand Tour' covered everything we wanted to see without the walking.",
-    source: "Google Reviews"
+    author: "Philippe R.",
+    location: "France",
+    text: "Wonderful experience seeing all the landmarks without walking in the heat. The AI translation system in the car worked perfectly. 5 stars to Legacy Tours!",
+    source: "Google Maps"
+  },
+  {
+    id: 4,
+    author: "Maria S.",
+    location: "Spain",
+    text: "Una experiencia fantástica para conocer Barcelona de una forma diferente. El coche es espectacular y Cristian nos trató de maravilla. Repetiremos seguro.",
+    source: "Google Maps"
+  },
+  {
+    id: 5,
+    author: "Michael B.",
+    location: "Germany",
+    text: "Outstanding private tour. Very comfortable vintage electric car and our guide Roger was fantastic. The kids loved the audio guide and the smooth ride.",
+    source: "GetYourGuide"
+  },
+  {
+    id: 6,
+    author: "Sophie M.",
+    location: "Canada",
+    text: "The best decision we made in Barcelona! Having a private tour with real-time translation was mind-blowing. Cristian was extremely friendly and gave us local insights.",
+    source: "GetYourGuide"
+  },
+  {
+    id: 7,
+    author: "Luca T.",
+    location: "Italy",
+    text: "Splendida esperienza! Macchina vintage elettrica molto comoda ed elegante. Roger è stato una guida bravissima, attenta ad ogni dettaglio.",
+    source: "Google Maps"
+  },
+  {
+    id: 8,
+    author: "Sarah W.",
+    location: "Australia",
+    text: "We booked the 3-hour tour and it was worth every cent. You get to see the whole city in style. Roger and Cristian were super helpful and professional.",
+    source: "GetYourGuide"
+  },
+  {
+    id: 9,
+    author: "Jean P.",
+    location: "Belgium",
+    text: "Magnifique tour de Barcelone. Très confortable, écologique et très instructif. Le traducteur automatique par IA est impressionnant.",
+    source: "Google Maps"
+  },
+  {
+    id: 10,
+    author: "Emily K.",
+    location: "United States",
+    text: "A must-do in Barcelona! Beautiful classic cars and the guide was so knowledgeable. We learned so much history in a very relaxing way.",
+    source: "GetYourGuide"
+  },
+  {
+    id: 11,
+    author: "Carlos M.",
+    location: "Mexico",
+    text: "Increíble paseo privado. Los coches llaman la atención de todos y Cristian es el mejor guía de la ciudad. Muy recomendado para familias.",
+    source: "Google Maps"
+  },
+  {
+    id: 12,
+    author: "Hiroshi Y.",
+    location: "Japan",
+    text: "素晴らしく快適なツアーでした。電気自動車の乗り心地が良く、AI翻訳のおかげで説明も完璧に理解できました。クリスティアンさんに感謝！",
+    source: "GetYourGuide"
   }
 ];
