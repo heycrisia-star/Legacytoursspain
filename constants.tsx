@@ -60,7 +60,10 @@ export const TOURS: Tour[] = [
       'Parc de la Ciutadella',
       'Port Olímpic',
       'Jardins de Miramar',
-      'Montjuïc'
+      'Estadi Olímpic Lluís Companys',
+      "Museu Nacional d'Art de Catalunya",
+      "Plaça d'Espanya",
+      'Font Màgica de Montjuïc'
     ],
     coordinates: [
       [41.387015, 2.170047], // Plaça de Catalunya
@@ -74,7 +77,10 @@ export const TOURS: Tour[] = [
       [41.388371, 2.187219], // Parc de la Ciutadella
       [41.386121, 2.200119], // Port Olímpic
       [41.371089, 2.172081], // Jardins de Miramar
-      [41.363542, 2.150163]  // Montjuïc
+      [41.364731, 2.155609], // Estadi Olímpic Lluís Companys
+      [41.368631, 2.153787], // Museu Nacional d'Art de Catalunya
+      [41.374149, 2.148821], // Plaça d'Espanya
+      [41.371221, 2.151740]  // Font Màgica de Montjuïc
     ],
     bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688412/?full-items=yes&flow=1528104"
   },

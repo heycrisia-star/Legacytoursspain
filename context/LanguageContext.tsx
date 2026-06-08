@@ -67,7 +67,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
                          s.includes('巴塞罗内塔') || s.includes('バルセロネータ'));
             });
 
-            // 3. Filter out Port Vell / Puerto Viejo (for 2h)
+            // 3. Filter out Port Vell / Puerto Viejo (for 2h) and inject new stops
             if (key === 'tours.tour2.route') {
                 filteredRoute = filteredRoute.filter(stop => {
                     const s = stop.toLowerCase();
@@ -75,6 +75,28 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
                              s.includes('hafen') || s.includes('vecchio') || s.includes('velho') || 
                              s.includes('старый порт') || s.includes('旧港') || s.includes('ベル港'));
                 });
+
+                // Get the translated route of tour3 to extract the new stops
+                const tour3Route = translations[language]?.tours?.tour3?.route;
+                if (Array.isArray(tour3Route) && tour3Route.length >= 19) {
+                    const stadium = tour3Route[15];
+                    const museum = tour3Route[16];
+                    const plaza = tour3Route[17];
+                    const fountain = tour3Route[18];
+
+                    // Find Jardines de Miramar index in filteredRoute
+                    const miramarIndex = filteredRoute.findIndex(stop => {
+                        const s = stop.toLowerCase();
+                        return s.includes('miramar');
+                    });
+
+                    if (miramarIndex !== -1) {
+                        // Remove "Montjuïc" at the end if it exists, since we are adding specific Montjuïc stops
+                        filteredRoute = filteredRoute.filter(stop => !stop.toLowerCase().includes('montjuïc') && !stop.toLowerCase().includes('montjuic'));
+                        // Insert the 4 new stops after Jardines de Miramar
+                        filteredRoute.splice(miramarIndex + 1, 0, stadium, museum, plaza, fountain);
+                    }
+                }
             }
 
             // 4. Insert Casa de les Punxes after Casa Milà
