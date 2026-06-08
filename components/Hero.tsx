@@ -10,9 +10,7 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
-  const { t } = useLanguage();
-  const { scrollY } = useScroll();
-  const buttonY = useTransform(scrollY, [0, 500], [0, 60]);
+  const { t, language } = useLanguage();
 
   return (
     <section className="relative flex flex-col items-center justify-center pt-32 pb-12 px-6 text-center overflow-hidden min-h-[85vh]">
@@ -91,17 +89,25 @@ const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           ))}
         </div>
 
-        <motion.button
-          onClick={onOpenBooking}
-          style={{ y: buttonY }}
-          className="group relative inline-flex items-center gap-4 bg-premium-gold hover:bg-yellow-600 text-white px-12 py-6 rounded-full text-base font-display font-bold tracking-widest uppercase transition-all duration-500 hover:shadow-[0_20px_40px_rgba(212,175,55,0.3)] overflow-hidden shadow-2xl"
-        >
-          <span className="relative z-10 flex items-center gap-3">
-            {t('hero.book')}
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </span>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-        </motion.button>
+        <div className="relative group mt-4">
+          {/* Pulsing glow ring behind the button */}
+          <div className="absolute inset-0 bg-premium-gold rounded-full blur-xl opacity-50 group-hover:opacity-80 transition-opacity animate-pulse"></div>
+          
+          <button
+            onClick={onOpenBooking}
+            className="relative inline-flex items-center gap-4 bg-gradient-to-r from-[#D4AF37] via-[#F1C40F] to-[#D4AF37] hover:from-[#B89324] hover:to-[#D4AF37] text-white px-12 py-6 rounded-full text-base font-display font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] shadow-2xl border border-premium-gold/30"
+          >
+            {/* Direct discount promo badge */}
+            <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-red-600 to-amber-500 text-white px-4 py-1 rounded-full text-[9px] font-display font-black tracking-widest uppercase shadow-md animate-bounce whitespace-nowrap">
+              {language === 'es' ? '🔥 ¡Descuento Especial Directo!' : '🔥 Special Direct Discount!'}
+            </span>
+
+            <span className="flex items-center gap-3">
+              {t('hero.book')}
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </button>
+        </div>
       </div>
     </section>
   );

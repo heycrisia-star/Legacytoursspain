@@ -143,7 +143,7 @@ function App() {
         contactRef={contactRef}
       />
 
-      <FloatingControls onOpenBooking={() => setIsBookingModalOpen(true)} />
+      <FloatingControls />
 
       {isGuideOpen && (
         <LegacyChronicle onClose={() => setIsGuideOpen(false)} />
