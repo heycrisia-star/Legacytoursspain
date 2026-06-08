@@ -1,98 +1,112 @@
 import React from 'react';
-import { X, MessageCircle, CreditCard, ShieldCheck, Gift } from 'lucide-react';
-import { BOOKING_URL } from '../constants';
+import { X, MessageCircle, CreditCard, ShieldCheck, Gift, Map, Star, History as HistoryIcon } from 'lucide-react';
+import { BOOKING_URL, GOOGLE_REVIEWS_URL, MADRID_BOOKING_URL } from '../constants';
 import { useLanguage } from '../context/LanguageContext';
 
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenGuide: () => void;
 }
 
-const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
+const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onOpenGuide }) => {
   const { language } = useLanguage();
 
   if (!isOpen) return null;
 
-  // Multi-language text for the modal
+  // Professional English WhatsApp text template used for all languages as requested
+  const WHATSAPP_TEXT = "Dear%20Legacy%20Tours%20Spain%2C%20I%20would%20like%20to%20request%20a%20booking%20for%20our%20private%20vintage%20tour%3A%0A-%20Tour%20Duration%3A%20%5B1h%20%2F%202h%20%2F%203h%5D%0A-%20Preferred%20Date%20%26%20Time%3A%20%5BDate%20%26%20Time%5D%0A-%20Number%20of%20Guests%3A%20%5BNumber%20of%20guests%5D%0A-%20Children%3A%20%5BNumber%20of%20children%20%26%20height%20over%201.05m%5D%0AI%20noticed%20your%20special%20promotion%20for%20bookings%20via%20WhatsApp%20and%20would%20like%20to%20confirm%20availability.%20Thank%20you%21";
+  const WHATSAPP_PROMO_URL = `https://wa.me/34635096002?text=${WHATSAPP_TEXT}`;
+
+  // Multi-language text for the modal UI
   const content = {
     es: {
       title: "Elige tu método de reserva",
       promoBadge: "DESCUENTO DIRECTO",
       promoTitle: "Reserva por WhatsApp",
-      promoDesc: "¡Haz tu reserva por WhatsApp y obtén un descuento especial pagando en efectivo el día del tour!",
+      promoDesc: "¡Escribe y benefíciate de un descuento especial!",
       promoBtn: "Reserva mediante WhatsApp — Promoción especial",
       onlineTitle: "Reserva Online Directa",
       onlineDesc: "Paga online al instante mediante nuestra pasarela automatizada FareHarbor.",
       onlineBtn: "Reservar Online Directamente",
       guarantee: "Tours 100% privados, seguros y con regreso garantizado",
-      whatsappText: "Hola%20buenas%20tardes%2C%20somos%20xx%20personas%2C%20de%20los%20cuales%20xx%20ni%C3%B1os%20o%20sin%20ni%C3%B1os%2C%20miden%20mas%20de%201%2C05%20metros%2C%20pense%20el%20dia%20xxx%20a%20la%20hora%20xxx%2C%20el%20tour%20de%20xxh%2C%20vi%20que%20si%20lo%20hago%20mediante%20wasa%20hay%20alguna%20oferta%20especial%2C%20podrias%20comentarme..."
+      guide: "Guía Digital",
+      rate: "Valorar Tour",
+      madrid: "¿Visitas Madrid?"
     },
     en: {
       title: "Choose Booking Method",
       promoBadge: "SPECIAL DISCOUNT",
       promoTitle: "Book via WhatsApp",
-      promoDesc: "Book directly via WhatsApp and receive an exclusive cash discount on the day of your tour!",
+      promoDesc: "Message us and benefit from a special discount!",
       promoBtn: "Book via WhatsApp — Special Promotion",
       onlineTitle: "Book Online Directly",
       onlineDesc: "Book instantly online using our automated FareHarbor system. All cards accepted.",
       onlineBtn: "Book Online Now",
       guarantee: "100% Private, Safe and Guaranteed Tours",
-      whatsappText: "Hi%21%20We%20are%20xx%20people%2C%20including%20xx%20children%20%28are%20they%20over%201.05%20meters%20tall%3F%3A%20yes%2Fno%29.%20We%20are%20planning%20to%20do%20the%20xxh%20tour%20on%20xxx%20%28date%29%20at%20xxx%20%28time%29.%20I%20saw%20that%20if%20I%20book%20via%20WhatsApp%20there%20is%20a%20special%20offer%2C%20could%20you%20tell%20me%20more%20about%20it%3F"
+      guide: "Digital Guide",
+      rate: "Rate Tour",
+      madrid: "Visiting Madrid?"
     },
     ca: {
       title: "Tria el teu mètode de reserva",
       promoBadge: "DESCOMPTE DIRECTE",
       promoTitle: "Reserva per WhatsApp",
-      promoDesc: "Fes la teva reserva per WhatsApp i obtén un descompte especial pagant en efectiu el dia del tour!",
+      promoDesc: "Escriu i beneficia't d'un descompte especial!",
       promoBtn: "Reserva per WhatsApp — Promoció especial",
       onlineTitle: "Reserva Online Directa",
       onlineDesc: "Paga online a l'instant mitjançant la nostra passarel·la automatitzada FareHarbor.",
       onlineBtn: "Reservar Online Directament",
       guarantee: "Tours 100% privats, segurs i retorn garantit",
-      whatsappText: "Hola%20bona%20tarda%2C%20som%20xx%20persones%2C%20de%20les%20quals%20xx%20nens%20o%20sense%20nens%2C%20mesuren%20m%C3%A9s%20de%201%2C05%20metres%2C%20vam%20pensar%20el%20dia%20xxx%20a%20l%27hora%20xxx%2C%20el%20tour%20de%20xxh%2C%20he%20vist%20que%20si%20ho%20faig%20per%20wasa%20hi%20ha%20una%20oferta%20especial%2C%20em%20podries%20comentar..."
+      guide: "Guia Digital",
+      rate: "Valorar Tour",
+      madrid: "Visites Madrid?"
     },
     fr: {
       title: "Choisissez votre mode de réservation",
       promoBadge: "RÉDUCTION DIRECTE",
       promoTitle: "Réserver via WhatsApp",
-      promoDesc: "Réservez directement via WhatsApp et bénéficiez d'une réduction spéciale en payant en espèces le jour du tour !",
+      promoDesc: "Écrivez-nous et bénéficiez d'une réduction spéciale !",
       promoBtn: "Réserver via WhatsApp — Promotion Spéciale",
       onlineTitle: "Réserver en Ligne Directement",
       onlineDesc: "Réservez instantanément en ligne via notre passerelle FareHarbor automatisée.",
       onlineBtn: "Réserver en Ligne Maintenant",
       guarantee: "Tours 100% privés, sécurisés et retour garanti",
-      whatsappText: "Bonjour%21%20Nous%20sommes%20xx%20personnes%2C%20dont%20xx%20enfants%20%28mesurent-ils%20plus%20de%201%2C05%20m%C3%A8tre%3F%20oui%2Fnon%29.%20Nous%20envisageons%20de%20faire%20le%20tour%20de%20xxh%20le%20xxx%20%28date%29%20%C3%A0%20xxx%20%28heure%29.%20J%27ai%20vu%20que%20si%20je%20r%C3%A9serve%20via%20WhatsApp%2C%20il%20y%20a%20une%20offre%20sp%C3%A9ciale%2C%20pourriez-vous%20m%27en%20dire%20plus%20%3F"
+      guide: "Guide Digital",
+      rate: "Évaluer Tour",
+      madrid: "Visite Madrid?"
     },
     de: {
       title: "Buchungsmethode wählen",
       promoBadge: "RABATT PROMO",
       promoTitle: "Über WhatsApp buchen",
-      promoDesc: "Buchen Sie direkt über WhatsApp und erhalten Sie am Tag der Tour einen Sonderrabatt bei Barzahlung!",
+      promoDesc: "Schreiben Sie uns und profitieren Sie von einem Sonderrabatt!",
       promoBtn: "Über WhatsApp buchen — Sonderaktion",
       onlineTitle: "Direkt Online buchen",
-      onlineDesc: "Buchen Sie sofort online über unser automatisiertes FareHarbor-System.",
+      onlineDesc: "Buchen Sie sofort online über unser automatisierte FareHarbor-System.",
       onlineBtn: "Jetzt Online buchen",
       guarantee: "100 % private, sichere und garantierte Touren",
-      whatsappText: "Hallo%21%20Wir%20sind%20xx%20Personen%2C%20davon%20xx%20Kinder%20%28sind%20sie%20%C3%BCber%201%2C05%20Meter%20gro%C3%9F%3F%20ja%2Fnein%29.%20Wir%20planen%20die%20xxh-Tour%20am%20xxx%20%28Datum%29%20um%20xxx%20%28Uhrzeit%29.%20Ich%20habe%20gesehen%2C%20dass%20es%20bei%20Buchung%20%C3%BCber%20WhatsApp%20ein%20Sonderangebot%20gibt.%20K%C3%B6nnten%20Sie%20mir%20mehr%20dar%C3%BCber%20erz%C3%A4hlen%3F"
+      guide: "Digital Guide",
+      rate: "Tour bewerten",
+      madrid: "Madrid besuchen?"
     },
     it: {
       title: "Scegli il metodo di prenotazione",
       promoBadge: "SCONTO DIRETTO",
       promoTitle: "Prenota via WhatsApp",
-      promoDesc: "Effettua la tua prenotazione tramite WhatsApp e ottieni uno sconto speciale pagando in contanti il giorno del tour!",
+      promoDesc: "Scrivici e approfitta di uno sconto speciale!",
       promoBtn: "Prenota tramite WhatsApp — Promozione speciale",
       onlineTitle: "Prenotazione Online Diretta",
       onlineDesc: "Paga online all'istante tramite il nostro sistema automatizzato FareHarbor.",
       onlineBtn: "Prenota Online Ora",
       guarantee: "Tour privati al 100%, sicuri e garantiti",
-      whatsappText: "Ciao%21%20Siamo%20xx%20persone%2C%20di%20cui%20xx%20bambini%20%28sono%20alti%20pi%C3%B9%20di%201%2C05%20metri%3F%20s%C3%AC%2Fno%29.%20Pensiamo%20di%20fare%20il%20tour%20di%20xxh%20il%20giorno%20xxx%20alle%20ore%20xxx.%20Ho%20visto%20che%20se%20prenoto%20tramite%20WhatsApp%20c%27%C3%A8%20un%27offerta%20speciale%2C%20potresti%20dirmi%20di%20pi%C3%B9%3F"
+      guide: "Guida Digitale",
+      rate: "Valuta Tour",
+      madrid: "Visiti Madrid?"
     }
   };
 
   const t = content[language as keyof typeof content] || content.en;
-
-  // WhatsApp Barcelona direct booking link with localized template text
-  const WHATSAPP_PROMO_URL = `https://wa.me/34635096002?text=${t.whatsappText}`;
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6">
@@ -178,6 +192,45 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
             >
               <CreditCard className="w-5 h-5" />
               {t.onlineBtn}
+            </a>
+          </div>
+
+          {/* More Services Section */}
+          <div className="pt-4 border-t border-neutral-200 grid grid-cols-3 gap-2 text-center">
+            {/* 1. Digital Guide */}
+            <button
+              onClick={() => {
+                onClose();
+                onOpenGuide();
+              }}
+              className="flex flex-col items-center justify-center p-2 rounded-xl bg-[#E0F2F1] text-[#2D3748] hover:bg-[#B2DFDB] transition-all border border-[#4DB6AC]/10 group"
+            >
+              <Map className="w-5 h-5 text-[#4DB6AC] mb-1 group-hover:scale-110 transition-transform" />
+              <span className="font-display font-bold text-[9px] tracking-wider uppercase leading-none">{t.guide}</span>
+            </button>
+
+            {/* 2. Rate Experience */}
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={onClose}
+              className="flex flex-col items-center justify-center p-2 rounded-xl bg-white text-premium-text hover:bg-neutral-50 transition-all border border-neutral-200 group"
+            >
+              <Star className="w-5 h-5 text-premium-gold fill-premium-gold mb-1 group-hover:scale-110 transition-transform" />
+              <span className="font-display font-bold text-[9px] tracking-wider uppercase leading-none">{t.rate}</span>
+            </a>
+
+            {/* 3. Visiting Madrid */}
+            <a
+              href={MADRID_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={onClose}
+              className="flex flex-col items-center justify-center p-2 rounded-xl bg-[#1e3a8a] text-white hover:bg-[#172554] transition-all border border-transparent group"
+            >
+              <HistoryIcon className="w-5 h-5 text-white mb-1 group-hover:scale-110 transition-transform" />
+              <span className="font-display font-bold text-[9px] tracking-wider uppercase leading-none">{t.madrid}</span>
             </a>
           </div>
 

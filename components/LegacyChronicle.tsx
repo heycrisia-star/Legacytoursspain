@@ -124,14 +124,7 @@ const LegacyChronicle: React.FC<LegacyChronicleProps> = ({ onClose }) => {
                                 <article className="chapter">
                                     <div className="chapter-header">
                                         <div className="chapter-icon" />
-                                        <h4>{
-                                            lang === 'es' ? 'EL LEGADO' :
-                                                lang === 'ca' ? 'EL LLEGAT' :
-                                                    lang === 'pt' ? 'O LEGADO' :
-                                                        lang === 'fr' ? 'LE HÉRITAGE' :
-                                                            lang === 'it' ? 'IL LEGATO' :
-                                                                'THE LEGACY'
-                                        }</h4>
+                                        <h4>{t('chronicle.legacy')}</h4>
                                     </div>
                                     <p className="chapter-text">{content.legacy}</p>
                                 </article>
@@ -139,14 +132,7 @@ const LegacyChronicle: React.FC<LegacyChronicleProps> = ({ onClose }) => {
                                 <article className="chapter">
                                     <div className="chapter-header">
                                         <div className="chapter-icon" />
-                                        <h4>{
-                                            lang === 'es' ? 'EL SECRETO' :
-                                                lang === 'ca' ? 'EL SECRET' :
-                                                    lang === 'pt' ? 'O SEGREDO' :
-                                                        lang === 'fr' ? 'LE SECRET' :
-                                                            lang === 'it' ? 'IL SEGRETO' :
-                                                                'THE SECRET'
-                                        }</h4>
+                                        <h4>{t('chronicle.secret')}</h4>
                                     </div>
                                     <p className="chapter-text">{content.secret}</p>
                                 </article>
@@ -154,14 +140,7 @@ const LegacyChronicle: React.FC<LegacyChronicleProps> = ({ onClose }) => {
                                 <article className="chapter">
                                     <div className="chapter-header">
                                         <div className="chapter-icon" />
-                                        <h4>{
-                                            lang === 'es' ? 'OBSERVACIÓN' :
-                                                lang === 'ca' ? 'OBSERVACIÓ' :
-                                                    lang === 'pt' ? 'OBSERVAÇÃO' :
-                                                        lang === 'fr' ? 'OBSERVATION' :
-                                                            lang === 'it' ? 'OSSERVAZIONE' :
-                                                                'OBSERVATION'
-                                        }</h4>
+                                        <h4>{t('chronicle.observation')}</h4>
                                     </div>
                                     <p className="chapter-text italic">{content.voice}</p>
                                 </article>

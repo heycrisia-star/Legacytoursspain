@@ -28,7 +28,7 @@ export const translations: Record<string, any> = {
         chronicle: {
             title: "The Legacy Chronicle",
             chapter: "Capítulo",
-            legacy: "EL LEGADO",
+            legacy: "LEGACY",
             secret: "EL SECRETO",
             observation: "OBSERVACIÓN",
             stopAudio: "Detener Audio",
@@ -87,7 +87,7 @@ export const translations: Record<string, any> = {
         },
         gallery: {
             title: "Nuestro Mundo",
-            subtitle: "Momentos de Legado"
+            subtitle: "Moments of Legacy"
         },
         experience: {
             vintageTitle: "Confort Vintage",
@@ -151,7 +151,7 @@ export const translations: Record<string, any> = {
             ]
         },
         footer: {
-            follow: "SIGUE EL LEGADO",
+            follow: "SIGUE LEGACY",
             contact: "CONTACTO",
             legal: "LEGAL",
             privacy: "Política de Privacidad",
@@ -483,7 +483,7 @@ export const translations: Record<string, any> = {
         chronicle: {
             title: "The Legacy Chronicle",
             chapter: "Chapitre",
-            legacy: "LE PATRIMOINE",
+            legacy: "LEGACY",
             secret: "LE SECRET",
             observation: "OBSERVATION",
             stopAudio: "Arrêter l'audio",
@@ -515,7 +515,7 @@ export const translations: Record<string, any> = {
         },
         gallery: {
             title: "Notre Monde",
-            subtitle: "Moments d'Héritage"
+            subtitle: "Moments of Legacy"
         },
         experience: {
             vintageTitle: "Confort Vintage",
@@ -683,7 +683,7 @@ export const translations: Record<string, any> = {
         chronicle: {
             title: "The Legacy Chronicle",
             chapter: "Kapitel",
-            legacy: "DAS ERBE",
+            legacy: "LEGACY",
             secret: "DAS GEHEIMNIS",
             observation: "BEOBACHTUNG",
             stopAudio: "Audio stoppen",
@@ -715,7 +715,7 @@ export const translations: Record<string, any> = {
         },
         gallery: {
             title: "Unsere Welt",
-            subtitle: "Momente des Erbes"
+            subtitle: "Moments of Legacy"
         },
         experience: {
             vintageTitle: "Vintage-Komfort",
@@ -883,7 +883,7 @@ export const translations: Record<string, any> = {
         chronicle: {
             title: "The Legacy Chronicle",
             chapter: "Capitolo",
-            legacy: "L'EREDITÀ",
+            legacy: "LEGACY",
             secret: "IL SEGRETO",
             observation: "OSSERVAZIONE",
             stopAudio: "Ferma Audio",
@@ -915,7 +915,7 @@ export const translations: Record<string, any> = {
         },
         gallery: {
             title: "Il Nostro Mondo",
-            subtitle: "Momenti di Eredità"
+            subtitle: "Moments of Legacy"
         },
         experience: {
             vintageTitle: "Comfort Vintage",
@@ -1083,7 +1083,7 @@ export const translations: Record<string, any> = {
         chronicle: {
             title: "The Legacy Chronicle",
             chapter: "Capítulo",
-            legacy: "O LEGADO",
+            legacy: "LEGACY",
             secret: "O SEGREDO",
             observation: "OBSERVAÇÃO",
             stopAudio: "Parar Áudio",
@@ -1115,7 +1115,7 @@ export const translations: Record<string, any> = {
         },
         gallery: {
             title: "Nosso Mundo",
-            subtitle: "Momentos de Legado"
+            subtitle: "Moments of Legacy"
         },
         experience: {
             vintageTitle: "Conforto Vintage",
@@ -1283,7 +1283,7 @@ export const translations: Record<string, any> = {
         chronicle: {
             title: "The Legacy Chronicle",
             chapter: "Глава",
-            legacy: "НАСЛЕДИЕ",
+            legacy: "LEGACY",
             secret: "СЕКРЕТ",
             observation: "НАБЛЮДЕНИЕ",
             stopAudio: "Стоп",
@@ -1315,7 +1315,7 @@ export const translations: Record<string, any> = {
         },
         gallery: {
             title: "Наш Мир",
-            subtitle: "Моменты Наследия"
+            subtitle: "Moments of Legacy"
         },
         experience: {
             vintageTitle: "Винтажный комфорт",
@@ -1483,7 +1483,7 @@ export const translations: Record<string, any> = {
         chronicle: {
             title: "The Legacy Chronicle",
             chapter: "章节",
-            legacy: "传承",
+            legacy: "LEGACY",
             secret: "秘密",
             observation: "观察",
             stopAudio: "停止音频",
@@ -1515,7 +1515,7 @@ export const translations: Record<string, any> = {
         },
         gallery: {
             title: "我们的世界",
-            subtitle: "传承时刻"
+            subtitle: "Moments of Legacy"
         },
         experience: {
             vintageTitle: "复古舒适",
@@ -1683,7 +1683,7 @@ export const translations: Record<string, any> = {
         chronicle: {
             title: "The Legacy Chronicle",
             chapter: "チャプター",
-            legacy: "レガシー",
+            legacy: "LEGACY",
             secret: "秘密",
             observation: "観察",
             stopAudio: "オーディオを停止",
@@ -1715,7 +1715,7 @@ export const translations: Record<string, any> = {
         },
         gallery: {
             title: "私たちの世界",
-            subtitle: "遺産の瞬間"
+            subtitle: "Moments of Legacy"
         },
         experience: {
             vintageTitle: "ヴィンテージ・コンフォート",
@@ -1883,7 +1883,7 @@ export const translations: Record<string, any> = {
         chronicle: {
             title: "The Legacy Chronicle",
             chapter: "Capítol",
-            legacy: "EL LLEGAT",
+            legacy: "LEGACY",
             secret: "EL SECRET",
             observation: "OBSERVACIÓ",
             stopAudio: "Aturar Àudio",
@@ -1915,7 +1915,7 @@ export const translations: Record<string, any> = {
         },
         gallery: {
             title: "El Nostre Món",
-            subtitle: "Moments de Llegat"
+            subtitle: "Moments of Legacy"
         },
         experience: {
             vintageTitle: "Confort Vintage",
