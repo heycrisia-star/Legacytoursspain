@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import 'leaflet/dist/leaflet.css';
 import Hero from './components/Hero';
 import Gallery from './components/Gallery';
 import BrandStory from './components/BrandStory';

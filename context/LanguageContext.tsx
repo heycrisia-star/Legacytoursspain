@@ -48,6 +48,60 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
             }
         }
 
+        // Post-process routes for tour1 (1h) and tour2 (2h)
+        if (Array.isArray(result) && (key === 'tours.tour1.route' || key === 'tours.tour2.route')) {
+            let filteredRoute = [...result];
+
+            // 1. Filter out Barrio Gótico (for both 1h and 2h)
+            filteredRoute = filteredRoute.filter(stop => {
+                const s = stop.toLowerCase();
+                return !(s.includes('gótico') || s.includes('gotico') || s.includes('gothic') || 
+                         s.includes('gothique') || s.includes('gotische') || s.includes('готич') || 
+                         s.includes('哥特') || s.includes('ゴシック') || s.includes('gòtic'));
+            });
+
+            // 2. Filter out Barceloneta Beach (for both 1h and 2h)
+            filteredRoute = filteredRoute.filter(stop => {
+                const s = stop.toLowerCase();
+                return !(s.includes('barceloneta') || s.includes('барселонета') || 
+                         s.includes('巴塞罗内塔') || s.includes('バルセロネータ'));
+            });
+
+            // 3. Filter out Port Vell / Puerto Viejo (for 2h)
+            if (key === 'tours.tour2.route') {
+                filteredRoute = filteredRoute.filter(stop => {
+                    const s = stop.toLowerCase();
+                    return !(s.includes('vell') || s.includes('viejo') || s.includes('vieux') || 
+                             s.includes('hafen') || s.includes('vecchio') || s.includes('velho') || 
+                             s.includes('старый порт') || s.includes('旧港') || s.includes('ベル港'));
+                });
+            }
+
+            // 4. Insert Casa de les Punxes after Casa Milà
+            // Find Casa Milà index
+            const milaIndex = filteredRoute.findIndex(stop => {
+                const s = stop.toLowerCase();
+                return s.includes('milà') || s.includes('mila') || s.includes('米拉') || s.includes('ミラ');
+            });
+
+            if (milaIndex !== -1) {
+                // Determine localized name for Casa de les Punxes
+                let punxesName = 'Casa de les Punxes';
+                if (language === 'es') punxesName = 'Casa de las Punxes';
+                else if (language === 'ru') punxesName = 'Casa de les Punxes (Дом с шипами)';
+                else if (language === 'zh') punxesName = 'Casa de les Punxes (特拉斯皮克斯之家)';
+                else if (language === 'ja') punxesName = 'Casa de les Punxes (カサ・デ・ラス・プンシャス)';
+
+                // Check if it's already there (to avoid duplicates)
+                const alreadyHasPunxes = filteredRoute.some(stop => stop.toLowerCase().includes('punxes'));
+                if (!alreadyHasPunxes) {
+                    filteredRoute.splice(milaIndex + 1, 0, punxesName);
+                }
+            }
+
+            return filteredRoute;
+        }
+
         return (typeof result === 'string' || Array.isArray(result)) ? result : key;
     };
 
