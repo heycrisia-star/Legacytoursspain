@@ -13,7 +13,7 @@ export const translations: Record<string, any> = {
             hours: "Horas"
         },
         hero: {
-            title: "DESCUBRE BARCELONA",
+            title: "Tuk Tuk Barcelona",
             subtitle: "Tours privados con traducción por IA en tiempo real en una experiencia vintage 100% eléctrica.",
             tagline: "Estilo Vintage. Comunicación Global.",
             book: "RESERVAR AHORA",
@@ -241,7 +241,7 @@ export const translations: Record<string, any> = {
             hours: "Hours"
         },
         hero: {
-            title: "DISCOVER BARCELONA",
+            title: "Tuk Tuk Tours Barcelona",
             subtitle: "Private tours with real-time AI translation in a 100% electric vintage experience.",
             tagline: "Vintage Style. Global Communication.",
             book: "BOOK NOW",
