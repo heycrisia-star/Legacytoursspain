@@ -14,9 +14,8 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onOpenGuid
 
   if (!isOpen) return null;
 
-  // Professional English WhatsApp text template used for all languages as requested
-  const WHATSAPP_TEXT = "Dear%20Legacy%20Tours%20Spain%2C%20I%20would%20like%20to%20request%20a%20booking%20for%20our%20private%20vintage%20tour%3A%0A-%20Tour%20Duration%3A%20%5B1h%20%2F%202h%20%2F%203h%5D%0A-%20Preferred%20Date%20%26%20Time%3A%20%5BDate%20%26%20Time%5D%0A-%20Number%20of%20Guests%3A%20%5BNumber%20of%20guests%5D%0A-%20Children%3A%20%5BNumber%20of%20children%20%26%20height%20over%201.05m%5D%0AI%20noticed%20your%20special%20promotion%20for%20bookings%20via%20WhatsApp%20and%20would%20like%20to%20confirm%20availability.%20Thank%20you%21";
-  const WHATSAPP_PROMO_URL = `https://wa.me/34635096002?text=${WHATSAPP_TEXT}`;
+  // Direct WhatsApp link without pre-filled text template for maximum simplicity
+  const WHATSAPP_PROMO_URL = "https://wa.me/34635096002";
 
   // Multi-language text for the modal UI
   const content = {
