@@ -17,34 +17,6 @@ export const SOCIAL_LINKS = [
 
 export const TOURS: Tour[] = [
   {
-    id: 'essential',
-    name: 'Essential Barcelona',
-    duration: '1h',
-    route: [
-      'Plaça de Catalunya',
-      'Les Ramblas',
-      'Passeig de Gràcia',
-      'Casa Batlló',
-      'Casa Milà',
-      'Casa de les Punxes',
-      'Sagrada Familia',
-      'Arc de Triomf',
-      'Parc de la Ciutadella'
-    ],
-    coordinates: [
-      [41.387015, 2.170047], // Plaça de Catalunya
-      [41.380313, 2.173822], // Les Ramblas
-      [41.392182, 2.164941], // Passeig de Gràcia
-      [41.391638, 2.164778], // Casa Batlló
-      [41.395383, 2.161947], // Casa Milà
-      [41.3986, 2.1642],     // Casa de les Punxes
-      [41.403629, 2.174356], // Sagrada Familia
-      [41.391054, 2.180635], // Arc de Triomf
-      [41.388371, 2.187219]  // Parc de la Ciutadella
-    ],
-    bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688410/?full-items=yes&flow=1528104"
-  },
-  {
     id: 'city-sea',
     name: 'Park City & Beach Barcelona',
     duration: '2h',
@@ -131,6 +103,34 @@ export const TOURS: Tour[] = [
       [41.371221, 2.151740]  // Font Màgica de Montjuïc
     ],
     bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688414/?full-items=yes&flow=1528104"
+  },
+  {
+    id: 'essential',
+    name: 'Essential Barcelona',
+    duration: '1h',
+    route: [
+      'Plaça de Catalunya',
+      'Les Ramblas',
+      'Passeig de Gràcia',
+      'Casa Batlló',
+      'Casa Milà',
+      'Casa de les Punxes',
+      'Sagrada Familia',
+      'Arc de Triomf',
+      'Parc de la Ciutadella'
+    ],
+    coordinates: [
+      [41.387015, 2.170047], // Plaça de Catalunya
+      [41.380313, 2.173822], // Les Ramblas
+      [41.392182, 2.164941], // Passeig de Gràcia
+      [41.391638, 2.164778], // Casa Batlló
+      [41.395383, 2.161947], // Casa Milà
+      [41.3986, 2.1642],     // Casa de les Punxes
+      [41.403629, 2.174356], // Sagrada Familia
+      [41.391054, 2.180635], // Arc de Triomf
+      [41.388371, 2.187219]  // Parc de la Ciutadella
+    ],
+    bookingUrl: "https://fareharbor.com/embeds/book/legacytoursspain/items/688410/?full-items=yes&flow=1528104"
   }
 ];
 

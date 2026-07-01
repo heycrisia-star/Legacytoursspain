@@ -181,12 +181,14 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onOpenGuid
                 </p>
               </div>
             </div>
-            
             <a 
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={onClose}
+              onClick={() => {
+                // Delay closing the modal to let FareHarbor Lightframe animate smoothly first
+                setTimeout(onClose, 1000);
+              }}
               className="w-full py-4 bg-premium-text hover:bg-neutral-800 text-white font-display font-bold uppercase tracking-widest text-xs rounded-xl flex items-center justify-center gap-3 shadow-md transition-all hover:scale-[1.01]"
             >
               <CreditCard className="w-5 h-5" />
