@@ -32,6 +32,16 @@ function App() {
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
+
+  // Track GA4 pageviews on client-side route navigation
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('config', 'G-RS5S51C7J5', {
+        page_path: currentPath,
+        page_location: window.location.href,
+      });
+    }
+  }, [currentPath]);
   const contactRef = useRef<HTMLDivElement>(null);
 
   const navItems = [
