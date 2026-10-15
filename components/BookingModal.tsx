@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, MessageCircle, CreditCard, ShieldCheck, Gift, Map, Star, History as HistoryIcon } from 'lucide-react';
+import { X, MessageCircle, CreditCard, ShieldCheck, Gift, Map, Star, History as HistoryIcon, BookOpen } from 'lucide-react';
 import { BOOKING_URL, GOOGLE_REVIEWS_URL, MADRID_BOOKING_URL } from '../constants';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -198,17 +198,20 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onOpenGuid
 
           {/* More Services Section */}
           <div className="pt-4 border-t border-neutral-200 grid grid-cols-3 gap-2 text-center">
-            {/* 1. Digital Guide */}
-            <button
-              onClick={() => {
+            {/* 1. Blog */}
+            <a
+              href="/blog"
+              onClick={(e) => {
+                e.preventDefault();
                 onClose();
-                onOpenGuide();
+                window.history.pushState({}, '', '/blog');
+                window.dispatchEvent(new PopStateEvent('popstate'));
               }}
-              className="flex flex-col items-center justify-center p-2 rounded-xl bg-[#E0F2F1] text-[#2D3748] hover:bg-[#B2DFDB] transition-all border border-[#4DB6AC]/10 group"
+              className="flex flex-col items-center justify-center p-2 rounded-xl bg-amber-50 text-neutral-800 hover:bg-amber-100 transition-all border border-amber-200 group"
             >
-              <Map className="w-5 h-5 text-[#4DB6AC] mb-1 group-hover:scale-110 transition-transform" />
-              <span className="font-display font-bold text-[9px] tracking-wider uppercase leading-none">{t.guide}</span>
-            </button>
+              <BookOpen className="w-5 h-5 text-premium-gold mb-1 group-hover:scale-110 transition-transform" />
+              <span className="font-display font-bold text-[9px] tracking-wider uppercase leading-none">Blog</span>
+            </a>
 
             {/* 2. Rate Experience */}
             <a

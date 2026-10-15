@@ -65,10 +65,10 @@ const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           </span>
         </div>
 
-        <h1 className="text-5xl md:text-8xl font-display font-bold tracking-tight text-premium-text leading-[0.85] uppercase drop-shadow-lg">
-          {t('hero.title').split(' ')[0]}<br />
+        <h1 className="text-5xl sm:text-6xl md:text-8xl font-display font-bold tracking-tight text-premium-text leading-[0.9] uppercase drop-shadow-lg">
+          BARCELONA<br />
           <span className="text-premium-gold drop-shadow-2xl bg-gradient-to-r from-[#D4AF37] via-[#F1C40F] to-[#D4AF37] bg-clip-text text-transparent">
-            {t('hero.title').split(' ').slice(1).join(' ')}
+            {language === 'es' ? 'TOURS VINTAGE' : 'VINTAGE TOURS'}
           </span>
         </h1>
 

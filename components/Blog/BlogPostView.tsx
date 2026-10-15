@@ -141,8 +141,8 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({
         <div className="mt-16 bg-white rounded-3xl p-8 border border-neutral-100 shadow-xl flex flex-col md:flex-row items-center gap-8">
           <div className="w-full md:w-48 h-48 rounded-2xl overflow-hidden flex-shrink-0">
             <img
-              src="/images/photo_couple_montjuic.jpeg"
-              alt="Legacy Tours Spain Vintage Car"
+              src="/images/photo_group_large.jpeg"
+              alt="Legacy Tours Spain Vintage Electric Cars"
               className="w-full h-full object-cover"
             />
           </div>

@@ -7,11 +7,11 @@ const VehicleSection: React.FC = () => {
   const [activePhoto, setActivePhoto] = useState(0);
 
   const photos = [
-    { src: '/images/photo_group_large.jpeg', caption: 'Our two vintage electric cars — ready for Barcelona' },
-    { src: '/images/photo_car_pedrera.jpeg', caption: 'Elegant couple with the vintage car at Montjuïc' },
-    { src: '/images/photo_couple_montjuic.jpeg', caption: 'Couple experiencing the tour at Montjuïc viewpoint' },
-    { src: '/images/photo_group_two_cars.jpeg', caption: 'Group tour with both vehicles' },
-    { src: '/images/photo_cristian_selfie.jpeg', caption: 'Cristian with guests — personal and unforgettable' },
+    { src: '/images/photo_group_large.jpeg', caption: 'Dos coches vintage 100% eléctricos inspirados en los años 30' },
+    { src: '/images/photo_car_montjuic_skyline.jpg', caption: 'Vistas panorámicas sobre Barcelona en el mirador de Montjuïc' },
+    { src: '/images/photo_car_street.jpeg', caption: 'Diseño clásico, silencioso y elegante recorriendo las calles' },
+    { src: '/images/photo_two_cars_park.jpeg', caption: 'Flota privada con capacidad de hasta 8 pasajeros en 2 vehículos' },
+    { src: '/images/photo_car_detail.jpeg', caption: 'Detalles artesanales y acabado dorado clásico' },
   ];
 
   const specs = [

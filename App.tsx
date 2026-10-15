@@ -8,7 +8,6 @@ import Reviews from './components/Reviews';
 import Footer from './components/Footer';
 import FAQModal from './components/FAQModal';
 import FloatingControls from './components/FloatingControls';
-import LegacyChronicle from './components/LegacyChronicle';
 import InstantBookingForm from './components/InstantBookingForm';
 import { useLanguage } from './context/LanguageContext';
 import LanguageSelector from './components/LanguageSelector';
@@ -22,7 +21,6 @@ import { BLOG_POSTS } from './data/blogPosts';
 function App() {
   const { t, language } = useLanguage();
   const [isFAQOpen, setIsFAQOpen] = useState(false);
-  const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [showPinPrompt, setShowPinPrompt] = useState(false);
@@ -57,7 +55,7 @@ function App() {
   const navItems = [
     { key: 'tours', label: t('nav.tours') || 'Tours' },
     { key: 'reviews', label: t('nav.reviews') || 'Reviews' },
-    { key: 'blog', label: language === 'es' ? 'Blog & Guía' : 'Blog & Guide' },
+    { key: 'blog', label: 'Blog' },
     { key: 'faq', label: t('nav.faq') || 'FAQ' },
     { key: 'contact', label: t('nav.contact') || 'Contact' }
   ];
@@ -205,11 +203,6 @@ function App() {
       />
 
       <FloatingControls />
-
-      {isGuideOpen && (
-        <LegacyChronicle onClose={() => setIsGuideOpen(false)} />
-      )}
-
       {isBookingOpen && (
         <InstantBookingForm onClose={() => setIsBookingOpen(false)} />
       )}
@@ -222,7 +215,7 @@ function App() {
       <BookingModal
         isOpen={isBookingModalOpen}
         onClose={() => setIsBookingModalOpen(false)}
-        onOpenGuide={() => setIsGuideOpen(true)}
+        onOpenGuide={() => {}}
       />
 
       {/* PIN Prompt Modal */}
