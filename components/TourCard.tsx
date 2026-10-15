@@ -88,32 +88,8 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
           </p>
         )}
 
-        {/* Key selling specs row */}
-        <div className="flex flex-wrap items-center gap-2.5 text-xs text-neutral-600 font-sans mb-6 pt-2 border-t border-neutral-100">
-          <span className="inline-flex items-center gap-1.5 bg-stone-50 px-2.5 py-1.5 rounded-lg border border-stone-200/60 font-medium">
-            <Clock className="w-3.5 h-3.5 text-premium-gold" />
-            {tour.duration}
-          </span>
-          {tour.id !== 'essential' && (
-            <span className="inline-flex items-center gap-1.5 bg-stone-50 px-2.5 py-1.5 rounded-lg border border-stone-200/60 font-medium">
-              <Camera className="w-3.5 h-3.5 text-premium-gold" />
-              {isEs ? 'Paradas estratégicas para fotos' : 'Strategic photo stops'}
-            </span>
-          )}
-          {tour.id === 'essential' && (
-            <span className="inline-flex items-center gap-1.5 bg-stone-50 px-2.5 py-1.5 rounded-lg border border-stone-200/60 font-medium">
-              <Camera className="w-3.5 h-3.5 text-premium-gold" />
-              {isEs ? 'Paseo panorámico continuo' : 'Continuous panoramic ride'}
-            </span>
-          )}
-          <span className="inline-flex items-center gap-1.5 bg-stone-50 px-2.5 py-1.5 rounded-lg border border-stone-200/60 font-medium">
-            <Zap className="w-3.5 h-3.5 text-premium-gold" />
-            {isEs ? '100% Eléctrico' : '100% Electric'}
-          </span>
-        </div>
-
         {/* Spacer */}
-        <div className="flex-1" />
+        <div className="flex-1 min-h-[1.5rem]" />
 
         {/* Direct FareHarbor Booking Action */}
         <a
