@@ -12,6 +12,7 @@ export const DINING_URL = "https://barcelona-dashboard-app.vercel.app/dining";
 
 export const SOCIAL_LINKS = [
   { name: 'Instagram', url: 'https://www.instagram.com/legacytoursspain?igsh=MWVsNzBjaWpiMmpveA%3D%3D&utm_source=qr', icon: 'instagram', active: true },
+  { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61582612552112', icon: 'facebook', active: true },
   { name: 'TikTok', url: 'https://www.tiktok.com/@legacytoursspain', icon: 'tiktok', active: true },
 ];
 

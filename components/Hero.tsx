@@ -93,15 +93,17 @@ const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           {/* Pulsing glow ring behind the button */}
           <div className="absolute inset-0 bg-premium-gold rounded-full blur-xl opacity-50 group-hover:opacity-80 transition-opacity animate-pulse"></div>
           
-          <button
-            onClick={onOpenBooking}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="relative inline-flex items-center gap-4 bg-gradient-to-r from-[#D4AF37] via-[#F1C40F] to-[#D4AF37] hover:from-[#B89324] hover:to-[#D4AF37] text-white px-12 py-6 rounded-full text-base font-display font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] shadow-2xl border border-premium-gold/30"
           >
             <span className="flex items-center gap-3">
               {language === 'es' ? 'RESERVAR AHORA' : 'BOOK NOW'}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
-          </button>
+          </a>
         </div>
       </div>
     </section>

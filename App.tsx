@@ -187,9 +187,8 @@ function App() {
               <Reviews />
             </div>
             <div id="tours">
-              <ToursGrid onOpenBooking={() => setIsBookingModalOpen(true)} />
+              <ToursGrid />
             </div>
-            <Gallery />
             <VehicleSection />
             <Experience />
             <BrandStory />

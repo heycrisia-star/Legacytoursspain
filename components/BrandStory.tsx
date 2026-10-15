@@ -74,13 +74,13 @@ const BrandStory: React.FC = () => {
                 <div className="flex items-center gap-3 mb-1">
                   <Compass className="w-4 h-4 text-premium-gold" />
                   <p className="font-display font-bold text-xs uppercase tracking-wider text-white">
-                    {isEs ? 'Rutas Cerradas y Curadas' : 'Curated Closed Routes'}
+                    {isEs ? 'Paradas Estratégicas para Fotos' : 'Strategic Photo Stops'}
                   </p>
                 </div>
                 <p className="text-xs text-neutral-400 font-sans leading-relaxed">
                   {isEs
-                    ? '3 itinerarios estudiados meticulosamente para garantizar la mejor experiencia, fluidez y vistas.'
-                    : '3 meticulously crafted itineraries ensuring the finest flow, scenic viewpoints and iconic highlights.'}
+                    ? '3 itinerarios estudiados con paradas clave para bajar, admirar y tomar las mejores fotos de Barcelona sin prisas.'
+                    : '3 curated routes with strategic stops to step out, take photos and enjoy Barcelona without rushing.'}
                 </p>
               </div>
 

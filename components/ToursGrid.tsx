@@ -1,14 +1,14 @@
 import React from 'react';
-import { TOURS } from '../constants';
+import { TOURS, BOOKING_URL } from '../constants';
 import TourCard from './TourCard';
 import { useLanguage } from '../context/LanguageContext';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 
 interface ToursGridProps {
-  onOpenBooking: () => void;
+  onOpenBooking?: () => void;
 }
 
-const ToursGrid: React.FC<ToursGridProps> = ({ onOpenBooking }) => {
+const ToursGrid: React.FC<ToursGridProps> = () => {
   const { language } = useLanguage();
   const isEs = language === 'es';
 
@@ -18,16 +18,16 @@ const ToursGrid: React.FC<ToursGridProps> = ({ onOpenBooking }) => {
 
         {/* Section header */}
         <div className="text-center mb-14">
-          <p className="text-xs font-sans font-semibold tracking-[0.3em] uppercase text-premium-gold mb-4">
-            {isEs ? 'Nuestros 3 Recorridos' : 'Our 3 Curated Tours'}
+          <p className="text-xs font-sans font-semibold tracking-[0.3em] uppercase text-premium-gold mb-3">
+            {isEs ? 'Nuestros 3 Tours Exclusivos' : 'Our 3 Exclusive Tours'}
           </p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-neutral-900 mb-4 uppercase">
-            {isEs ? '3 Tours Privados. 1 Ciudad Inolvidable.' : '3 Private Tours. 1 Unforgettable City.'}
+            {isEs ? '3 Experiencias Únicas. 1 Ciudad Inolvidable.' : '3 Unique Experiences. 1 Unforgettable City.'}
           </h2>
-          <p className="text-neutral-500 text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed">
+          <p className="text-neutral-500 text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed">
             {isEs
-              ? 'Rutas cerradas y cuidadosamente seleccionadas en coches vintage 100% eléctricos. Elige la duración que mejor se adapte a tu viaje.'
-              : 'Curated closed routes in 100% electric vintage cars. Choose the duration that best fits your visit.'}
+              ? 'Tours privados diseñados con paradas estratégicas para fotos en los mejores monumentos y miradores de Barcelona, en elegantes coches vintage 100% eléctricos.'
+              : 'Private tours designed with strategic photo stops at Barcelona\'s finest monuments and panoramic viewpoints, in 100% electric vintage cars.'}
           </p>
         </div>
 
@@ -38,21 +38,23 @@ const ToursGrid: React.FC<ToursGridProps> = ({ onOpenBooking }) => {
             if (!tour) return null;
             return (
               <div key={tour.id} className="flex flex-col">
-                <TourCard tour={tour} onOpenBooking={onOpenBooking} />
+                <TourCard tour={tour} />
               </div>
             );
           })}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom CTA — Direct FareHarbor */}
         <div className="flex justify-center mt-12">
-          <button
-            onClick={onOpenBooking}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-4 bg-neutral-900 text-white font-display font-bold uppercase tracking-widest text-xs rounded-full hover:bg-premium-gold transition-all duration-300 group shadow-lg"
           >
-            {isEs ? 'Comparar y Reservar Tour' : 'Compare & Book Tour'}
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+            <span>{isEs ? 'Ver Disponibilidad en FareHarbor' : 'Check Availability on FareHarbor'}</span>
+            <ExternalLink className="w-4 h-4 opacity-80 group-hover:translate-x-1 transition-transform" />
+          </a>
         </div>
       </div>
     </section>

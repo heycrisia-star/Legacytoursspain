@@ -1,11 +1,12 @@
-import { Clock, ShieldCheck, Zap } from 'lucide-react';
+import { Clock, Camera, Zap, ExternalLink } from 'lucide-react';
 import React from 'react';
 import { Tour } from '../types';
 import { useLanguage } from '../context/LanguageContext';
+import { BOOKING_URL } from '../constants';
 
 interface TourCardProps {
   tour: Tour;
-  onOpenBooking: () => void;
+  onOpenBooking?: () => void;
 }
 
 // Map tour ID to infographic image
@@ -29,20 +30,20 @@ const TOUR_NAMES: Record<string, { es: string; en: string }> = {
 
 const TOUR_SUBTITLES: Record<string, { es: string; en: string }> = {
   'essential': {
-    es: 'Recorrido cerrado de 1 hora por los iconos imprescindibles del centro modernista.',
-    en: '1-hour curated route through the essential modernist landmarks.'
+    es: 'Recorrido de 1 hora con paradas estratégicas en los iconos imprescindibles del centro modernista.',
+    en: '1-hour route with strategic photo stops at essential modernist landmarks.'
   },
   'city-sea': {
-    es: 'Recorrido cerrado de 2 horas uniendo arquitectura, parques y costa mediterránea.',
-    en: '2-hour curated route connecting architecture, parks and the Mediterranean coast.'
+    es: 'Recorrido de 2 horas con paradas estratégicas uniendo arquitectura, parques y costa mediterránea.',
+    en: '2-hour route with strategic stops connecting architecture, parks and the Mediterranean coast.'
   },
   'complete': {
-    es: 'La experiencia definitiva de 3 horas: monumentos, mirador de Montjuïc y toda la ciudad.',
-    en: 'The ultimate 3-hour experience: monuments, Montjuïc panoramic views and the entire city.'
+    es: 'La experiencia completa de 3 horas: monumentos, mirador panorámico de Montjuïc y paradas fotográficas en toda la ciudad.',
+    en: 'The complete 3-hour experience: monuments, Montjuïc panoramic viewpoint and photo stops across the city.'
   },
 };
 
-const TourCard: React.FC<TourCardProps> = ({ tour, onOpenBooking }) => {
+const TourCard: React.FC<TourCardProps> = ({ tour }) => {
   const { language } = useLanguage();
   const isEs = language === 'es';
 
@@ -50,6 +51,8 @@ const TourCard: React.FC<TourCardProps> = ({ tour, onOpenBooking }) => {
   const badge = TOUR_BADGES[tour.id];
   const name = TOUR_NAMES[tour.id]?.[isEs ? 'es' : 'en'] || tour.name;
   const subtitle = TOUR_SUBTITLES[tour.id]?.[isEs ? 'es' : 'en'];
+
+  const directBookingUrl = tour.bookingUrl || BOOKING_URL;
 
   return (
     <div className="group relative flex flex-col h-full rounded-3xl overflow-hidden bg-white border border-neutral-100 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
@@ -85,15 +88,15 @@ const TourCard: React.FC<TourCardProps> = ({ tour, onOpenBooking }) => {
           </p>
         )}
 
-        {/* Key specs row */}
-        <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-600 font-sans mb-6 pt-2 border-t border-neutral-100">
+        {/* Key selling specs row */}
+        <div className="flex flex-wrap items-center gap-2.5 text-xs text-neutral-600 font-sans mb-6 pt-2 border-t border-neutral-100">
           <span className="inline-flex items-center gap-1.5 bg-stone-50 px-2.5 py-1.5 rounded-lg border border-stone-200/60 font-medium">
             <Clock className="w-3.5 h-3.5 text-premium-gold" />
             {tour.duration}
           </span>
           <span className="inline-flex items-center gap-1.5 bg-stone-50 px-2.5 py-1.5 rounded-lg border border-stone-200/60 font-medium">
-            <ShieldCheck className="w-3.5 h-3.5 text-premium-gold" />
-            {isEs ? 'Ruta cerrada y exclusiva' : 'Curated private route'}
+            <Camera className="w-3.5 h-3.5 text-premium-gold" />
+            {isEs ? 'Paradas estratégicas para fotos' : 'Strategic photo stops'}
           </span>
           <span className="inline-flex items-center gap-1.5 bg-stone-50 px-2.5 py-1.5 rounded-lg border border-stone-200/60 font-medium">
             <Zap className="w-3.5 h-3.5 text-premium-gold" />
@@ -104,13 +107,16 @@ const TourCard: React.FC<TourCardProps> = ({ tour, onOpenBooking }) => {
         {/* Spacer */}
         <div className="flex-1" />
 
-        {/* Direct Action */}
-        <button
-          onClick={onOpenBooking}
-          className="w-full py-4 rounded-2xl bg-neutral-900 text-white font-display font-bold uppercase tracking-widest text-xs hover:bg-premium-gold transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl active:scale-[0.99]"
+        {/* Direct FareHarbor Booking Action */}
+        <a
+          href={directBookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full py-4 rounded-2xl bg-neutral-900 hover:bg-premium-gold text-white font-display font-bold uppercase tracking-widest text-xs transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-[0.99]"
         >
-          {isEs ? 'Reservar Ahora' : 'Book Now'}
-        </button>
+          <span>{isEs ? 'Reservar Ahora' : 'Book Now'}</span>
+          <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+        </a>
       </div>
     </div>
   );

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { BLOG_POSTS, BlogPost } from '../../data/blogPosts';
+import { BLOG_POSTS } from '../../data/blogPosts';
 import { useLanguage } from '../../context/LanguageContext';
-import { Clock, ArrowRight, Sparkles, BookOpen, MapPin } from 'lucide-react';
+import { Clock, ArrowRight, Sparkles, MapPin, BookOpen } from 'lucide-react';
+import { BOOKING_URL } from '../../constants';
 
 interface BlogIndexProps {
   onSelectPost: (slug: string) => void;
   onOpenBooking: () => void;
 }
 
-export const BlogIndex: React.FC<BlogIndexProps> = ({ onSelectPost, onOpenBooking }) => {
-  const { language, t } = useLanguage();
+export const BlogIndex: React.FC<BlogIndexProps> = ({ onSelectPost }) => {
+  const { language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = [
@@ -28,83 +29,76 @@ export const BlogIndex: React.FC<BlogIndexProps> = ({ onSelectPost, onOpenBookin
   return (
     <div className="min-h-screen bg-[#F9F8F6] pt-24 pb-20">
       {/* Hero Header */}
-      <div className="max-w-6xl mx-auto px-6 pt-12 pb-16 text-center">
+      <div className="max-w-4xl mx-auto px-6 pt-12 pb-14 text-center">
         <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-premium-gold/30 shadow-sm mb-6">
           <Sparkles className="w-4 h-4 text-premium-gold" />
           <span className="text-xs font-display font-bold uppercase tracking-[0.25em] text-neutral-800">
-            {language === 'es' ? 'Guía Oficial de Estudio & Blog' : 'Barcelona Insider Guide & Stories'}
+            {language === 'es' ? 'Blog & Guía Editorial de Barcelona' : 'Barcelona Insider Editorial Blog'}
           </span>
         </div>
 
         <h1 className="text-4xl md:text-6xl font-display font-bold uppercase text-neutral-900 tracking-tight leading-tight mb-6">
-          {language === 'es' ? 'Secretos de Barcelona' : 'Barcelona Unveiled'}<br />
+          {language === 'es' ? 'Secretos de Barcelona' : 'Barcelona Secrets'}<br />
           <span className="text-premium-gold bg-gradient-to-r from-[#D4AF37] via-[#F1C40F] to-[#D4AF37] bg-clip-text text-transparent">
-            {language === 'es' ? 'Historias con Alma y Rigor' : 'Beyond the Guidebooks'}
+            {language === 'es' ? 'Historias, Anécdotas & Curiosidades' : 'Stories, Anecdotes & Heritage'}
           </span>
         </h1>
 
         <p className="max-w-2xl mx-auto text-neutral-600 font-sans text-base md:text-lg font-light leading-relaxed">
           {language === 'es'
-            ? 'Historias reales, anécdotas contrastadas y la arquitectura viva de los 17 puntos clave de nuestro tour más exclusivo.'
-            : 'Authentic histories, verified anecdotes and living architecture based on the 17 stops of our Complete 3-Hour Vintage Tour.'}
+            ? 'Historias reales, anécdotas contrastadas y la arquitectura viva de los puntos más emblemáticos de Barcelona.'
+            : 'Authentic histories, verified anecdotes and architectural insights from Barcelona’s most iconic landmarks.'}
         </p>
       </div>
 
-      {/* Featured Highlight Article */}
+      {/* Featured Highlight Article - Clean Editorial Design without stock photos */}
       {featuredPost && selectedCategory === 'all' && (
-        <div className="max-w-6xl mx-auto px-6 mb-16">
+        <div className="max-w-5xl mx-auto px-6 mb-14">
           <div
             onClick={() => onSelectPost(featuredPost.slug)}
-            className="group cursor-pointer relative bg-white rounded-3xl overflow-hidden border border-neutral-100 shadow-md hover:shadow-2xl transition-all duration-500 grid grid-cols-1 lg:grid-cols-12"
+            className="group cursor-pointer relative bg-white rounded-3xl p-8 sm:p-12 border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-300 border-l-8 border-l-premium-gold"
           >
-            <div className="lg:col-span-7 h-72 lg:h-auto relative overflow-hidden">
-              <img
-                src={featuredPost.coverImage}
-                alt={language === 'es' ? featuredPost.titleEs : featuredPost.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute top-4 left-4">
-                <span className="px-3.5 py-1.5 rounded-full bg-neutral-900/80 backdrop-blur-md text-white text-[10px] font-display font-bold uppercase tracking-widest">
-                  {language === 'es' ? '⭐ Artículo Destacado' : '⭐ Featured Story'}
-                </span>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <span className="px-3.5 py-1.5 rounded-full bg-neutral-900 text-white text-[10px] font-display font-bold uppercase tracking-widest">
+                {language === 'es' ? '⭐ Artículo Destacado' : '⭐ Featured Story'}
+              </span>
               {featuredPost.stopNumber && (
-                <div className="flex items-center gap-2 text-premium-gold text-xs font-display font-bold uppercase tracking-wider mb-2">
+                <div className="flex items-center gap-1.5 text-premium-gold text-xs font-display font-bold uppercase tracking-wider">
                   <MapPin className="w-3.5 h-3.5" />
-                  <span>{language === 'es' ? `Parada #${featuredPost.stopNumber} del Tour de 3 Horas` : `Stop #${featuredPost.stopNumber} on 3-Hour Tour`}</span>
+                  <span>{language === 'es' ? `Parada #${featuredPost.stopNumber} de la ruta` : `Route Stop #${featuredPost.stopNumber}`}</span>
                 </div>
               )}
-              <h2 className="text-2xl lg:text-3xl font-display font-bold text-neutral-900 uppercase tracking-tight leading-snug mb-4 group-hover:text-premium-gold transition-colors">
-                {language === 'es' ? featuredPost.titleEs : featuredPost.title}
-              </h2>
-              <p className="text-neutral-600 font-sans text-sm leading-relaxed mb-6 font-light">
-                {language === 'es' ? featuredPost.excerptEs : featuredPost.excerpt}
-              </p>
-              <div className="flex items-center justify-between text-xs text-neutral-400 font-sans mt-auto pt-4 border-t border-neutral-100">
-                <span className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-premium-gold" />
-                  {featuredPost.readTime} min {language === 'es' ? 'de lectura' : 'read'}
-                </span>
-                <span className="inline-flex items-center gap-1 text-premium-gold font-display font-bold uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                  {language === 'es' ? 'Leer artículo' : 'Read story'} <ArrowRight className="w-4 h-4" />
-                </span>
-              </div>
+            </div>
+
+            <h2 className="text-2xl sm:text-4xl font-display font-bold text-neutral-900 uppercase tracking-tight leading-snug mb-4 group-hover:text-premium-gold transition-colors">
+              {language === 'es' ? featuredPost.titleEs : featuredPost.title}
+            </h2>
+
+            <p className="text-neutral-600 font-sans text-base leading-relaxed mb-6 font-light">
+              {language === 'es' ? featuredPost.excerptEs : featuredPost.excerpt}
+            </p>
+
+            <div className="flex items-center justify-between text-xs text-neutral-400 font-sans pt-4 border-t border-neutral-100">
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-premium-gold" />
+                {featuredPost.readTime} min {language === 'es' ? 'de lectura' : 'read'}
+              </span>
+              <span className="inline-flex items-center gap-1 text-premium-gold font-display font-bold uppercase tracking-wider group-hover:translate-x-1 transition-transform">
+                {language === 'es' ? 'Leer artículo completo' : 'Read full story'} <ArrowRight className="w-4 h-4" />
+              </span>
             </div>
           </div>
         </div>
       )}
 
       {/* Filter Tabs */}
-      <div className="max-w-6xl mx-auto px-6 mb-12">
-        <div className="flex flex-wrap items-center justify-center gap-2 border-b border-neutral-200 pb-4">
+      <div className="max-w-5xl mx-auto px-6 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-2">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-5 py-2.5 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 ${
+              className={`px-5 py-2.5 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all ${
                 selectedCategory === cat.id
                   ? 'bg-neutral-900 text-white shadow-md'
                   : 'bg-white text-neutral-600 hover:bg-neutral-100 border border-neutral-200/80'
@@ -116,83 +110,72 @@ export const BlogIndex: React.FC<BlogIndexProps> = ({ onSelectPost, onOpenBookin
         </div>
       </div>
 
-      {/* Articles Grid */}
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Articles Grid - Clean Editorial Cards */}
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredPosts.map((post) => (
             <article
               key={post.id}
               onClick={() => onSelectPost(post.slug)}
-              className="group cursor-pointer bg-white rounded-3xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1"
+              className="group cursor-pointer bg-white rounded-3xl p-7 border border-neutral-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
             >
-              <div className="h-56 relative overflow-hidden bg-neutral-100">
-                <img
-                  src={post.coverImage}
-                  alt={language === 'es' ? post.titleEs : post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                {post.stopNumber && (
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-neutral-900/80 backdrop-blur-md text-white text-[10px] font-display font-bold uppercase tracking-widest">
-                    Stop #{post.stopNumber}
-                  </span>
-                )}
-              </div>
-
-              <div className="p-6 flex flex-col flex-1">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-[10px] font-display font-bold uppercase tracking-widest text-premium-gold px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-[10px] font-display font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-200/60">
                     {post.category}
                   </span>
-                  <span className="text-xs text-neutral-400 font-sans flex items-center gap-1 ml-auto">
-                    <Clock className="w-3 h-3 text-premium-gold" />
-                    {post.readTime} min
-                  </span>
+                  {post.stopNumber && (
+                    <span className="text-[10px] font-display font-bold text-neutral-400 uppercase tracking-widest">
+                      #{post.stopNumber}
+                    </span>
+                  )}
                 </div>
 
-                <h3 className="font-display font-bold text-lg text-neutral-900 uppercase tracking-tight leading-snug mb-3 group-hover:text-premium-gold transition-colors line-clamp-2">
+                <h3 className="text-xl font-display font-bold text-neutral-900 uppercase leading-snug mb-3 group-hover:text-premium-gold transition-colors">
                   {language === 'es' ? post.titleEs : post.title}
                 </h3>
 
-                <p className="text-neutral-500 text-xs font-sans font-light leading-relaxed mb-6 line-clamp-3">
+                <p className="text-neutral-500 font-sans text-xs leading-relaxed font-light mb-6 line-clamp-3">
                   {language === 'es' ? post.excerptEs : post.excerpt}
                 </p>
+              </div>
 
-                <div className="mt-auto pt-4 border-t border-neutral-100 flex items-center justify-between text-xs">
-                  <span className="text-neutral-400 font-sans">{post.author.split('·')[0]}</span>
-                  <span className="text-premium-gold font-display font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    {language === 'es' ? 'Leer' : 'Read'} <ArrowRight className="w-3 h-3" />
-                  </span>
-                </div>
+              <div className="flex items-center justify-between text-xs text-neutral-400 font-sans pt-3 border-t border-neutral-100 mt-auto">
+                <span className="flex items-center gap-1 text-[11px]">
+                  <Clock className="w-3 h-3 text-premium-gold" />
+                  {post.readTime} min
+                </span>
+                <span className="inline-flex items-center gap-1 text-premium-gold font-display font-bold uppercase tracking-wider text-[11px] group-hover:translate-x-1 transition-transform">
+                  {language === 'es' ? 'Leer' : 'Read'} <ArrowRight className="w-3.5 h-3.5" />
+                </span>
               </div>
             </article>
           ))}
         </div>
       </div>
 
-      {/* Tour Cross-Sell CTA Banner */}
-      <div className="max-w-4xl mx-auto px-6 mt-20">
-        <div className="bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-800 rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-2xl border border-neutral-700/50">
-          <div className="relative z-10 space-y-5">
-            <span className="text-premium-gold text-xs font-display font-bold uppercase tracking-[0.3em]">
-              {language === 'es' ? 'Vive estas historias en persona' : 'Experience These Stories in Person'}
-            </span>
-            <h3 className="text-3xl md:text-4xl font-display font-bold uppercase tracking-tight">
-              {language === 'es' ? 'The Complete Barcelona · 3 Hour Tour' : 'The Complete Barcelona · 3 Hour Tour'}
-            </h3>
-            <p className="text-neutral-300 font-sans text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed">
-              {language === 'es'
-                ? 'Los 17 puntos históricos de esta guía, recorridos sin prisas en nuestro coche eléctrico vintage privado. La forma más elegante y cómoda de conocer Barcelona.'
-                : 'All 17 historic landmarks from this guide, experienced at your pace in our private vintage electric vehicle. Pure elegance, comfort, and insight.'}
-            </p>
-            <div className="pt-2">
-              <button
-                onClick={onOpenBooking}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#D4AF37] via-[#F1C40F] to-[#D4AF37] hover:scale-105 active:scale-95 text-white px-9 py-4 rounded-full text-xs md:text-sm font-display font-bold tracking-widest uppercase transition-all duration-300 shadow-xl"
-              >
-                {language === 'es' ? 'Reservar el Tour de 3 Horas' : 'Book The 3-Hour Tour'}
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
+      {/* Bottom Booking CTA — Direct FareHarbor */}
+      <div className="max-w-4xl mx-auto px-6 mt-16 text-center">
+        <div className="bg-neutral-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl space-y-5">
+          <BookOpen className="w-10 h-10 text-premium-gold mx-auto" />
+          <h3 className="text-2xl sm:text-3xl font-display font-bold uppercase tracking-tight">
+            {language === 'es' ? 'Vive estas historias en directo' : 'Experience These Stories Live'}
+          </h3>
+          <p className="text-neutral-400 font-sans text-sm max-w-xl mx-auto font-light leading-relaxed">
+            {language === 'es'
+              ? 'Nuestros tours privados en coche vintage recorren todos estos lugares emblemáticos con un guía local apasionado y paradas estratégicas.'
+              : 'Our private vintage tours take you past all these iconic landmarks with a passionate local guide and strategic photo stops.'}
+          </p>
+          <div className="pt-2">
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-premium-gold hover:bg-yellow-600 text-white font-display font-bold uppercase tracking-widest text-xs rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <span>{language === 'es' ? 'Reservar Tour en FareHarbor' : 'Book Tour on FareHarbor'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </div>
