@@ -7,62 +7,77 @@ const VehicleSection: React.FC = () => {
   const isEs = language === 'es';
   const [activePhoto, setActivePhoto] = useState(0);
 
-  // Curated unique authentic photos: strictly no repetitive angles, redundant selfies or duplicate garage shots
+  // Exact curated collection of 14 non-repetitive photos (1 to 14) showcasing the best moments first
   const allPhotos = [
     {
-      src: '/images/photo_car_montjuic_skyline.jpg',
-      titleEs: 'Coche vintage en mirador panorámico de Montjuïc',
-      titleEn: 'Vintage car at scenic Montjuïc panoramic viewpoint',
+      src: '/images/gallery_1.png',
+      titleEs: 'Coche vintage en el mirador panorámico de Montjuïc',
+      titleEn: 'Vintage electric car at Montjuïc panoramic viewpoint',
     },
     {
-      src: '/images/photo_group_large.jpeg',
-      titleEs: 'Nuestros dos coches vintage clásicos',
-      titleEn: 'Our two classic vintage electric cars',
+      src: '/images/gallery_2.jpg',
+      titleEs: 'Atardecer dorado en Montjuïc a bordo del coche vintage',
+      titleEn: 'Golden hour sunset at Montjuïc aboard our vintage car',
     },
     {
-      src: '/images/photo_car_pedrera.jpeg',
-      titleEs: 'Pareja en parada fotográfica con vistas a Barcelona',
-      titleEn: 'Couple enjoying scenic photo stop overlooking Barcelona',
+      src: '/images/gallery_3.jpeg',
+      titleEs: 'Nuestra flota de coches vintage en punto de encuentro',
+      titleEn: 'Our vintage electric fleet at departure point',
     },
     {
-      src: '/images/photo_couple_montjuic.jpeg',
+      src: '/images/gallery_4.jpeg',
       titleEs: 'Experiencia privada y exclusiva para parejas',
       titleEn: 'Exclusive private tour experience for couples',
     },
     {
-      src: '/images/photo_cristian_selfie.jpeg',
-      titleEs: 'Atardecer dorado en Montjuïc a bordo del coche vintage',
-      titleEn: 'Golden hour sunset at Montjuïc aboard the vintage car',
+      src: '/images/gallery_5.jpeg',
+      titleEs: 'Grupo de amigos disfrutando del tour por Barcelona',
+      titleEn: 'Friends group tour discovering Barcelona',
     },
     {
-      src: '/images/photo_family_car.jpeg',
-      titleEs: 'Recorriendo Barcelona con familias y viajeros',
-      titleEn: 'Touring Barcelona with families and travelers',
+      src: '/images/gallery_6.jpeg',
+      titleEs: 'Nuestros dos coches vintage clásicos juntos',
+      titleEn: 'Our two classic vintage electric cars together',
     },
     {
-      src: '/images/photo_group_garage.jpeg',
-      titleEs: 'Tour en grupo de amigos con Cristian y dos coches',
-      titleEn: 'Friends group tour with Cristian and two cars',
+      src: '/images/gallery_7.jpeg',
+      titleEs: 'Diseño clásico descapotable frente a la arquitectura modernista',
+      titleEn: 'Classic convertible design past modernist architecture',
     },
     {
-      src: '/images/photo_two_cars_park.jpeg',
-      titleEs: 'Atención personalizada y cercana en cada parada',
-      titleEn: 'Personalized friendly guidance at every photo stop',
+      src: '/images/gallery_8.jpeg',
+      titleEs: 'Pareja en parada fotográfica en el mirador',
+      titleEn: 'Couple enjoying scenic viewpoint photo stop',
     },
     {
-      src: '/images/photo_car_night.jpeg',
-      titleEs: 'Barcelona iluminada en tour nocturno vintage',
-      titleEn: 'Illuminated Barcelona on our evening vintage tour',
+      src: '/images/gallery_9.jpeg',
+      titleEs: 'Viajeros descubriendo los rincones icónicos de la ciudad',
+      titleEn: 'Travelers discovering Barcelona’s iconic sights',
     },
     {
-      src: '/images/photo_car_detail.jpeg',
-      titleEs: 'Detalles clásicos inspirados en el Ford Modelo A de los años 30',
-      titleEn: 'Classic craftsmanship inspired by 1930s Ford Model A',
+      src: '/images/gallery_10.jpeg',
+      titleEs: 'Familias disfrutando de un paseo cómodo y privado',
+      titleEn: 'Families enjoying a comfortable private ride',
     },
     {
-      src: '/images/img_8507.jpg',
-      titleEs: 'Diseño clásico descapotable en las calles históricas',
-      titleEn: 'Classic convertible design in historic Barcelona streets',
+      src: '/images/gallery_11.jpeg',
+      titleEs: 'Momentos inolvidables y sonrisas a bordo',
+      titleEn: 'Unforgettable smiles and moments on board',
+    },
+    {
+      src: '/images/gallery_12.jpeg',
+      titleEs: 'Conectando con viajeros de todo el mundo',
+      titleEn: 'Connecting with happy travelers worldwide',
+    },
+    {
+      src: '/images/gallery_13.jpeg',
+      titleEs: 'Recorriendo Barcelona en coche eléctrico vintage',
+      titleEn: 'Touring Barcelona in our vintage electric car',
+    },
+    {
+      src: '/images/gallery_14.jpeg',
+      titleEs: 'Atención personalizada y cercana con Cristian',
+      titleEn: 'Personalized friendly guidance with Cristian',
     },
   ];
 
