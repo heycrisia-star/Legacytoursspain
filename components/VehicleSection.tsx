@@ -184,8 +184,8 @@ const VehicleSection: React.FC = () => {
               </h3>
               <p className="text-neutral-600 leading-relaxed text-sm md:text-base font-light">
                 {isEs
-                  ? 'Nuestros coches vintage combinan el encanto visual de los años 30 con motores 100% eléctricos silenciosos. Diseñados con visión panorámica abierta para disfrutar de las fachadas y monumentos con paradas estratégicas donde bajar y tomar fotos espectaculares.'
-                  : 'Our vintage electric cars blend 1930s vintage elegance with whisper-quiet electric motors. Crafted with open panoramic sightlines and strategic photo stops to capture stunning memories without crowds.'}
+                  ? 'La evolución prémium del tour en tuk tuk por Barcelona: nuestros coches de diseño vintage combinan el encanto visual de los años 30 con motores 100% eléctricos silenciosos. Diseñados con visión panorámica abierta para disfrutar de las fachadas y monumentos con paradas estratégicas para fotos espectaculares.'
+                  : 'The premium evolution of Barcelona tuk tuk tours: our vintage electric cars blend 1930s elegance with whisper-quiet electric motors. Crafted with open panoramic sightlines and strategic photo stops to capture stunning memories without crowds.'}
               </p>
             </div>
 

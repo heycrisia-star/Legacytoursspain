@@ -21,8 +21,8 @@ const Experience: React.FC = () => {
               </h3>
               <p className="text-xs sm:text-sm text-neutral-500 font-sans leading-relaxed font-light">
                 {t('experience.vintageText') || (isEs
-                  ? 'Inspirados en el legendario Ford Modelo A de los años 30. Dos vehículos elegantes diseñados para una experiencia privada y exclusiva de hasta 8 personas.'
-                  : 'Inspired by the legendary 1930s Ford Model A. Two elegant vehicles designed for an exclusive private experience of up to 8 guests.')}
+                  ? 'La alternativa más elegante y prémium al clásico tuk tuk en Barcelona: coches de diseño vintage años 30 inspirados en el Ford Modelo A, 100% eléctricos y privados para hasta 8 personas.'
+                  : 'The most elegant and premium alternative to the classic Barcelona tuk tuk: 1930s vintage electric cars inspired by the Ford Model A, 100% private for up to 8 guests.')}
               </p>
             </div>
           </div>

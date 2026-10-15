@@ -97,6 +97,10 @@ const Footer: React.FC<FooterProps> = ({ onOpenFAQ, contactRef }) => {
           <a href="#" className="hover:text-premium-gold transition-colors">{t('footer.terms')}</a>
         </div>
 
+        <p className="text-[11px] text-neutral-400 font-sans tracking-wide max-w-xl mx-auto leading-relaxed">
+          Legacy Tours Spain · Tours privados en coches eléctricos vintage en Barcelona · La experiencia prémium frente al clásico tuk tuk en Barcelona · Sagrada Família, Montjuïc, Passeig de Gràcia.
+        </p>
+
         <p className="text-[10px] text-neutral-300 font-sans tracking-widest uppercase">
           © {new Date().getFullYear()} Legacy Tours Spain. {t('footer.rights')}
         </p>
