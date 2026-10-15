@@ -78,18 +78,12 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
 
       {/* Card body */}
       <div className="flex flex-col flex-1 p-6">
-        <h3 className="text-2xl font-display font-bold text-neutral-900 uppercase leading-tight mb-2">
+        <h3 className="text-2xl font-display font-bold text-neutral-900 uppercase leading-tight mb-4">
           {name}
         </h3>
 
-        {subtitle && (
-          <p className="text-neutral-500 text-sm font-sans font-light leading-relaxed mb-5">
-            {subtitle}
-          </p>
-        )}
-
         {/* Spacer */}
-        <div className="flex-1 min-h-[1.5rem]" />
+        <div className="flex-1" />
 
         {/* Direct FareHarbor Booking Action */}
         <a
