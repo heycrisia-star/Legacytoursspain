@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Languages, Lock, ArrowRight } from 'lucide-react';
+import { Zap, Star, Lock, ArrowRight, Users } from 'lucide-react';
 import { BOOKING_URL } from '../constants';
 import Lightfall from './Lightfall';
 import { useLanguage } from '../context/LanguageContext';
@@ -79,8 +79,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
         <div className="flex flex-wrap justify-center gap-3 md:gap-8 py-2">
           {[
             { icon: Zap, text: t('hero.electric') },
-            { icon: Languages, text: t('hero.translator') },
-            { icon: Lock, text: t('hero.private') }
+            { icon: Users, text: t('hero.private') },
+            { icon: Star, text: t('hero.vintage') || 'Vintage 1930s Design' }
           ].map(({ icon: Icon, text }, i) => (
             <div key={i} className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-neutral-100/50 hover:scale-105 transition-transform duration-300">
                <Icon className="w-5 h-5 text-premium-gold" />

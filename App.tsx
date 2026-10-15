@@ -13,11 +13,14 @@ import InstantBookingForm from './components/InstantBookingForm';
 import { useLanguage } from './context/LanguageContext';
 import LanguageSelector from './components/LanguageSelector';
 import CruiseLanding from './components/CruiseLanding';
-import LanguageSection from './components/LanguageSection';
+import VehicleSection from './components/VehicleSection';
 import BookingModal from './components/BookingModal';
+import BlogIndex from './components/Blog/BlogIndex';
+import BlogPostView from './components/Blog/BlogPostView';
+import { BLOG_POSTS } from './data/blogPosts';
 
 function App() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [isFAQOpen, setIsFAQOpen] = useState(false);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -26,6 +29,12 @@ function App() {
   const [pin, setPin] = useState('');
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const longPressTimer = useRef<number | null>(null);
+
+  const navigate = (path: string) => {
+    window.history.pushState({}, '', path);
+    setCurrentPath(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   React.useEffect(() => {
     const handlePopState = () => setCurrentPath(window.location.pathname);
@@ -42,13 +51,15 @@ function App() {
       });
     }
   }, [currentPath]);
+
   const contactRef = useRef<HTMLDivElement>(null);
 
   const navItems = [
-    { key: 'tours', label: t('nav.tours') },
-    { key: 'reviews', label: t('nav.reviews') },
-    { key: 'faq', label: t('nav.faq') },
-    { key: 'contact', label: t('nav.contact') }
+    { key: 'tours', label: t('nav.tours') || 'Tours' },
+    { key: 'reviews', label: t('nav.reviews') || 'Reviews' },
+    { key: 'blog', label: language === 'es' ? 'Blog & Guía' : 'Blog & Guide' },
+    { key: 'faq', label: t('nav.faq') || 'FAQ' },
+    { key: 'contact', label: t('nav.contact') || 'Contact' }
   ];
 
   // Hidden access trigger: Long press on logo
@@ -76,8 +87,28 @@ function App() {
     }
   };
 
-  // Smooth scroll handler
+  // Smooth scroll handler / navigation handler
   const scrollToSection = (id: string) => {
+    if (id === 'blog') {
+      navigate('/blog');
+      return;
+    }
+
+    if (currentPath !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        if (id === 'contact' && contactRef.current) {
+          contactRef.current.scrollIntoView({ behavior: 'smooth' });
+        } else if (id === 'faq') {
+          setIsFAQOpen(true);
+        } else {
+          const element = document.getElementById(id);
+          if (element) element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      return;
+    }
+
     if (id === 'contact' && contactRef.current) {
       contactRef.current.scrollIntoView({ behavior: 'smooth' });
     } else if (id === 'faq') {
@@ -87,6 +118,10 @@ function App() {
       if (element) element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Determine which post to view if on /blog/:slug
+  const currentPostSlug = currentPath.startsWith('/blog/') ? currentPath.replace('/blog/', '') : null;
+  const currentPost = currentPostSlug ? BLOG_POSTS.find(p => p.slug === currentPostSlug) : null;
 
   return (
     <div className="min-h-screen bg-premium-bg text-premium-text selection:bg-premium-gold/30 selection:text-black font-sans antialiased">
@@ -101,7 +136,7 @@ function App() {
             onTouchEnd={handleLogoPressEnd}
             className="cursor-pointer"
           >
-            <a href="/" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/'); window.dispatchEvent(new PopStateEvent('popstate')); }} className="block">
+            <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="block">
               <img
                 src="https://res.cloudinary.com/dk7xpxrvh/image/upload/v1771317526/ultimo_intento_yrsutn.png"
                 alt="Legacy Tours Spain"
@@ -117,7 +152,11 @@ function App() {
                 <button
                   key={item.key}
                   onClick={() => scrollToSection(item.key)}
-                  className="text-sm font-sans font-medium text-neutral-500 hover:text-premium-gold tracking-widest uppercase transition-colors"
+                  className={`text-sm font-sans font-medium tracking-widest uppercase transition-colors ${
+                    (item.key === 'blog' && currentPath.startsWith('/blog'))
+                      ? 'text-premium-gold font-bold'
+                      : 'text-neutral-500 hover:text-premium-gold'
+                  }`}
                 >
                   {item.label}
                 </button>
@@ -131,19 +170,31 @@ function App() {
       <main className="flex flex-col pt-20">
         {currentPath === '/barcelona-cruise-private-tour' ? (
           <CruiseLanding />
+        ) : currentPath.startsWith('/blog/') && currentPost ? (
+          <BlogPostView
+            post={currentPost}
+            onBack={() => navigate('/blog')}
+            onSelectPost={(slug) => navigate(`/blog/${slug}`)}
+            onOpenBooking={() => setIsBookingModalOpen(true)}
+          />
+        ) : currentPath === '/blog' || currentPath.startsWith('/blog/') ? (
+          <BlogIndex
+            onSelectPost={(slug) => navigate(`/blog/${slug}`)}
+            onOpenBooking={() => setIsBookingModalOpen(true)}
+          />
         ) : (
           <>
             <Hero onOpenBooking={() => setIsBookingModalOpen(true)} />
-            <Gallery />
-            <LanguageSection />
-            <Experience />
-            <BrandStory />
-            <div id="tours">
-              <ToursGrid onOpenBooking={() => setIsBookingModalOpen(true)} />
-            </div>
             <div id="reviews">
               <Reviews />
             </div>
+            <div id="tours">
+              <ToursGrid onOpenBooking={() => setIsBookingModalOpen(true)} />
+            </div>
+            <Gallery />
+            <VehicleSection />
+            <Experience />
+            <BrandStory />
           </>
         )}
       </main>

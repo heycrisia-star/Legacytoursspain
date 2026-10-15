@@ -14,13 +14,14 @@ export const translations: Record<string, any> = {
         },
         hero: {
             title: "Tuk Tuk Barcelona",
-            subtitle: "Tours privados con traducción por IA en tiempo real en una experiencia vintage 100% eléctrica.",
-            tagline: "Estilo Vintage. Comunicación Global.",
+            subtitle: "Tours privados en coches eléctricos vintage. Solo tú, tu grupo y Barcelona.",
+            tagline: "Experiencia Privada. Diseño Vintage.",
             book: "RESERVAR AHORA",
             dining: "COMIDA Y TIPS",
             electric: "100% ELÉCTRICO",
             translator: "TRADUCTOR IA",
-            private: "100% PRIVADO",
+            private: "GRUPO PRIVADO",
+            vintage: "DISEÑO VINTAGE",
             guide: "GUÍA IA DIGITAL",
             rate: "VALORAR EXPERIENCIA",
             madrid: "¿VISITAS MADRID?"
@@ -35,29 +36,7 @@ export const translations: Record<string, any> = {
             listenGuide: "Escuchar Guía",
             scroll: "Desliza para continuar"
         },
-        tours: {
-            mapTitle: "Mapa Interactivo de Rutas",
-            mapSubtitle: "Explora las paradas del tour seleccionado",
-            pickup: "Ofrecemos recogida y entrega gratuita en ubicaciones céntricas o en tu lugar preferido.",
-            custom: "Tours flexibles personalizados disponibles a partir de",
-            duration30: "30 minutos",
-            bookNow: "Reservar Ahora",
-            viewRoute: "Ver Ruta Completa",
-            closeRoute: "Cerrar Ruta",
-            moreStops: "paradas más...",
-            tour1: {
-                name: "Barcelona Esencial",
-                route: ["Plaza de Cataluña", "Las Ramblas", "Barrio Gótico", "Paseo de Gracia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arco de Triunfo", "Parque de la Ciudadela", "Playa de la Barceloneta"]
-            },
-            tour2: {
-                name: "Tour Ciudad y Mar",
-                route: ["Plaza de Cataluña", "Las Ramblas", "Barrio Gótico", "Paseo de Gracia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arco de Triunfo", "Parque de la Ciudadela", "Puerto Viejo", "Playa de la Barceloneta", "Puerto Olímpico", "Jardines de Miramar", "Montjuïc"]
-            },
-            tour3: {
-                name: "Barcelona Completa",
-                route: ["Plaza de Cataluña", "Las Ramblas", "Barrio Gótico", "Paseo de Gracia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Recinto Modernista de Sant Pau", "Arco de Triunfo", "Parque de la Ciudadela", "Puerto Viejo", "Playa de la Barceloneta", "Puerto Olímpico", "Jardines de Miramar", "Anillo Olímpico", "Estadio Olímpico Lluís Companys", "Museo Nacional de Arte de Cataluña", "Plaza de España", "Fuente Mágica de Montjuïc"]
-            }
-        },
+
         languages: {
             badge: "Comunicación Global",
             title: "Hablamos Tu Idioma — En Tiempo Real",
@@ -121,34 +100,92 @@ export const translations: Record<string, any> = {
             ctaButton: "Reserva Tu Hora de Salida"
         },
         brand: {
-            quote: "El encanto del estilo vintage de los años 30 fusionado con la moderna tecnología de IA.",
-            description: "Explora Barcelona en un entorno privado y ecológico. Descubre monumentos emblemáticos y joyas ocultas donde podrás vivir la ciudad como un local."
+            quote: "Más que un tour. Una memoria.",
+            description: "Legacy Tours Spain nació de la pasión de Cristian por mostrar Barcelona de forma auténtica y personal. No solo un recorrido — una conversación real con la ciudad.",
+            description2: "Cristian habla español y, en los tours que guía personalmente, puede usar un dispositivo de traducción bajo petición previa. El resto de nuestros guías hablan inglés, francés, italiano, alemán y catalán.",
+            eyebrow: "Nuestra Historia",
+            title: "Nacido de la pasión por Barcelona",
+            founder: {
+                title: "Fundador y Guía — Legacy Tours Spain"
+            },
+            stat: {
+                reviews: "Opiniones\nverificadas",
+                rating: "Valoración\nmedia"
+            },
+            value1: {
+                title: "Atención personal",
+                desc: "Cada tour es único. Nos adaptamos a ti, a tu grupo y a tu ritmo."
+            },
+            value2: {
+                title: "Experiencia 5 estrellas verificada",
+                desc: "Más de 200 opiniones reales en GetYourGuide, Google y TripAdvisor."
+            },
+            value3: {
+                title: "Conocimiento local",
+                desc: "Rincones escondidos, historias locales, auténtica pasión por esta ciudad."
+            }
+        },
+        vehicle: {
+            eyebrow: "La Experiencia",
+            title: "Nuestros Coches Eléctricos Vintage",
+            subtitle: "Dos vehículos artesanales inspirados en el Ford Modelo A de los años 30. Robamos miradas en cada esquina de Barcelona.",
+            detail: {
+                title: "Barcelona de otra manera",
+                desc: "Nuestros coches eléctricos vintage no son solo transporte — son parte de la experiencia. Diseñados para convertir cada calle en un recuerdo, te dan la libertad de conocer Barcelona a tu ritmo, en total privacidad, con un guía local apasionado a tu lado."
+            },
+            spec: {
+                electric: "100% Eléctrico",
+                "electric.desc": "Cero emisiones. Silencioso. Sostenible.",
+                capacity: "Hasta 4 pasajeros por coche",
+                "capacity.desc": "Completamente privado. Solo tu grupo.",
+                roof: "Capota retráctil",
+                "roof.desc": "Experiencia al aire libre. Barcelona bajo el cielo.",
+                vintage: "Diseño Vintage años 30",
+                "vintage.desc": "Inspirado en el Ford Modelo A. Elegancia atemporal."
+            },
+            fleet: {
+                label: "Nuestra Flota",
+                cars: "Coches vintage",
+                max: "Máx. pasajeros",
+                private: "Siempre privado"
+            }
+        },
+        tours: {
+            eyebrow: "Elige Tu Tour",
+            title: "3 Tours. 1 Ciudad Inolvidable.",
+            subtitle: "Privado, eléctrico, vintage. Elige la duración que se adapte a tu día.",
+            compareAll: "Comparar y Reservar",
+            mapTitle: "Mapa Interactivo de Rutas",
+            mapSubtitle: "Explora las paradas del tour seleccionado",
+            pickup: "Ofrecemos recogida y entrega gratuita en ubicaciones céntricas o en tu lugar preferido.",
+            custom: "Tours flexibles personalizados disponibles a partir de",
+            duration30: "30 minutos",
+            bookNow: "Reservar Ahora",
+            viewRoute: "Ver Ruta Completa",
+            closeRoute: "Cerrar Ruta",
+            moreStops: "paradas más...",
+            private: "Grupo privado",
+            electric: "100% Eléctrico",
+            tour1: {
+                name: "Barcelona Esencial",
+                route: ["Plaza de Cataluña", "Las Ramblas", "Barrio Gótico", "Paseo de Gracia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arco de Triunfo", "Parque de la Ciudadela", "Playa de la Barceloneta"]
+            },
+            tour2: {
+                name: "Tour Parc & Ciudad",
+                route: ["Plaza de Cataluña", "Las Ramblas", "Barrio Gótico", "Paseo de Gracia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arco de Triunfo", "Parque de la Ciudadela", "Puerto Viejo", "Playa de la Barceloneta", "Puerto Olímpico", "Jardines de Miramar", "Montjuïc"]
+            },
+            tour3: {
+                name: "Barcelona Completa",
+                route: ["Plaza de Cataluña", "Las Ramblas", "Barrio Gótico", "Paseo de Gracia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Recinto Modernista de Sant Pau", "Arco de Triunfo", "Parque de la Ciudadela", "Puerto Viejo", "Playa de la Barceloneta", "Puerto Olímpico", "Jardines de Miramar", "Anillo Olímpico", "Estadio Olímpico Lluís Companys", "Museo Nacional de Arte de Cataluña", "Plaza de España", "Fuente Mágica de Montjuïc"]
+            }
         },
         reviews: {
+            eyebrow: "Experiencias Reales",
             title: "La Confianza de los Viajeros",
-            items: [
-                {
-                    id: 1,
-                    author: "Sarah J.",
-                    location: "Reino Unido",
-                    text: "La forma más elegante de ver Barcelona. El coche es silencioso y hermoso, y el conductor fue excepcional.",
-                    source: "TripAdvisor"
-                },
-                {
-                    id: 2,
-                    author: "Marc & Lisa",
-                    location: "Alemania",
-                    text: "Nos encantó la privacidad. Sin multitudes, solo nosotros y la ciudad. El sistema de traducción funcionó perfectamente.",
-                    source: "GetYourGuide"
-                },
-                {
-                    id: 3,
-                    author: "James T.",
-                    location: "EE. UU.",
-                    text: "Vale cada céntimo. El 'Grand Tour' cubrió todo lo que queríamos ver sin tener que caminar.",
-                    source: "Google Reviews"
-                }
-            ]
+            subtitle: "Más de 200 opiniones verificadas",
+            showMore: "Ver todas las opiniones",
+            showLess: "Ver menos",
+            writeReview: "Deja tu opinión",
         },
         footer: {
             follow: "SIGUE LEGACY",
