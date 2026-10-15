@@ -43,19 +43,6 @@ const ToursGrid: React.FC<ToursGridProps> = () => {
             );
           })}
         </div>
-
-        {/* Bottom CTA — Direct FareHarbor */}
-        <div className="flex justify-center mt-12">
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-4 bg-neutral-900 text-white font-display font-bold uppercase tracking-widest text-xs rounded-full hover:bg-premium-gold transition-all duration-300 group shadow-lg"
-          >
-            <span>{isEs ? 'Ver Disponibilidad en FareHarbor' : 'Check Availability on FareHarbor'}</span>
-            <ExternalLink className="w-4 h-4 opacity-80 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </div>
       </div>
     </section>
   );

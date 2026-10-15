@@ -30,8 +30,8 @@ const TOUR_NAMES: Record<string, { es: string; en: string }> = {
 
 const TOUR_SUBTITLES: Record<string, { es: string; en: string }> = {
   'essential': {
-    es: 'Recorrido de 1 hora con paradas estratégicas en los iconos imprescindibles del centro modernista.',
-    en: '1-hour route with strategic photo stops at essential modernist landmarks.'
+    es: 'Recorrido panorámico de 1 hora sin paradas por los iconos imprescindibles del centro modernista.',
+    en: '1-hour continuous panoramic ride past essential modernist landmarks.'
   },
   'city-sea': {
     es: 'Recorrido de 2 horas con paradas estratégicas uniendo arquitectura, parques y costa mediterránea.',
@@ -94,10 +94,18 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
             <Clock className="w-3.5 h-3.5 text-premium-gold" />
             {tour.duration}
           </span>
-          <span className="inline-flex items-center gap-1.5 bg-stone-50 px-2.5 py-1.5 rounded-lg border border-stone-200/60 font-medium">
-            <Camera className="w-3.5 h-3.5 text-premium-gold" />
-            {isEs ? 'Paradas estratégicas para fotos' : 'Strategic photo stops'}
-          </span>
+          {tour.id !== 'essential' && (
+            <span className="inline-flex items-center gap-1.5 bg-stone-50 px-2.5 py-1.5 rounded-lg border border-stone-200/60 font-medium">
+              <Camera className="w-3.5 h-3.5 text-premium-gold" />
+              {isEs ? 'Paradas estratégicas para fotos' : 'Strategic photo stops'}
+            </span>
+          )}
+          {tour.id === 'essential' && (
+            <span className="inline-flex items-center gap-1.5 bg-stone-50 px-2.5 py-1.5 rounded-lg border border-stone-200/60 font-medium">
+              <Camera className="w-3.5 h-3.5 text-premium-gold" />
+              {isEs ? 'Paseo panorámico continuo' : 'Continuous panoramic ride'}
+            </span>
+          )}
           <span className="inline-flex items-center gap-1.5 bg-stone-50 px-2.5 py-1.5 rounded-lg border border-stone-200/60 font-medium">
             <Zap className="w-3.5 h-3.5 text-premium-gold" />
             {isEs ? '100% Eléctrico' : '100% Electric'}
