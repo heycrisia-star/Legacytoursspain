@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Menu, X } from 'lucide-react';
 import Hero from './components/Hero';
 import Gallery from './components/Gallery';
 import BrandStory from './components/BrandStory';
@@ -23,6 +24,7 @@ function App() {
   const [isFAQOpen, setIsFAQOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showPinPrompt, setShowPinPrompt] = useState(false);
   const [pin, setPin] = useState('');
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -143,7 +145,7 @@ function App() {
             </a>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 md:gap-6">
             {/* Navigation - Desktop */}
             <nav className="hidden md:flex items-center gap-8">
               {navItems.map((item) => (
@@ -161,8 +163,45 @@ function App() {
               ))}
             </nav>
             <LanguageSelector />
+
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded-xl text-neutral-800 hover:bg-neutral-100 transition-colors"
+              aria-label="Abrir menú"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 text-neutral-900" />
+              ) : (
+                <Menu className="w-6 h-6 text-neutral-900" />
+              )}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Navigation Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-white/95 backdrop-blur-xl border-b border-neutral-200 px-6 py-6 shadow-2xl animate-fade-in-up">
+            <nav className="flex flex-col space-y-4">
+              {navItems.map((item) => (
+                <button
+                  key={item.key}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    scrollToSection(item.key);
+                  }}
+                  className={`text-left text-base font-display font-bold uppercase tracking-wider py-2 transition-colors ${
+                    (item.key === 'blog' && currentPath.startsWith('/blog'))
+                      ? 'text-premium-gold'
+                      : 'text-neutral-800 hover:text-premium-gold'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+          </div>
+        )}
       </header>
 
       <main className="flex flex-col pt-20">
@@ -199,6 +238,7 @@ function App() {
       <Footer
         onOpenFAQ={() => setIsFAQOpen(true)}
         contactRef={contactRef}
+        onNavigate={navigate}
       />
 
       <FloatingControls />

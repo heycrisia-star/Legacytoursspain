@@ -6,9 +6,10 @@ import { useLanguage } from '../context/LanguageContext';
 interface FooterProps {
   onOpenFAQ: () => void;
   contactRef: React.RefObject<HTMLDivElement>;
+  onNavigate?: (path: string) => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ onOpenFAQ, contactRef }) => {
+const Footer: React.FC<FooterProps> = ({ onOpenFAQ, contactRef, onNavigate }) => {
   const { t } = useLanguage();
 
   return (
@@ -91,7 +92,15 @@ const Footer: React.FC<FooterProps> = ({ onOpenFAQ, contactRef }) => {
         </div>
 
         {/* Quick Links */}
-        <div className="flex gap-6 text-xs text-neutral-400 font-sans uppercase tracking-widest border-t border-neutral-50 pt-8 w-full justify-center">
+        <div className="flex flex-wrap gap-6 text-xs text-neutral-400 font-sans uppercase tracking-widest border-t border-neutral-50 pt-8 w-full justify-center items-center">
+          {onNavigate && (
+            <button
+              onClick={() => onNavigate('/blog')}
+              className="text-neutral-600 hover:text-premium-gold font-bold transition-colors"
+            >
+              Blog
+            </button>
+          )}
           <button onClick={onOpenFAQ} className="hover:text-premium-gold transition-colors">{t('nav.faq')}</button>
           <a href="#" className="hover:text-premium-gold transition-colors">{t('footer.privacy')}</a>
           <a href="#" className="hover:text-premium-gold transition-colors">{t('footer.terms')}</a>
