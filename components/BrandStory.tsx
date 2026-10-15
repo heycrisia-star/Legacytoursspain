@@ -1,95 +1,128 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Heart, Award, MapPin } from 'lucide-react';
+import { Award, Heart, Globe2, Compass, Sparkles } from 'lucide-react';
 
 const BrandStory: React.FC = () => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+  const isEs = language === 'es';
 
   return (
     <section className="py-24 bg-neutral-900 text-white overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-          {/* Photo side */}
-          <div className="relative order-2 lg:order-1">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5]">
-              <img
-                src="/images/photo_cristian_selfie.jpeg"
-                alt="Cristian — Founder of Legacy Tours Spain"
-                className="w-full h-full object-cover"
-              />
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white font-display font-bold text-lg uppercase tracking-widest">Cristian</p>
-                <p className="text-white/70 text-sm font-sans">{t('brand.founder.title') || 'Founder & Guide — Legacy Tours Spain'}</p>
+          {/* Founder Poster Image / Visual */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative group max-w-md w-full">
+              {/* Golden glow */}
+              <div className="absolute -inset-1 bg-gradient-to-tr from-premium-gold/30 to-amber-500/20 rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition duration-500" />
+              
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-neutral-800">
+                <img
+                  src="/images/cristian_founder_story.png"
+                  alt="Meet Cristian — Founder of Legacy Tours Spain"
+                  className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+                  loading="lazy"
+                />
               </div>
-            </div>
-
-            {/* Floating stat card */}
-            <div className="absolute -top-6 -right-6 bg-premium-gold text-white rounded-2xl p-5 shadow-xl text-center hidden lg:block">
-              <p className="text-3xl font-display font-black">+200</p>
-              <p className="text-[10px] font-bold uppercase tracking-widest opacity-90">
-                {t('brand.stat.reviews') || 'Verified\nreviews'}
-              </p>
-            </div>
-
-            {/* Second floating card */}
-            <div className="absolute -bottom-6 -left-6 bg-white text-neutral-900 rounded-2xl p-5 shadow-xl text-center hidden lg:block">
-              <p className="text-3xl font-display font-black">5★</p>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">
-                {t('brand.stat.rating') || 'Average\nrating'}
-              </p>
             </div>
           </div>
 
-          {/* Text side */}
-          <div className="order-1 lg:order-2 space-y-8">
+          {/* Text Story & Pillars */}
+          <div className="lg:col-span-7 space-y-8">
             <div>
-              <p className="text-xs font-sans font-semibold tracking-[0.3em] uppercase text-premium-gold mb-4">
-                {t('brand.eyebrow') || 'Our Story'}
+              <p className="text-xs font-sans font-semibold tracking-[0.3em] uppercase text-premium-gold mb-3">
+                {isEs ? 'El Alma de Legacy Tours' : 'The Soul of Legacy Tours'}
               </p>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-                {t('brand.title') || 'Born from a passion for Barcelona'}
+              <h2 className="font-display text-4xl sm:text-5xl font-bold text-white uppercase tracking-tight leading-none mb-4">
+                {isEs ? 'Conoce a Cristian' : 'Meet Cristian'}
               </h2>
-              <p className="text-white/70 leading-relaxed text-base font-light mb-4">
-                {t('brand.description') || 'Legacy Tours Spain was born from Cristian\'s desire to share Barcelona in the most authentic and personal way. Not just a tour — a real conversation with the city, riding through its streets in a vintage electric car that turns every corner into a story.'}
-              </p>
-              <p className="text-white/70 leading-relaxed text-base font-light">
-                {t('brand.description2') || 'Cristian speaks Spanish and, on the tours he guides personally, can use a translation device upon prior request — so nothing gets lost between you and Barcelona. Our other guides speak English, French, Italian, German and Catalan natively.'}
+              <p className="text-premium-gold font-display text-sm uppercase tracking-widest font-semibold mb-6">
+                {isEs ? 'Fundador y Guía · Legacy Tours Spain' : 'Founder & Guide · Legacy Tours Spain'}
               </p>
             </div>
 
-            {/* Values */}
-            <div className="space-y-4">
-              {[
-                {
-                  icon: <Heart className="w-5 h-5" />,
-                  title: t('brand.value1.title') || 'Personal attention',
-                  desc: t('brand.value1.desc') || 'Every tour is unique. We adapt to you, your group and your pace.',
-                },
-                {
-                  icon: <Award className="w-5 h-5" />,
-                  title: t('brand.value2.title') || 'Verified 5-star experience',
-                  desc: t('brand.value2.desc') || 'Over 200 real reviews on GetYourGuide, Google and TripAdvisor.',
-                },
-                {
-                  icon: <MapPin className="w-5 h-5" />,
-                  title: t('brand.value3.title') || 'Local knowledge',
-                  desc: t('brand.value3.desc') || 'Hidden corners, local stories, genuine passion for this city.',
-                },
-              ].map((v, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-premium-gold/20 text-premium-gold flex items-center justify-center">
-                    {v.icon}
-                  </div>
-                  <div>
-                    <p className="font-display font-bold text-white text-sm uppercase tracking-wide">{v.title}</p>
-                    <p className="text-white/60 text-sm font-light mt-0.5">{v.desc}</p>
-                  </div>
-                </div>
-              ))}
+            {/* Quote / Vision */}
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm space-y-3">
+              <p className="text-white text-base sm:text-lg font-light italic leading-relaxed">
+                {isEs
+                  ? '«Creé Legacy Tours Spain porque quería una vida diferente. Después de momentos difíciles, necesitaba reconstruirme, tener tiempo para mis hijos Maxi y Milán, y conectar con personas de todo el mundo que están felices disfrutando de sus vacaciones.»'
+                  : '«I created Legacy Tours Spain because I wanted a different life. After difficult moments, I needed to rebuild myself, spend time with my children Maxi and Milán, and connect with happy travelers visiting Barcelona from all over the world.»'}
+              </p>
+              <p className="text-xs text-premium-gold font-display uppercase tracking-widest font-bold">
+                — Cristian
+              </p>
             </div>
+
+            {/* Bio Points Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="p-4 rounded-xl bg-neutral-800/80 border border-neutral-700/60">
+                <div className="flex items-center gap-3 mb-1">
+                  <Award className="w-4 h-4 text-premium-gold" />
+                  <p className="font-display font-bold text-xs uppercase tracking-wider text-white">
+                    {isEs ? 'Ingeniero y Ex-Directivo' : 'Engineer & Former Manager'}
+                  </p>
+                </div>
+                <p className="text-xs text-neutral-400 font-sans leading-relaxed">
+                  {isEs
+                    ? 'Lideró equipos de más de 660 personas y gestionó 33M € al año antes de apostar por su sueño familiar.'
+                    : 'Managed teams of 660+ people and €33M/year before dedicating himself to his dream and family.'}
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-neutral-800/80 border border-neutral-700/60">
+                <div className="flex items-center gap-3 mb-1">
+                  <Compass className="w-4 h-4 text-premium-gold" />
+                  <p className="font-display font-bold text-xs uppercase tracking-wider text-white">
+                    {isEs ? 'Rutas Cerradas y Curadas' : 'Curated Closed Routes'}
+                  </p>
+                </div>
+                <p className="text-xs text-neutral-400 font-sans leading-relaxed">
+                  {isEs
+                    ? '3 itinerarios estudiados meticulosamente para garantizar la mejor experiencia, fluidez y vistas.'
+                    : '3 meticulously crafted itineraries ensuring the finest flow, scenic viewpoints and iconic highlights.'}
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-neutral-800/80 border border-neutral-700/60">
+                <div className="flex items-center gap-3 mb-1">
+                  <Globe2 className="w-4 h-4 text-premium-gold" />
+                  <p className="font-display font-bold text-xs uppercase tracking-wider text-white">
+                    {isEs ? 'Idiomas y Atención Personal' : 'Languages & Guides'}
+                  </p>
+                </div>
+                <p className="text-xs text-neutral-400 font-sans leading-relaxed">
+                  {isEs
+                    ? 'Cristian habla español y puede usar dispositivos de traducción en sus tours personales (previa confirmación). El resto del equipo cuenta con guías locales en múltiples idiomas.'
+                    : 'Cristian speaks Spanish and can utilize translation devices on his personal tours upon prior confirmation. Our team also includes guides fluent in English and other languages.'}
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-neutral-800/80 border border-neutral-700/60">
+                <div className="flex items-center gap-3 mb-1">
+                  <Heart className="w-4 h-4 text-premium-gold" />
+                  <p className="font-display font-bold text-xs uppercase tracking-wider text-white">
+                    {isEs ? 'Equilibrio y Calidez' : 'Family & Connection'}
+                  </p>
+                </div>
+                <p className="text-xs text-neutral-400 font-sans leading-relaxed">
+                  {isEs
+                    ? 'Orgulloso padre de Maxi y Milán, apasionado del pádel, la bachata, la meditación y el trato humano.'
+                    : 'Proud father of Maxi and Milán, lover of padel, bachata, meditation and warm human connections.'}
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom note */}
+            <div className="pt-2 flex items-center gap-3 text-xs text-neutral-400 font-sans">
+              <Sparkles className="w-4 h-4 text-premium-gold shrink-0" />
+              <span>
+                {isEs
+                  ? '+300 reseñas verificadas con más de 4.9 estrellas avalan nuestra forma de mostrar Barcelona.'
+                  : '300+ verified reviews with a 4.9+ rating endorse our authentic way of experiencing Barcelona.'}
+              </span>
+            </div>
+
           </div>
         </div>
       </div>

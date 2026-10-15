@@ -114,34 +114,34 @@ export const translations: Record<string, any> = {
             },
             value1: {
                 title: "Atención personal",
-                desc: "Cada tour es único. Nos adaptamos a ti, a tu grupo y a tu ritmo."
+                desc: "Rutas cerradas y seleccionadas meticulosamente para garantizar la mejor experiencia y vistas de Barcelona."
             },
             value2: {
                 title: "Experiencia 5 estrellas verificada",
-                desc: "Más de 200 opiniones reales en GetYourGuide, Google y TripAdvisor."
+                desc: "Más de 300 opiniones reales y más de 4.9 estrellas en Google, GetYourGuide y TripAdvisor."
             },
             value3: {
                 title: "Conocimiento local",
-                desc: "Rincones escondidos, historias locales, auténtica pasión por esta ciudad."
+                desc: "Rincones icónicos, historias auténticas y un trato cálido y cercano."
             }
         },
         vehicle: {
-            eyebrow: "La Experiencia",
-            title: "Nuestros Coches Eléctricos Vintage",
+            eyebrow: "Nuestros Vehículos",
+            title: "Coches Eléctricos Vintage de los Años 30",
             subtitle: "Dos vehículos artesanales inspirados en el Ford Modelo A de los años 30. Robamos miradas en cada esquina de Barcelona.",
             detail: {
                 title: "Barcelona de otra manera",
-                desc: "Nuestros coches eléctricos vintage no son solo transporte — son parte de la experiencia. Diseñados para convertir cada calle en un recuerdo, te dan la libertad de conocer Barcelona a tu ritmo, en total privacidad, con un guía local apasionado a tu lado."
+                desc: "Nuestros coches eléctricos vintage no son solo transporte — son el alma de la experiencia. Diseñados para convertir cada calle en un recuerdo, te dan la libertad de conocer Barcelona con calma, en total privacidad y con un trato humano insuperable."
             },
             spec: {
                 electric: "100% Eléctrico",
-                "electric.desc": "Cero emisiones. Silencioso. Sostenible.",
+                electricDesc: "Cero emisiones. Silencioso. Sostenible.",
                 capacity: "Hasta 4 pasajeros por coche",
-                "capacity.desc": "Completamente privado. Solo tu grupo.",
+                capacityDesc: "Completamente privado. Solo tu grupo.",
                 roof: "Capota retráctil",
-                "roof.desc": "Experiencia al aire libre. Barcelona bajo el cielo.",
+                roofDesc: "Experiencia al aire libre. Barcelona bajo el cielo.",
                 vintage: "Diseño Vintage años 30",
-                "vintage.desc": "Inspirado en el Ford Modelo A. Elegancia atemporal."
+                vintageDesc: "Inspirado en el Ford Modelo A. Elegancia atemporal."
             },
             fleet: {
                 label: "Nuestra Flota",
@@ -151,9 +151,9 @@ export const translations: Record<string, any> = {
             }
         },
         tours: {
-            eyebrow: "Elige Tu Tour",
-            title: "3 Tours. 1 Ciudad Inolvidable.",
-            subtitle: "Privado, eléctrico, vintage. Elige la duración que se adapte a tu día.",
+            eyebrow: "Nuestros 3 Recorridos",
+            title: "3 Tours Privados. 1 Ciudad Inolvidable.",
+            subtitle: "Rutas cerradas y cuidadosamente seleccionadas en coches vintage 100% eléctricos.",
             compareAll: "Comparar y Reservar",
             mapTitle: "Mapa Interactivo de Rutas",
             mapSubtitle: "Explora las paradas del tour seleccionado",
@@ -278,15 +278,16 @@ export const translations: Record<string, any> = {
             hours: "Hours"
         },
         hero: {
-            title: "Tuk Tuk Tours Barcelona",
-            subtitle: "Private tours with real-time AI translation in a 100% electric vintage experience.",
-            tagline: "Vintage Style. Global Communication.",
+            title: "Vintage Electric Tours Barcelona",
+            subtitle: "Private tours in 1930s vintage electric cars. Just you, your group, and Barcelona.",
+            tagline: "Private Experience · 1930s Vintage Design",
             book: "BOOK NOW",
             dining: "DINING & TIPS",
             electric: "100% ELECTRIC",
-            translator: "AI TRANSLATOR",
+            translator: "AI TRANSLATION AVAILABLE",
             private: "100% PRIVATE",
-            guide: "DIGITAL AI GUIDE",
+            vintage: "1930s VINTAGE DESIGN",
+            guide: "INSIDER BLOG",
             rate: "RATE EXPERIENCE",
             madrid: "VISITING MADRID?"
         },
@@ -301,26 +302,28 @@ export const translations: Record<string, any> = {
             scroll: "Scroll to Continue"
         },
         tours: {
+            eyebrow: "Our 3 Curated Tours",
+            title: "3 Private Tours. 1 Unforgettable City.",
+            subtitle: "Curated closed routes in 100% electric vintage cars. Choose your perfect duration.",
+            compareAll: "Compare & Book",
             mapTitle: "Interactive Route Map",
             mapSubtitle: "Explore the stops for the selected tour",
             pickup: "We offer complimentary pickup and drop-off at central locations or your preferred spot.",
-            custom: "Custom flexible tours are available starting from",
-            duration30: "30 minutes",
             bookNow: "Book Now",
             viewRoute: "View Full Route",
             closeRoute: "Close Route",
             moreStops: "more stops...",
             tour1: {
                 name: "Essential Barcelona",
-                route: ["Catalonia Square", "Las Ramblas", "Gothic Quarter", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arc de Triomf", "Ciutadella Park", "Barceloneta Beach"]
+                route: ["Catalonia Square", "Las Ramblas", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arc de Triomf", "Ciutadella Park", "Barceloneta Beach"]
             },
             tour2: {
-                name: "City & Sea Tour",
-                route: ["Catalonia Square", "Las Ramblas", "Gothic Quarter", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arc de Triomf", "Ciutadella Park", "Port Vell", "Barceloneta Beach", "Olympic Port", "Miramar Gardens", "Montjuïc"]
+                name: "Park City & Beach",
+                route: ["Catalonia Square", "Las Ramblas", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Arc de Triomf", "Ciutadella Park", "Port Vell", "Barceloneta Beach", "Olympic Port", "Miramar Gardens", "Montjuïc"]
             },
             tour3: {
                 name: "Complete Barcelona",
-                route: ["Catalonia Square", "Las Ramblas", "Gothic Quarter", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Sant Pau Modernist Site", "Arc de Triomf", "Ciutadella Park", "Port Vell", "Barceloneta Beach", "Olympic Port", "Miramar Gardens", "Olympic Ring", "Lluís Companys Olympic Stadium", "National Art Museum of Catalonia", "Spain Square", "Magic Fountain of Montjuïc"]
+                route: ["Catalonia Square", "Las Ramblas", "Passeig de Gràcia", "Casa Batlló", "Casa Milà", "Sagrada Familia", "Sant Pau Modernist Site", "Arc de Triomf", "Ciutadella Park", "Port Vell", "Barceloneta Beach", "Olympic Port", "Miramar Gardens", "Olympic Ring", "Lluís Companys Olympic Stadium", "National Art Museum of Catalonia", "Spain Square", "Magic Fountain of Montjuïc"]
             }
         },
         languages: {
@@ -386,8 +389,55 @@ export const translations: Record<string, any> = {
             ctaButton: "Book Your Departure Time"
         },
         brand: {
-            quote: "The charm of vintage 1930s style fused with modern AI technology.",
-            description: "Explore Barcelona in a private, eco-friendly setting. Discover iconic landmarks and hidden gems where you can experience the city like a local."
+            quote: "More than a tour. A memory.",
+            description: "Legacy Tours Spain was born from Cristian's desire to share Barcelona in the most authentic and personal way. Not just a tour — a real conversation with the city.",
+            description2: "Cristian speaks Spanish and, on the tours he guides personally, can use translation devices upon prior request. Our other guides speak English and multiple other languages.",
+            eyebrow: "Our Story",
+            title: "Born from a passion for Barcelona",
+            founder: {
+                title: "Founder & Guide — Legacy Tours Spain"
+            },
+            stat: {
+                reviews: "Verified\nreviews",
+                rating: "Average\nrating"
+            },
+            value1: {
+                title: "Personal attention",
+                desc: "Curated closed routes designed to ensure the finest experience and views of Barcelona."
+            },
+            value2: {
+                title: "Verified 5-star experience",
+                desc: "Over 300 real reviews with a 4.9+ rating on Google, GetYourGuide and TripAdvisor."
+            },
+            value3: {
+                title: "Local knowledge",
+                desc: "Iconic landmarks, authentic stories, and warm personal connection."
+            }
+        },
+        vehicle: {
+            eyebrow: "Our Fleet",
+            title: "1930s Vintage Electric Cars",
+            subtitle: "Two hand-crafted vehicles inspired by the Ford Model A. A silent, intimate and elegant journey through Barcelona.",
+            detail: {
+                title: "Barcelona Differently",
+                desc: "Our vintage electric cars are the soul of the experience. Designed to turn every street into a memory, they allow you to discover Barcelona in complete privacy, relaxed atmosphere and intimate setting with your group."
+            },
+            spec: {
+                electric: "100% Electric",
+                electricDesc: "Zero emissions. Silent. Sustainable.",
+                capacity: "Up to 4 guests per car",
+                capacityDesc: "Completely private. Your group only.",
+                roof: "Retractable soft top",
+                roofDesc: "Open-air experience. Barcelona under the sky.",
+                vintage: "1930s Vintage Design",
+                vintageDesc: "Inspired by the Ford Model A. Timeless elegance."
+            },
+            fleet: {
+                label: "Our Fleet",
+                cars: "Vintage cars",
+                max: "Max guests",
+                private: "Always private"
+            }
         },
         reviews: {
             title: "Trusted by Travelers",

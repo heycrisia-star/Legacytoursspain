@@ -37,15 +37,28 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     };
 
     const t = (key: string): any => {
-        const keys = key.split('.');
-        let result: any = translations[language];
-
-        for (const k of keys) {
-            if (result && result[k] !== undefined) {
-                result = result[k];
-            } else {
-                return key; // Return key if not found
+        const resolve = (obj: any, path: string[]) => {
+            let curr = obj;
+            for (const k of path) {
+                if (curr && curr[k] !== undefined) {
+                    curr = curr[k];
+                } else {
+                    return undefined;
+                }
             }
+            return curr;
+        };
+
+        const keys = key.split('.');
+        let result = resolve(translations[language], keys);
+        if (result === undefined && language !== 'en') {
+            result = resolve(translations['en'], keys);
+        }
+        if (result === undefined && language !== 'es') {
+            result = resolve(translations['es'], keys);
+        }
+        if (result === undefined) {
+            return '';
         }
 
         // Post-process routes for tour1 (1h) and tour2 (2h)

@@ -97,7 +97,7 @@ const CruiseLanding: React.FC = () => {
                             {[
                                 { title: "No Crowded Buses", desc: "Private groups only. No waiting for 50 other people." },
                                 { title: "Vintage Style", desc: "Our 100% electric 1930s-style cars are showstoppers." },
-                                { title: "AI Real-Time Translation", desc: "Understand everything in your own language instantly." }
+                                { title: "Personal Attention", desc: "Passionate local guides and warm, personalized care throughout your excursion." }
                             ].map((item, i) => (
                                 <li key={i} className="flex gap-4">
                                     <div className="mt-1 h-6 w-6 rounded-full bg-premium-gold flex items-center justify-center shrink-0">

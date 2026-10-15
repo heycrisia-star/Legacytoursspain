@@ -61,7 +61,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
         {/* Tagline */}
         <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/60 backdrop-blur-xl rounded-full border border-premium-gold/20 shadow-lg">
           <span className="text-xs md:text-sm font-display font-bold uppercase tracking-[0.3em] text-premium-text">
-            {t('hero.tagline')}
+            {t('hero.tagline') || (language === 'es' ? 'Experiencia Privada · Diseño Vintage Años 30' : 'Private Experience · 1930s Vintage Design')}
           </span>
         </div>
 
@@ -73,14 +73,14 @@ const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
         </h1>
 
         <p className="text-base md:text-xl text-neutral-800 font-sans font-medium tracking-wide max-w-2xl mx-auto bg-white/40 backdrop-blur-xl p-8 rounded-[2rem] border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)]">
-          {t('hero.subtitle')}
+          {t('hero.subtitle') || (language === 'es' ? 'Tours privados en coches eléctricos vintage. Solo tú, tu grupo y Barcelona.' : 'Private tours in 1930s vintage electric cars. Just you, your group, and Barcelona.')}
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 md:gap-8 py-2">
           {[
-            { icon: Zap, text: t('hero.electric') },
-            { icon: Users, text: t('hero.private') },
-            { icon: Star, text: t('hero.vintage') || 'Vintage 1930s Design' }
+            { icon: Zap, text: language === 'es' ? '100% Eléctrico' : '100% Electric' },
+            { icon: Users, text: language === 'es' ? '100% Privado' : '100% Private' },
+            { icon: Star, text: language === 'es' ? 'Diseño Vintage Años 30' : '1930s Vintage Design' }
           ].map(({ icon: Icon, text }, i) => (
             <div key={i} className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-neutral-100/50 hover:scale-105 transition-transform duration-300">
                <Icon className="w-5 h-5 text-premium-gold" />
@@ -97,13 +97,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
             onClick={onOpenBooking}
             className="relative inline-flex items-center gap-4 bg-gradient-to-r from-[#D4AF37] via-[#F1C40F] to-[#D4AF37] hover:from-[#B89324] hover:to-[#D4AF37] text-white px-12 py-6 rounded-full text-base font-display font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] shadow-2xl border border-premium-gold/30"
           >
-            {/* Direct discount promo badge */}
-            <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-red-600 to-amber-500 text-white px-4 py-1 rounded-full text-[9px] font-display font-black tracking-widest uppercase shadow-md animate-bounce whitespace-nowrap">
-              {language === 'es' ? '🔥 ¡Descuento Especial Directo!' : '🔥 Special Direct Discount!'}
-            </span>
-
             <span className="flex items-center gap-3">
-              {t('hero.book')}
+              {language === 'es' ? 'RESERVAR AHORA' : 'BOOK NOW'}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </button>

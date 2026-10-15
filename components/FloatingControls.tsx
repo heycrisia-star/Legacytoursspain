@@ -13,7 +13,12 @@ const FloatingControls: React.FC = () => {
   const whatsappUrl = `https://wa.me/34635096002?text=${whatsappMessage}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 animate-fade-in-up">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 animate-fade-in-up">
+      {/* Special offer callout tag */}
+      <span className="bg-gradient-to-r from-red-600 via-amber-500 to-red-600 text-white text-[10px] font-display font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-lg border border-white/50 animate-pulse">
+        {language === 'es' ? '🔥 ¡Descuento Directo!' : '🔥 Direct Discount!'}
+      </span>
+
       {/* Prominent Floating WhatsApp Button */}
       <a
         href={whatsappUrl}
