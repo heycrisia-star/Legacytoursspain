@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { X, Calendar, Clock, User, Mail, Phone, Users, Check, Camera, Send, Download, Share2 } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { X, Calendar, Clock, User, Mail, Phone, Users, Check, Camera, Send, Download, Sparkles, AlertCircle } from 'lucide-react';
 import html2canvas from 'html2canvas';
 
 interface InstantBookingFormProps {
@@ -8,6 +8,8 @@ interface InstantBookingFormProps {
 
 interface TourConfig {
     name: string;
+    subtitle: string;
+    durationLabel: string;
     durationMinutes: number;
     basePrice: number; // Precio neto
     taxRate: number; // 21%
@@ -17,6 +19,8 @@ interface TourConfig {
 const TOURS_CONFIG: Record<string, TourConfig> = {
     'essential': {
         name: 'Essential Barcelona',
+        subtitle: '1h · 60 minutos',
+        durationLabel: '1 HORA',
         durationMinutes: 60,
         basePrice: 78.51,
         taxRate: 0.21,
@@ -24,6 +28,8 @@ const TOURS_CONFIG: Record<string, TourConfig> = {
     },
     'city-sea': {
         name: 'Park City & Beach',
+        subtitle: '2h · 120 minutos',
+        durationLabel: '2 HORAS',
         durationMinutes: 120,
         basePrice: 117.32,
         taxRate: 0.21,
@@ -31,8 +37,19 @@ const TOURS_CONFIG: Record<string, TourConfig> = {
     },
     'complete': {
         name: 'Complete Barcelona',
+        subtitle: '3h · 180 minutos',
+        durationLabel: '3 HORAS',
         durationMinutes: 180,
         basePrice: 161.16,
+        taxRate: 0.21,
+        image: '/images/gallery_1.png'
+    },
+    'navidad': {
+        name: 'Barcelona Tour Navideño',
+        subtitle: 'Luces y Magia · 90 min',
+        durationLabel: '90 MIN',
+        durationMinutes: 90,
+        basePrice: 99.17,
         taxRate: 0.21,
         image: '/images/gallery_1.png'
     }
@@ -57,7 +74,6 @@ const COUNTRY_CODES = [
 ];
 
 const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
-    // Current date default in YYYY-MM-DD
     const today = new Date().toISOString().split('T')[0];
 
     const [formData, setFormData] = useState({
@@ -67,7 +83,7 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
         email: '',
         date: today,
         time: '10:00',
-        tourType: 'city-sea', // 'essential' | 'city-sea' | 'complete'
+        tourType: 'city-sea', // 'essential' (60m) | 'city-sea' (120m) | 'complete' (180m) | 'navidad' (90m)
         people: 4
     });
 
@@ -75,11 +91,13 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [bookingRef, setBookingRef] = useState('');
     const [createdTimestamp, setCreatedTimestamp] = useState('');
+    const [generatedImageUrl, setGeneratedImageUrl] = useState<string | null>(null);
     const [isGeneratingImage, setIsGeneratingImage] = useState(false);
+    const [autoEmailStatus, setAutoEmailStatus] = useState<'idle' | 'sending' | 'sent' | 'fallback'>('idle');
 
     const ticketRef = useRef<HTMLDivElement>(null);
 
-    // Helpers to calculate end time
+    // Helpers to calculate end time coherently based on durationMinutes (60, 90, 120, 180 min)
     const calculateEndTime = (startTime: string, minutes: number) => {
         if (!startTime) return '12:00';
         const [h, m] = startTime.split(':').map(Number);
@@ -117,11 +135,96 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
     const netFormatted = netPrice.toFixed(2).replace('.', ',');
     const taxesFormatted = taxes.toFixed(2).replace('.', ',');
 
+    // Auto-generate high-res image and trigger background email once ticket is mounted
+    useEffect(() => {
+        if (!isSuccess || !ticketRef.current) return;
+
+        let isMounted = true;
+        setIsGeneratingImage(true);
+
+        const generateTicketImageAndNotify = async () => {
+            try {
+                // Short wait to ensure fonts & styles render cleanly
+                await new Promise((r) => setTimeout(r, 450));
+                if (!ticketRef.current || !isMounted) return;
+
+                const canvas = await html2canvas(ticketRef.current, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#ffffff',
+                    logging: false
+                });
+
+                const dataUrl = canvas.toDataURL('image/png');
+                if (isMounted) {
+                    setGeneratedImageUrl(dataUrl);
+                    setIsGeneratingImage(false);
+                }
+
+                // Automatic background notification to info@legacytoursspain.com
+                const fullPhone = `${formData.countryCode} ${formData.phoneNumber.trim()}`;
+                setAutoEmailStatus('sending');
+
+                try {
+                    const emailResponse = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            access_key: '0289b52a-e8f0-4fc7-bfef-c07a3c3c79c8', // Web3Forms standard mailer key for Legacy Tours
+                            to_email: 'info@legacytoursspain.com',
+                            from_name: 'Gestor Reservas Legacy Tours',
+                            subject: `Nueva reserva: ${currentTour.name} el ${formattedDate} a las ${formData.time} - ${endTime}`,
+                            message: `NUEVA RESERVA MANUAL GENERADA\n` +
+                                     `=========================================\n` +
+                                     `Reserva n.º: ${bookingRef}\n` +
+                                     `Tour: ${currentTour.name} (${currentTour.durationMinutes} minutos)\n` +
+                                     `Fecha: ${formattedDate}\n` +
+                                     `Horario: ${formData.time} - ${endTime}\n` +
+                                     `Personas: ${formData.people} pasajeros\n\n` +
+                                     `DATOS CLIENTE:\n` +
+                                     `Nombre: ${formData.fullName}\n` +
+                                     `Teléfono: ${fullPhone}\n` +
+                                     `E-mail: ${formData.email}\n\n` +
+                                     `PAGOS:\n` +
+                                     `Base Tour Privado: ${netFormatted} €\n` +
+                                     `Impuestos (21%): ${taxesFormatted} €\n` +
+                                     `Total Reserva: ${totalPrice} € (Pendiente)\n` +
+                                     `=========================================\n` +
+                                     `Generado por: Cristian Gutierrez (Legacy Tours Spain)\n` +
+                                     `Fecha creación: ${createdTimestamp}\n`
+                        })
+                    });
+
+                    if (emailResponse.ok && isMounted) {
+                        setAutoEmailStatus('sent');
+                    } else if (isMounted) {
+                        setAutoEmailStatus('fallback');
+                    }
+                } catch {
+                    if (isMounted) setAutoEmailStatus('fallback');
+                }
+
+            } catch (err) {
+                console.error('Auto image creation error:', err);
+                if (isMounted) setIsGeneratingImage(false);
+            }
+        };
+
+        generateTicketImageAndNotify();
+
+        return () => {
+            isMounted = false;
+        };
+    }, [isSuccess]);
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Generate 8-digit random reservation number matching FareHarbor format (e.g., 388551264)
+        // Generate 9-digit FareHarbor random reservation number (e.g. 388551264)
         const randomRef = '388' + Math.floor(100000 + Math.random() * 900000);
         setBookingRef(randomRef);
 
@@ -131,12 +234,11 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
 
         const fullPhone = `${formData.countryCode} ${formData.phoneNumber.trim()}`;
 
-        // Save to Supabase
+        // Save to Supabase backend
         const SUPABASE_URL = 'https://lmjochwfwmuljgsfmrpt.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_eZbBbNLos0r5i7YoFYNqJg_KJoiFGNQ';
 
         try {
-            // First/last name split
             const nameParts = formData.fullName.trim().split(' ');
             const firstName = nameParts[0] || '';
             const lastName = nameParts.slice(1).join(' ') || '';
@@ -152,7 +254,7 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                 body: JSON.stringify({
                     booking_date: formData.date,
                     booking_time: formData.time,
-                    duration: formData.tourType === 'essential' ? '1h' : formData.tourType === 'complete' ? '3h' : '2h',
+                    duration: currentTour.durationLabel,
                     people: Number(formData.people),
                     first_name: firstName,
                     last_name: lastName,
@@ -163,7 +265,7 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                 })
             }).catch(err => console.log('Supabase sync notice:', err));
 
-            // Conversion tracking if present
+            // Conversion tracking
             if (typeof (window as any).gtag === 'function') {
                 (window as any).gtag('event', 'conversion', {
                     'send_to': 'AW-17770698067/g9ejCK7Z1ckbEN0q3ZlC'
@@ -179,40 +281,24 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
         }
     };
 
-    // Download/Capture screenshot as high-res image
-    const handleDownloadScreenshot = async () => {
-        if (!ticketRef.current) return;
-        setIsGeneratingImage(true);
-
-        try {
-            const canvas = await html2canvas(ticketRef.current, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#ffffff',
-                logging: false
-            });
-
-            const link = document.createElement('a');
-            link.download = `Reserva-${bookingRef}-${formData.fullName.replace(/\s+/g, '_')}.png`;
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        } catch (err) {
-            console.error('Error generating image:', err);
-            alert('No se pudo generar la imagen automática. Puedes hacer una captura de pantalla directamente.');
-        } finally {
-            setIsGeneratingImage(false);
-        }
+    // Download generated image
+    const handleDownloadImage = () => {
+        if (!generatedImageUrl) return;
+        const link = document.createElement('a');
+        link.download = `Ticket-FareHarbor-${bookingRef}-${formData.fullName.replace(/\s+/g, '_')}.png`;
+        link.href = generatedImageUrl;
+        link.click();
     };
 
-    // Send email notification trigger to info@legacytoursspain.com
-    const handleSendEmail = () => {
+    // One-tap manual email launcher fallback
+    const handleManualEmail = () => {
         const fullPhone = `${formData.countryCode} ${formData.phoneNumber.trim()}`;
         const subject = encodeURIComponent(`Nueva reserva: ${currentTour.name} el ${formattedDate} a las ${formData.time} - ${endTime}`);
         const body = encodeURIComponent(
             `NUEVA RESERVA MANUAL GENERADA\n` +
             `-----------------------------------------\n` +
             `Reserva n.º: ${bookingRef}\n` +
-            `Tour: ${currentTour.name}\n` +
+            `Tour: ${currentTour.name} (${currentTour.durationMinutes} minutos)\n` +
             `Fecha y Hora: ${formattedDate} a las ${formData.time} - ${endTime}\n` +
             `Tipo: 1 Tour Privado (${formData.people} personas)\n\n` +
             `DATOS DEL CLIENTE:\n` +
@@ -232,8 +318,8 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-[70] flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-md animate-fade-in">
-            <div className="bg-white rounded-[2rem] w-full max-w-xl overflow-hidden shadow-2xl border border-neutral-200 relative flex flex-col max-h-[92vh]">
+        <div className="fixed inset-0 z-[70] flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+            <div className="bg-white rounded-[2rem] w-full max-w-xl overflow-hidden shadow-2xl border border-neutral-200 relative flex flex-col max-h-[94vh]">
 
                 {/* Top header bar */}
                 <div className="px-5 py-4 bg-neutral-900 text-white flex items-center justify-between shrink-0">
@@ -243,10 +329,10 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                         </div>
                         <div>
                             <p className="text-xs font-display font-bold uppercase tracking-wider text-white">
-                                {isSuccess ? 'Ticket de Reserva Generado' : 'Generador Rápido de Reservas'}
+                                {isSuccess ? 'Ticket FareHarbor Oficial Generado' : 'Generador Rápido de Reservas'}
                             </p>
                             <p className="text-[10px] text-neutral-400 font-sans">
-                                {isSuccess ? 'Fiel a FareHarbor Oficial' : 'Optimizado para móvil · Legacy Tours Spain'}
+                                {isSuccess ? `Reserva #${bookingRef} · Imagen & Email automáticos` : 'Optimizado para móvil · Legacy Tours Spain'}
                             </p>
                         </div>
                     </div>
@@ -260,48 +346,95 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                 </div>
 
                 {/* Main Scrollable Content */}
-                <div className="overflow-y-auto p-4 sm:p-6 flex-1 bg-neutral-50/50">
+                <div className="overflow-y-auto p-3 sm:p-6 flex-1 bg-neutral-50/50">
                     {isSuccess ? (
                         <div className="space-y-4">
-                            {/* Actions bar for quick share / screenshot / email */}
-                            <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0">
-                                        <Check className="w-5 h-5" />
+                            
+                            {/* Visual Status / Action banner for Guide */}
+                            <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 shadow-sm space-y-3">
+                                <div className="flex items-center justify-between gap-3">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md">
+                                            <Check className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-bold text-emerald-950 font-display uppercase tracking-wide">
+                                                ¡Reserva n.º {bookingRef} lista!
+                                            </p>
+                                            <p className="text-xs text-emerald-700 font-sans">
+                                                {autoEmailStatus === 'sent' 
+                                                    ? '✅ Email enviado automáticamente a info@legacytoursspain.com' 
+                                                    : autoEmailStatus === 'sending'
+                                                    ? '⏳ Enviando notificación a info@legacytoursspain.com...'
+                                                    : 'ℹ️ Notificación lista para enviar a info@legacytoursspain.com'}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="text-sm font-bold text-emerald-950 font-display uppercase tracking-wide">
-                                            ¡Reserva n.º {bookingRef} creada!
-                                        </p>
-                                        <p className="text-xs text-emerald-700">
-                                            Listo para pantallazo o enviar a info@legacytoursspain.com
-                                        </p>
-                                    </div>
+
+                                    {/* Download button */}
+                                    {generatedImageUrl && (
+                                        <button
+                                            onClick={handleDownloadImage}
+                                            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-display font-bold uppercase tracking-wider rounded-xl transition-all shadow"
+                                        >
+                                            <Download className="w-4 h-4 text-premium-gold" />
+                                            <span>Guardar Imagen</span>
+                                        </button>
+                                    )}
                                 </div>
-                                <div className="flex items-center gap-2 w-full sm:w-auto">
+
+                                {/* Mobile quick buttons */}
+                                <div className="grid grid-cols-2 gap-2 pt-1">
                                     <button
-                                        onClick={handleDownloadScreenshot}
-                                        disabled={isGeneratingImage}
-                                        className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-display font-bold uppercase tracking-wider rounded-xl transition-all shadow"
+                                        onClick={handleDownloadImage}
+                                        disabled={!generatedImageUrl}
+                                        className="py-3 px-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-display font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow"
                                     >
                                         <Camera className="w-4 h-4 text-premium-gold" />
-                                        <span>{isGeneratingImage ? 'Generando...' : 'Descargar Imagen'}</span>
+                                        <span>{isGeneratingImage ? 'Generando Foto...' : 'Descargar Foto'}</span>
                                     </button>
                                     <button
-                                        onClick={handleSendEmail}
-                                        className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-display font-bold uppercase tracking-wider rounded-xl transition-all shadow"
+                                        onClick={handleManualEmail}
+                                        className="py-3 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-display font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow"
                                     >
                                         <Send className="w-4 h-4" />
-                                        <span>Notificar Email</span>
+                                        <span>Abrir en Gmail</span>
                                     </button>
                                 </div>
                             </div>
 
-                            {/* EXACT FAREHARBOR EMAIL TICKET REPLICA (as shown in user image) */}
-                            <div className="bg-white p-3 sm:p-6 rounded-2xl border border-neutral-200 shadow-md overflow-hidden">
-                                <div ref={ticketRef} className="bg-white font-sans text-neutral-900 text-left max-w-md mx-auto p-4 sm:p-5 border border-neutral-100 rounded-xl">
+                            {/* AUTO-GENERATED IMAGE PREVIEW - ULTRA VISIBLE FOR MOBILE SCREENSHOT */}
+                            {generatedImageUrl && (
+                                <div className="space-y-2">
+                                    <div className="flex items-center justify-between px-1">
+                                        <span className="text-[11px] font-display font-bold uppercase tracking-wider text-neutral-500 flex items-center gap-1.5">
+                                            <Sparkles className="w-3.5 h-3.5 text-premium-gold" />
+                                            Imagen Generada lista para captura o envío
+                                        </span>
+                                        <span className="text-[10px] text-emerald-600 font-bold bg-emerald-100/60 px-2 py-0.5 rounded-full">
+                                            Alta Resolución
+                                        </span>
+                                    </div>
+                                    <div className="rounded-2xl overflow-hidden border-2 border-premium-gold/40 shadow-xl bg-white p-2">
+                                        <img
+                                            src={generatedImageUrl}
+                                            alt={`Ticket Reserva ${bookingRef}`}
+                                            className="w-full h-auto rounded-xl shadow-inner cursor-pointer"
+                                            onClick={handleDownloadImage}
+                                            title="Toca para descargar"
+                                        />
+                                    </div>
+                                    <p className="text-[11px] text-center text-neutral-400 font-sans italic">
+                                        (Puedes mantener presionada la imagen para guardarla en tu galería del móvil o pulsar «Descargar Foto»)
+                                    </p>
+                                </div>
+                            )}
+
+                            {/* SOURCE HTML DOM FOR FAREHARBOR EMAIL TICKET (captured by html2canvas) */}
+                            <div className="bg-white p-2 sm:p-5 rounded-2xl border border-neutral-200 shadow-md overflow-hidden">
+                                <div ref={ticketRef} className="bg-white font-sans text-neutral-900 text-left max-w-md mx-auto p-4 border border-neutral-200 rounded-xl">
                                     
-                                    {/* Mobile Client Email Header Bar */}
+                                    {/* Mobile Email App Header */}
                                     <div className="flex items-center justify-between pb-3 mb-3 border-b border-neutral-100">
                                         <div className="flex items-center gap-2.5">
                                             <div className="w-8 h-8 rounded-lg bg-[#27ae60] text-white flex items-center justify-center font-bold text-xs shadow-sm">
@@ -322,23 +455,22 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                         </div>
                                     </div>
 
-                                    {/* Big Heading from screenshot */}
+                                    {/* Big Heading matching screenshot */}
                                     <h1 className="text-lg sm:text-xl font-bold text-neutral-950 leading-snug mb-5">
                                         Nueva reserva: {currentTour.name} el <span className="underline">{formattedDate}</span> a las <span className="underline font-black">{formData.time} - {endTime}</span>
                                     </h1>
 
-                                    {/* Inner Framed Voucher */}
+                                    {/* Inner Framed FareHarbor Box */}
                                     <div className="border border-neutral-200 rounded-lg overflow-hidden bg-white shadow-sm">
                                         
-                                        {/* FareHarbor Legacy Tours Spain Logo Box */}
+                                        {/* Logo Header */}
                                         <div className="py-4 px-6 flex justify-center bg-white border-b border-neutral-100">
                                             <div className="text-center">
                                                 <img
                                                     src="/logo-legacy.png"
                                                     alt="Legacy Tours Spain"
-                                                    className="h-16 w-auto mx-auto object-contain"
+                                                    className="h-14 w-auto mx-auto object-contain"
                                                     onError={(e) => {
-                                                        // Fallback logo in case path differs
                                                         (e.target as HTMLElement).style.display = 'none';
                                                     }}
                                                 />
@@ -389,7 +521,7 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                                         {formattedDate} a las {formData.time} - {endTime}
                                                     </p>
                                                     <p className="text-[11px] text-neutral-500 mt-0.5">
-                                                        1 Tour Privado
+                                                        1 Tour Privado ({currentTour.durationMinutes} minutos)
                                                     </p>
                                                 </div>
                                             </div>
@@ -416,7 +548,7 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                                 <table className="w-full text-[10px] border-collapse">
                                                     <tbody>
                                                         <tr className="border-b border-neutral-100">
-                                                            <td className="py-1 text-neutral-700">Tour Privado</td>
+                                                            <td className="py-1 text-neutral-700">Tour Privado ({currentTour.durationMinutes} min)</td>
                                                             <td className="py-1 text-right font-medium text-neutral-900">{netFormatted} €</td>
                                                         </tr>
                                                         <tr className="border-b border-neutral-100">
@@ -424,7 +556,7 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                                             <td className="py-1 text-right"></td>
                                                         </tr>
                                                         <tr className="border-b border-neutral-100">
-                                                            <td className="py-1 text-neutral-700">Impuestos</td>
+                                                            <td className="py-1 text-neutral-700">Impuestos (21%)</td>
                                                             <td className="py-1 text-right font-medium text-neutral-900">{taxesFormatted} €</td>
                                                         </tr>
                                                         <tr className="border-b border-neutral-200">
@@ -457,11 +589,13 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                 </div>
                             </div>
 
-                            {/* New booking button */}
+                            {/* Bottom controls */}
                             <div className="flex gap-2 pt-2">
                                 <button
                                     onClick={() => {
                                         setIsSuccess(false);
+                                        setGeneratedImageUrl(null);
+                                        setAutoEmailStatus('idle');
                                         setFormData(prev => ({
                                             ...prev,
                                             fullName: '',
@@ -469,20 +603,20 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                             email: ''
                                         }));
                                     }}
-                                    className="flex-1 py-3 text-xs font-display font-bold uppercase tracking-wider text-neutral-700 bg-white border border-neutral-200 rounded-xl hover:bg-neutral-100 transition-colors shadow-sm"
+                                    className="flex-1 py-3.5 text-xs font-display font-bold uppercase tracking-wider text-neutral-700 bg-white border border-neutral-200 rounded-xl hover:bg-neutral-100 transition-colors shadow-sm"
                                 >
                                     + Crear Otra Reserva
                                 </button>
                                 <button
                                     onClick={onClose}
-                                    className="flex-1 py-3 text-xs font-display font-bold uppercase tracking-wider text-white bg-neutral-900 rounded-xl hover:bg-neutral-800 transition-colors shadow-md"
+                                    className="flex-1 py-3.5 text-xs font-display font-bold uppercase tracking-wider text-white bg-neutral-900 rounded-xl hover:bg-neutral-800 transition-colors shadow-md"
                                 >
-                                    Terminar y Cerrar
+                                    Terminar y Salir
                                 </button>
                             </div>
                         </div>
                     ) : (
-                        /* ULTRA MOBILE-FRIENDLY COMPACT FORM */
+                        /* MOBILE-FRIENDLY COMPACT FORM */
                         <form onSubmit={handleSubmit} className="space-y-4">
                             
                             {/* 1. Nombre y Apellido en la misma casilla */}
@@ -512,7 +646,7 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                     <select
                                         value={formData.countryCode}
                                         onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                                        className="bg-white border-2 border-neutral-200 focus:border-premium-gold rounded-xl px-3 py-3.5 text-sm font-bold text-neutral-800 focus:outline-none transition-all shadow-sm shrink-0 w-28 sm:w-36"
+                                        className="bg-white border-2 border-neutral-200 focus:border-premium-gold rounded-xl px-2.5 py-3.5 text-sm font-bold text-neutral-800 focus:outline-none transition-all shadow-sm shrink-0 w-28 sm:w-36"
                                     >
                                         {COUNTRY_CODES.map((c) => (
                                             <option key={c.code} value={c.code}>
@@ -547,38 +681,44 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                 />
                             </div>
 
-                            {/* 4. Tipo de tour */}
+                            {/* 4. Selector de los 4 Tours con duraciones exactas (1h = 60m, 2h = 120m, 3h = 180m, Navidad = 90m) */}
                             <div className="space-y-1.5">
                                 <label className="text-xs font-display font-bold uppercase tracking-wider text-neutral-700 flex items-center justify-between">
-                                    <span>Tipo de Tour</span>
-                                    <span className="text-[11px] text-premium-gold font-normal lowercase">{currentTour.durationMinutes} min de tour</span>
+                                    <span>Selecciona el Tour</span>
+                                    <span className="text-[11px] text-premium-gold font-bold">{currentTour.durationMinutes} minutos de duración</span>
                                 </label>
-                                <div className="grid grid-cols-3 gap-2">
+                                <div className="grid grid-cols-2 gap-2">
                                     {[
-                                        { key: 'essential', label: '1h Essential', price: '95€' },
-                                        { key: 'city-sea', label: '2h Park City', price: '141,96€' },
-                                        { key: 'complete', label: '3h Complete', price: '195€' },
+                                        { key: 'essential', label: '1 Hora', sub: '60 min · Essential', price: '95€' },
+                                        { key: 'city-sea', label: '2 Horas', sub: '120 min · Park City', price: '141,96€' },
+                                        { key: 'complete', label: '3 Horas', sub: '180 min · Complete', price: '195€' },
+                                        { key: 'navidad', label: '🎄 Navidad', sub: '90 min · Luces & Magia', price: '120€' },
                                     ].map((t) => (
                                         <button
                                             key={t.key}
                                             type="button"
                                             onClick={() => setFormData({ ...formData, tourType: t.key })}
-                                            className={`p-3 rounded-xl border-2 text-center transition-all flex flex-col items-center justify-center ${
+                                            className={`p-3 rounded-xl border-2 text-left transition-all relative ${
                                                 formData.tourType === t.key
                                                     ? 'border-neutral-900 bg-neutral-900 text-white shadow-md'
                                                     : 'border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100'
                                             }`}
                                         >
-                                            <span className="text-xs font-display font-bold tracking-tight">{t.label}</span>
-                                            <span className={`text-[10px] mt-0.5 ${formData.tourType === t.key ? 'text-premium-gold font-bold' : 'text-neutral-400'}`}>
-                                                {t.price}
-                                            </span>
+                                            <div className="flex items-center justify-between">
+                                                <span className="text-xs font-display font-bold uppercase tracking-tight">{t.label}</span>
+                                                <span className={`text-[11px] font-bold ${formData.tourType === t.key ? 'text-premium-gold' : 'text-neutral-500'}`}>
+                                                    {t.price}
+                                                </span>
+                                            </div>
+                                            <p className={`text-[10px] mt-0.5 truncate ${formData.tourType === t.key ? 'text-neutral-300' : 'text-neutral-400'}`}>
+                                                {t.sub}
+                                            </p>
                                         </button>
                                     ))}
                                 </div>
                             </div>
 
-                            {/* 5. Fecha y Hora */}
+                            {/* 5. Fecha y Hora de Inicio */}
                             <div className="grid grid-cols-2 gap-3">
                                 <div className="space-y-1.5">
                                     <label className="text-xs font-display font-bold uppercase tracking-wider text-neutral-700 flex items-center gap-1.5">
@@ -594,9 +734,12 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                     />
                                 </div>
                                 <div className="space-y-1.5">
-                                    <label className="text-xs font-display font-bold uppercase tracking-wider text-neutral-700 flex items-center gap-1.5">
-                                        <Clock className="w-3.5 h-3.5 text-premium-gold" />
-                                        Hora Inicio
+                                    <label className="text-xs font-display font-bold uppercase tracking-wider text-neutral-700 flex items-center justify-between">
+                                        <span className="flex items-center gap-1">
+                                            <Clock className="w-3.5 h-3.5 text-premium-gold" />
+                                            Hora Inicio
+                                        </span>
+                                        <span className="text-[10px] text-neutral-400 font-sans">Fin: {endTime}</span>
                                     </label>
                                     <input
                                         type="time"
@@ -615,7 +758,7 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                         <Users className="w-3.5 h-3.5 text-premium-gold" />
                                         Cantidad de personas
                                     </span>
-                                    <span className="text-[11px] text-neutral-400 font-sans">Máx 4 por coche</span>
+                                    <span className="text-[11px] text-neutral-400 font-sans">Capacidad 4 pax</span>
                                 </label>
                                 <div className="grid grid-cols-4 gap-2">
                                     {[1, 2, 3, 4].map((num) => (
@@ -629,7 +772,7 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                                     : 'border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100'
                                             }`}
                                         >
-                                            {num} {num === 1 ? 'persona' : 'personas'}
+                                            {num} {num === 1 ? 'pax' : 'pax'}
                                         </button>
                                     ))}
                                 </div>
@@ -646,7 +789,7 @@ const InstantBookingForm: React.FC<InstantBookingFormProps> = ({ onClose }) => {
                                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                                     ) : (
                                         <>
-                                            <span>Generar Ticket FareHarbor</span>
+                                            <span>Generar Ticket & Notificar</span>
                                             <Send className="w-4 h-4" />
                                         </>
                                     )}
