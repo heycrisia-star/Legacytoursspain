@@ -62,16 +62,18 @@ function App() {
     { key: 'contact', label: t('nav.contact') || 'Contact' }
   ];
 
-  // Hidden access trigger: Long press on logo
+  // Hidden access trigger: Long press on logo (optimized for mobile 1.2s hold)
   const handleLogoPressStart = () => {
+    if (longPressTimer.current) clearTimeout(longPressTimer.current);
     longPressTimer.current = window.setTimeout(() => {
       setShowPinPrompt(true);
-    }, 2000); // 2 second hold
+    }, 1200); // 1.2 second hold is standard and reliable on mobile
   };
 
   const handleLogoPressEnd = () => {
     if (longPressTimer.current) {
       clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
     }
   };
 
@@ -82,7 +84,7 @@ function App() {
       setShowPinPrompt(false);
       setPin('');
     } else {
-      alert(t('admin.incorrect'));
+      alert(t('admin.incorrect') || 'Código incorrecto');
       setPin('');
     }
   };
@@ -261,28 +263,38 @@ function App() {
       {showPinPrompt && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md">
           <div className="bg-white p-8 rounded-3xl shadow-2xl max-w-xs w-full text-center space-y-4">
-            <h3 className="font-display font-bold uppercase tracking-widest">{t('admin.title')}</h3>
+            <h3 className="font-display font-bold uppercase tracking-widest text-neutral-900 text-sm">
+              Acceso Gestor Legacy
+            </h3>
+            <p className="text-xs text-neutral-400 font-sans">Introduce tu clave de 4 dígitos</p>
             <form onSubmit={handlePinSubmit} className="space-y-4">
               <input
                 type="password"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                maxLength={4}
                 autoFocus
-                className="w-full text-center text-2xl tracking-[1em] border-b-2 border-premium-gold py-2 focus:outline-none"
+                placeholder="••••"
+                className="w-full text-center text-3xl font-mono tracking-[0.5em] border-b-2 border-premium-gold py-2 focus:outline-none bg-transparent"
                 value={pin}
                 onChange={p => setPin(p.target.value)}
               />
-              <div className="flex gap-2">
+              <div className="flex gap-2 pt-2">
                 <button
                   type="button"
-                  onClick={() => setShowPinPrompt(false)}
-                  className="flex-1 py-3 text-xs font-bold uppercase tracking-widest text-neutral-400"
+                  onClick={() => {
+                    setShowPinPrompt(false);
+                    setPin('');
+                  }}
+                  className="flex-1 py-3 text-xs font-bold uppercase tracking-widest text-neutral-500 bg-neutral-100 rounded-xl hover:bg-neutral-200 transition-colors"
                 >
-                  {t('admin.cancel')}
+                  Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-3 bg-premium-gold text-white rounded-xl text-xs font-bold uppercase tracking-widest"
+                  className="flex-1 py-3 bg-premium-gold text-white rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-yellow-600 transition-colors shadow-md"
                 >
-                  {t('admin.enter')}
+                  Entrar
                 </button>
               </div>
             </form>
